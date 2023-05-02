@@ -1,0 +1,100 @@
+#container{
+    width: 100%;
+    min-width: 1300px;
+}
+
+/* Header */
+#header-container{
+    width: 100%;
+    padding: 20px 0;
+    border-top: 0.5px solid #DDDDDD;
+    border-bottom: 0.5px solid #DDDDDD;
+}
+#header-container .wrapper{
+    max-width: 1240px;
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#header-container .wrapper .logo-wrap{
+    width: 148px;
+}
+#header-container .wrapper .logo-wrap img{
+    width: 100%;
+}
+#header-container .wrapper .menu-container{
+    width: calc(100% - 269px);
+    padding-left: 78px;
+}
+#header-container .wrapper .menu{
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 26px;
+    /* identical to box height */
+    letter-spacing: -0.01em;
+    color: #555555;
+    margin-right: 40px;
+}
+#header-container .wrapper .side-wrap{
+    width: 132px;
+   text-align: right;
+}
+#header-container .wrapper .side-wrap .login,
+#header-container .wrapper .side-wrap .register
+{
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: -0.01em;
+    color: #999999;
+}
+#header-container .wrapper .side-wrap span{
+    font-weight: 800;
+    font-size: 11px;
+    color: #999999;
+    position: relative;
+    bottom: 2px;
+    margin: 0 11px;
+}
+
+/* Footer */
+#footer-container{
+    background: #444444;
+    padding: 30px 0;
+}
+#footer-container .wrapper{
+    max-width: 1240px;
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+}
+#footer-container .wrapper .logo-wrap{
+    width: 185px;
+    text-align: left;
+    font-weight: 900;
+    font-size: 32px;
+    line-height: 46px;
+    color: #5A5A5A;
+    border-right: 0.5px solid #5A5A5A;
+}
+#footer-container .wrapper .info-wrap{
+    padding-left: 50px;
+}
+#footer-container .wrapper .info-wrap p{
+    font-weight: 350;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: -0.01em;
+    color: #FFFFFF;
+}
+#footer-container .wrapper .info-wrap span{
+    font-size: 13px;
+    font-weight: 500;
+    margin: 0 15px;
+    position: relative;
+    bottom: 2px;
+    color: #fff;
+}
