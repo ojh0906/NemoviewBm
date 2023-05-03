@@ -103,3 +103,220 @@
     letter-spacing: -0.01em;
     text-align: center;
 }
+
+
+/* 회원가입 */
+#register{
+    padding: 85px 0 67px;
+    width: 1200px;
+    margin: 0 auto;
+}
+#register .page-title{
+    font-weight: 700;
+    font-size: 34px;
+    line-height: 49px;
+    color: #333333;
+    margin-bottom: 69px;
+}
+#register .agreement-box{
+    background: #FFFFFF;
+    border: 1px solid #DDDDDD;
+    border-radius: 12px
+}
+#register .agreement-box .top{
+    padding: 20px 50px;
+    box-sizing: border-box;
+    border-bottom: 0.5px solid #DDDDDD
+}
+#register .agreement-box .top label{
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 29px;
+    /* identical to box height */
+    color: #333333;
+    cursor: pointer;
+}
+#register .agreement-box .bottom{
+    padding:25px 50px;
+    box-sizing: border-box;
+}
+#register .agreement-box .bottom .line{
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 12px;
+}
+#register .agreement-box .bottom .line label{
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 26px;
+    /* identical to box height */
+    color: #333333;
+    cursor: pointer;
+}
+#register .agreement-box .bottom .line label .red{
+    color: #FF4337;
+}
+#register .agreement-box .bottom .line .more{
+    float: right;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    text-decoration-line: underline;
+    color: #999999;
+    cursor: pointer;
+}
+#register .agreement-box .bottom .line .detail{
+    padding: 15px;
+    box-sizing: border-box;
+    background: #f2f2f2;
+    font-size: 15px;
+    line-height: 28px;
+    margin-bottom: 15px;
+    overflow-y: scroll;
+    display: none;
+}
+#register .agreement-box .bottom .line .detail.open{
+    display: block;
+    height: 200px;
+}
+
+#register .agreement-box input[type=checkbox]{
+    width: 14px;
+    height: 14px;
+    margin-right: 10px;
+}
+#register .register-box{
+    background: #FFFFFF;
+    border: 1px solid #DDDDDD;
+    border-radius: 12px;
+    padding: 70px 50px;
+    box-sizing: border-box;
+    margin-top: 30px;
+}
+#register .register-box .line{
+    display: flex;
+    margin-bottom: 34px;
+    align-items: center;
+}
+#register .register-box .line:nth-last-child(1){
+    margin-bottom: 0;
+}
+#register .register-box .line .label{
+    display: inline-block;
+    width: 150px;
+    margin-right: 56px;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 32px;
+    /* identical to box height */
+    color: #333333;
+}
+#register .register-box .line .label .req{
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 43px;
+    color: #5757FF;
+}
+#register .register-box .line .label .sel{
+    color: #999999;
+}
+#register .register-box .line input[type=text],
+#register .register-box .line input[type=password],
+#register .register-box .line input[type=email]{
+    width: 600px;
+    background: #FFFFFF;
+    border: 1px solid #DDDDDD;
+    border-radius: 7px;
+    padding: 11px 15px;
+    box-sizing: border-box;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 32px;
+}
+#register .register-box .line input[type=text]::placeholder{
+    color: #B3B3B3;
+}
+#register .register-box .line .cert-btn{
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 23px;
+    color: #333333;
+    padding: 15px 29px;
+    box-sizing: border-box;
+    background: #EEEEEE;
+    border-radius: 7px;
+    margin-left: 15px;
+}
+#register .register-box .tip{
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #FF4337;
+    margin-top: -29px;
+    padding-left: 205px;
+    margin-bottom: 25px;
+}
+#register .register-box hr{
+    /*border-top: 1px solid #DDDDDD;*/
+    background: #ddd;
+    width: 100%;
+    height: 1px;
+    border: none;
+    margin: 70px 0;
+}
+#register .register-box .select-container{
+    position: relative;
+    width: 600px;
+}
+#register .register-box .select-container .select-box{
+    background: #FFFFFF;
+    border: 1px solid #DDDDDD;
+    border-radius: 7px;
+    padding: 11px 15px;
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 56px;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 32px;
+    position: relative;
+}
+#register .register-box .select-container .select-list{
+    position: absolute;
+    left: 0;
+    top: 56px;
+    background: #FFFFFF;
+    border: 0.5px solid #DDDDDD;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.07);
+    border-radius: 10px;
+    width: 600px;
+    overflow: hidden;
+    display: none;
+}
+#register .register-box .select-container .select-list p{
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 23px;
+    letter-spacing: -0.01em;
+    color: #555555;
+    padding: 18px 30px;
+    box-sizing: border-box;
+    border-bottom: 0.5px solid #DDDDDD;
+}
+#register .register-box .select-container .select-list p:nth-last-child(1){
+    border-bottom: none;
+}
+#register .submit{
+    background: #5757FF;
+    border-radius: 7px;
+    padding: 11px 0;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 32px;
+    text-align: center;
+    color: #FFFFFF;
+    display: block;
+    margin: 70px auto 0;
+    width: 410px;
+    cursor: pointer;
+}
