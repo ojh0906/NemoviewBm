@@ -47,12 +47,18 @@
     <div class="register-box">
       <div class="line">
         <span class="label">이메일<span class="req"> *</span></span>
-        <input type="email"/>
+        <div class="input-wrap">
+          <input type="email"/>
+          <img class="confirm" src="/image/common/confirm.png">
+        </div>
         <span class="cert-btn">인증번호 전송</span>
       </div>
       <div class="line">
         <span class="label">인증번호 입력<span class="req"> *</span></span>
-        <input type="text"/>
+        <div class="input-wrap">
+          <input type="text"/>
+          <img class="confirm" src="/image/common/confirm.png">
+        </div>
         <span class="cert-btn">인증번호 전송</span>
       </div>
       <div class="line">
