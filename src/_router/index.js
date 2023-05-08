@@ -3,6 +3,9 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Login from "/src/pages/Login.vue";
 import Register from "/src/pages/register/Register.vue";
 import Mypage from "/src/pages/mypage/Mypage.vue";
+import PointCharge from "/src/pages/mypage/PointCharge.vue";
+import MemberModify from "/src/pages/mypage/MemberModify.vue";
+import AccountSetting from "/src/pages/mypage/AccountSetting.vue";
 
 const routes = [
     {
@@ -22,6 +25,24 @@ const routes = [
         name: "Mypage",
         component: Mypage,
         meta: { title: "마이페이지" },
+    },
+    {
+        path: "/pointcharge",
+        name: "PointCharge",
+        component: PointCharge,
+        meta: { title: "포인트 충전" },
+    },
+    {
+        path: "/membermodify",
+        name: "MemberModify",
+        component: MemberModify,
+        meta: { title: "세금 계산서 정보" },
+    },
+    {
+        path: "/AccountSetting",
+        name: "AccountSetting",
+        component: AccountSetting,
+        meta: { title: "세금 계산서 정보" },
     },
 ];
 

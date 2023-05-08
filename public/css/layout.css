@@ -293,6 +293,16 @@
     position: relative;
     cursor: pointer;
 }
+#register .register-box .select-container .select-box .icn{
+    position: absolute;
+    right: 20px;
+    color: #A7A7A7;
+}
+#register .register-box .select-container .select-box .icn:before{
+    content: "\f078";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+}
 #register .register-box .select-container .select-list{
     position: absolute;
     left: 0;
@@ -536,4 +546,271 @@
 }
 #mypage .content-container .ad-container .item .bottom-wrap .status.stop{
     color: #FF463A;
+}
+
+/* 마이페이지 - 포인트 충전 */
+#mypage .content-container .point-charge-container{
+
+}
+#mypage .content-container .point-charge-container .title{
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 26px;
+    color: #5757FF;
+}
+#mypage .content-container .point-charge-container .point{
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 23px;
+    color: #333333;
+    margin-bottom: 50px;
+}
+#mypage .content-container .point-charge-container .point strong{
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 58px;
+    color: #333333;
+    margin-right: 8px;
+}
+#mypage .content-container .point-charge-container .txt{
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 23px;
+    color: #555555;
+    margin-bottom: 40px;
+}
+#mypage .content-container .point-charge-container .account{
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 23px;
+    color: #333333;
+}
+#mypage .content-container .point-charge-container .bottom-wrap{
+    margin-top: 113px;
+    margin-bottom: 118px;
+}
+#mypage .content-container .point-charge-container .bottom-wrap img{
+    width: 180px;
+    vertical-align: middle;
+}
+#mypage .content-container .point-charge-container .bottom-wrap .account-setting{
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: -0.01em;
+    text-decoration-line: underline;
+    color: #555555;
+    margin-left: 30px;
+}
+
+/* 마이페이지 계정정보 / 세금계산서 정보 */
+#mypage .content-container .mypage-setting-container{
+    padding: 37px 43px 67px;
+    box-sizing: border-box;
+    max-width: 960px;
+}
+#mypage .content-container .mypage-setting-container .page-title{
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 29px;
+    /* identical to box height */
+    letter-spacing: -0.01em;
+    color: #333333;
+}
+#mypage .content-container .mypage-setting-container .submit{
+    float: right;
+    background: #5757FF;
+    border-radius: 7px;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 26px;
+    text-align: center;
+    color: #FFFFFF;
+    padding: 7px 23px;
+    width: 110px;
+    text-align: center;
+    box-sizing: border-box;
+}
+#mypage .content-container .mypage-setting-container .menu-wrap{
+    margin-top: 7px;
+}
+#mypage .content-container .mypage-setting-container .menu-wrap .menu{
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 29px;
+    /* identical to box height */
+    letter-spacing: -0.01em;
+    color: #555555;
+}
+#mypage .content-container .mypage-setting-container .menu-wrap .menu:nth-child(1){
+    margin-right: 50px;
+}
+#mypage .content-container .mypage-setting-container .menu-wrap .menu.active{
+    text-decoration-line: underline;
+    font-weight: 700;
+    color: #5757FF;
+}
+#mypage .content-container .mypage-setting-container .modify-box{
+    background: #FFFFFF;
+    border: 0.5px solid #CCCCCC;
+    border-radius: 12px;
+    padding: 50px 77px;
+    box-sizing: border-box;
+    margin-top: 45px;
+}
+#mypage .content-container .mypage-setting-container .modify-box .line{
+    display: flex;
+    margin-bottom: 42px;
+    align-items: center;
+    position: relative;
+}
+#mypage .content-container .mypage-setting-container .modify-box .line .label{
+    width: 215px;
+    text-align: left;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 23px;
+}
+#mypage .content-container .mypage-setting-container .modify-box .line .required{
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 43px;
+    color: #5757FF;
+    vertical-align: middle;
+}
+#mypage .content-container .mypage-setting-container .modify-box .line input[type=text],
+#mypage .content-container .mypage-setting-container .modify-box .line input[type=email]{
+    width: calc(100% - 215px);
+    background: #FFFFFF;
+    border: 1px solid #DDDDDD;
+    border-radius: 7px;
+    padding: 11px 15px;
+    box-sizing: border-box;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 23px;
+}
+#mypage .content-container .mypage-setting-container .modify-box .line input[type=file]{
+    visibility: hidden;
+    width: 0;
+}
+#mypage .content-container .mypage-setting-container .modify-box .line .sel{
+    color: #999999;
+}
+#mypage .content-container .mypage-setting-container .modify-box .line .select-container{
+    width: calc(100% - 215px);
+}
+#mypage .content-container .mypage-setting-container .modify-box .line .select-container .select-box{
+    background: #FFFFFF;
+    border: 1px solid #DDDDDD;
+    border-radius: 7px;
+    padding: 11px 15px;
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 56px;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 32px;
+    position: relative;
+    cursor: pointer;
+}
+#mypage .content-container .mypage-setting-container .modify-box .line .icn{
+    position: absolute;
+    right: 20px;
+    color: #A7A7A7;
+}
+#mypage .content-container .mypage-setting-container .modify-box .line .icn:before{
+    content: "\f078";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+}
+#mypage .content-container .mypage-setting-container .modify-box .line .select-container .select-list{
+    position: absolute;
+    left: 0;
+    top: 56px;
+    background: #FFFFFF;
+    border: 0.5px solid #DDDDDD;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.07);
+    border-radius: 10px;
+    width: 600px;
+    overflow: hidden;
+    display: none;
+}
+#mypage .content-container .mypage-setting-container .modify-box .line .select-container .select-list p{
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 23px;
+    letter-spacing: -0.01em;
+    color: #555555;
+    padding: 18px 30px;
+    box-sizing: border-box;
+    border-bottom: 0.5px solid #DDDDDD;
+}
+#mypage .content-container .mypage-setting-container .modify-box .line .select-container .select-list p:nth-last-child(1){
+    border-bottom: none;
+}
+#mypage .content-container .mypage-setting-container .modify-box .line .select-container .select-box{
+    background: #FFFFFF;
+    border: 1px solid #DDDDDD;
+    border-radius: 7px;
+    padding: 11px 15px;
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 56px;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 32px;
+    position: relative;
+    cursor: pointer;
+}
+#mypage .content-container .mypage-setting-container .modify-box .line .select-container .select-list{
+    position: absolute;
+    left: 0;
+    top: 56px;
+    background: #FFFFFF;
+    border: 0.5px solid #DDDDDD;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.07);
+    border-radius: 10px;
+    width: 600px;
+    overflow: hidden;
+    display: none;
+}
+#mypage .content-container .mypage-setting-container .modify-box .line .select-container .select-list p{
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 23px;
+    letter-spacing: -0.01em;
+    color: #555555;
+    padding: 18px 30px;
+    box-sizing: border-box;
+    border-bottom: 0.5px solid #DDDDDD;
+}
+#mypage .content-container .mypage-setting-container .modify-box .line .select-container .select-list p:nth-last-child(1){
+    border-bottom: none;
+}
+#mypage .content-container .mypage-setting-container .modify-box .line .file-name{
+    width: calc(100% - 215px);
+    background: #FFFFFF;
+    border: 1px solid #DDDDDD;
+    border-radius: 7px;
+    padding: 11px 15px;
+    box-sizing: border-box;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 23px;
+}
+#mypage .content-container .mypage-setting-container .modify-box .line .upload{
+    background: #9B9B9B;
+    border-radius: 7px;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    /* identical to box height */
+    text-align: center;
+    color: #FFFFFF;
+    padding: 6px 17px;
+    position: absolute;
+    right: 15px;
+    top: 8px;
+    cursor: pointer;
 }

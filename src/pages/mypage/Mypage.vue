@@ -4,7 +4,7 @@
     <div class="content-container">
       <div class="mypage-top">
         <span class="point">보유 포인트 : <strong>52,000</strong></span>
-        <a class="charge">충전하기</a>
+        <router-link :to="{ name: 'PointCharge', query: {} }" class="charge" >충전하기</router-link>
       </div>
       <div class="mypage-content">
         <p class="page-title-lg">네모뷰에서 <strong>더 정교한 광고를</strong> 진행해 보세요!</p>
