@@ -814,3 +814,371 @@
     top: 8px;
     cursor: pointer;
 }
+
+/* 광고 상세페이지 */
+#mypage .content-container .ad-detail-container{
+    display: flex;
+    margin-top: -40px;
+}
+#mypage .content-container .ad-detail-container .left-container{
+    width: 55%;
+    border-right: 0.5px solid #DDDDDD;
+    padding: 50px 50px 100px;
+}
+#mypage .content-container .ad-detail-container .left-container .go-back{
+    background: #EEEEEE;
+    border-radius: 7px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 23px;
+    text-align: center;
+    color: #555555;
+    padding: 6px 25px;
+    margin-bottom: 31px;
+    display: inline-block;
+}
+#mypage .content-container .ad-detail-container .left-container .switch-wrap{
+    float: right;
+}
+#mypage .content-container .ad-detail-container .left-container .switch-wrap img{
+    width: 141px;
+    cursor: pointer;
+}
+#mypage .content-container .ad-detail-container .left-container .name{
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 43px;
+    letter-spacing: -0.01em;
+    color: #333333;
+    margin-bottom: 50px;
+}
+#mypage .content-container .ad-detail-container .left-container .status-box{
+    background: #FFFFFF;
+    border: 1px solid #5757FF;
+    box-shadow: 2px 2px 10px 2px rgba(0, 0, 0, 0.07);
+    border-radius: 10px;
+    display: flex;
+    width: 100%;
+    padding: 25px 0;
+    margin-bottom: 80px;
+}
+#mypage .content-container .ad-detail-container .left-container .status-box .item{
+    width: 33%;
+    text-align: center;
+}
+#mypage .content-container .ad-detail-container .left-container .status-box .item:nth-child(2){
+    border-right: 0.5px solid #DDDDDD;
+    border-left: 0.5px solid #DDDDDD;
+}
+#mypage .content-container .ad-detail-container .left-container .status-box .item .label {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 23px;
+    text-align: center;
+    color: #999999;
+    margin-bottom: 20px;
+}
+#mypage .content-container .ad-detail-container .left-container .status-box .item .val{
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 41px;
+    /* identical to box height */
+    text-align: center;
+    color: #555555;
+}
+#mypage .content-container .ad-detail-container .left-container .status-box .item:nth-child(3) .val{
+    color: #5757FF;
+}
+#mypage .content-container .ad-detail-container .left-container .area-title{
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 23px;
+    letter-spacing: -0.01em;
+    color: #555555;
+    margin-bottom: 3px;
+}
+#mypage .content-container .ad-detail-container .left-container .rank-table{
+    border-top: 3px solid #5757FF;
+    border-bottom: 1px solid #5757FF;
+    display: flex;
+    justify-content: space-between;
+    padding: 40px;
+    box-sizing: border-box;
+    margin-bottom: 80px;
+}
+#mypage .content-container .ad-detail-container .left-container .rank-table .wrap{
+    width: 40%;
+}
+#mypage .content-container .ad-detail-container .left-container .rank-table .wrap .item{
+    display: flex;
+    margin-bottom: 15px;
+}
+#mypage .content-container .ad-detail-container .left-container .rank-table .wrap .item:nth-last-child(1){
+    margin-bottom: 0;
+}
+#mypage .content-container .ad-detail-container .left-container .rank-table .wrap .item .rank{
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 23px;
+    letter-spacing: -0.01em;
+    color: #5757FF;
+    display: flex;
+    gap: 10px;
+    width: 40%;
+}
+#mypage .content-container .ad-detail-container .left-container .rank-table .wrap:nth-last-child(1) .rank{
+    color: #999999;
+}
+#mypage .content-container .ad-detail-container .left-container .rank-table .wrap .item .val{
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 23px;
+    letter-spacing: -0.01em;
+    color: #333333;
+}
+#mypage .content-container .ad-detail-container .left-container .keyword-table {
+    border-top: 3px solid #5757FF;
+    padding: 18px 0;
+}
+#mypage .content-container .ad-detail-container .left-container .keyword-table .line{
+    display: flex;
+    gap: 5px;
+    margin-bottom: 8px;
+}
+#mypage .content-container .ad-detail-container .left-container .keyword-table .line span{
+    background: #F9F8FD;
+    border: 1px solid #DEDCF1;
+    border-radius: 5px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 23px;
+    color: #333333;
+    text-align: center;
+    width: 95px;
+    padding: 4px;
+    box-sizing: border-box;
+}
+#mypage .content-container .ad-detail-container .left-container .keyword-table .line span.chk{
+    background: #DCDDF1;
+    border: 1px solid #A2A1FE;
+}
+#mypage .content-container .ad-detail-container .left-container .keyword-table .area-title{
+    margin-top: 50px;
+    margin-bottom: 15px;
+}
+#mypage .content-container .ad-detail-container .left-container .keyword-table .area-title:nth-child(1){
+    margin-top: 0;
+}
+#mypage .content-container .ad-detail-container .right-container{
+    padding: 50px;
+    box-sizing: border-box;
+    width: 40%;
+}
+#mypage .content-container .ad-detail-container .right-container .page-title{
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 26px;
+    /* identical to box height */
+    color: #333333;
+}
+#mypage .content-container .ad-detail-container .right-container .page-title .colored{
+    color: #5757FF;
+}
+#mypage .content-container .ad-detail-container .right-container .peo{
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 58px;
+    /* identical to box height */
+    text-align: left;
+    color: #333333;
+}
+#mypage .content-container .ad-detail-container .right-container .peo span{
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 23px;
+    color: #333333;
+}
+#mypage .content-container .ad-detail-container .right-container .txt{
+    font-weight: 300;
+    font-size: 28px;
+    line-height: 41px;
+    /* identical to box height */
+    color: #333333;
+    margin-bottom: 20px;
+}
+#mypage .content-container .ad-detail-container .right-container .preview-box{
+    background: #FFFFFF;
+    border: 1px solid #DDDDDD;
+    border-radius: 15px;
+    padding: 40px 30px 33px;
+    box-sizing: border-box;
+    max-width: 400px;
+}
+#mypage .content-container .ad-detail-container .right-container .preview-box .img-wrap{
+    border-radius: 10px;
+    width: 100%;
+    height: 212px;
+    background-position: center center !important;
+    background-size: cover !important;
+    position: relative;
+    border: 1px solid #EEEEEE;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.05);
+}
+#mypage .content-container .ad-detail-container .right-container .preview-box .img-wrap .wish{
+    position: absolute;
+    right: 11px;
+    bottom: 11px;
+    width: 29px;
+    height: 29px;
+    cursor: pointer;
+}
+#mypage .content-container .ad-detail-container .right-container .preview-box .brand{
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: -0.01em;
+    color: #333333;
+}
+#mypage .content-container .ad-detail-container .right-container .preview-box .preview-title{
+    font-weight: 700;
+    font-size: 19px;
+    line-height: 24px;
+    /* or 126% */
+    letter-spacing: -0.01em;
+    color: #333333;
+    margin-bottom: 10px;
+}
+#mypage .content-container .ad-detail-container .right-container .preview-box .hashtag-wrap{
+    display: flex;
+    gap: 5px;
+    margin-bottom: 25px;
+}
+#mypage .content-container .ad-detail-container .right-container .preview-box .hashtag-wrap .hashtag{
+    background: #FFFFFF;
+    border: 0.5px solid #EEEEEE;
+    border-radius: 16px;
+    text-align: center;
+    letter-spacing: -0.03em;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #999999;
+    padding: 4px 18px;
+    box-sizing: border-box;
+    display: inline-block;
+}
+#mypage .content-container .ad-detail-container .right-container .preview-box .keyword-title{
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 17px;
+    letter-spacing: -0.01em;
+    color: #333333;
+}
+#mypage .content-container .ad-detail-container .right-container .preview-box .skeyword{
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 17px;
+    letter-spacing: -0.01em;
+    color: #5757FF;
+}
+#mypage .content-container .ad-detail-container .right-container .preview-box .keywordyn{
+    display: inline-block;
+    cursor: pointer;
+    margin-bottom: 7px;
+}
+#mypage .content-container .ad-detail-container .right-container .preview-box .keywordyn i{
+    color: #CCCCCC;
+    font-size: 14px;
+    margin-left: 5px;
+}
+#mypage .content-container .ad-detail-container .right-container .preview-box .keyword-wrap{
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+#mypage .content-container .ad-detail-container .right-container .preview-box .keyword-wrap.close{
+    max-height: 0px;
+    transition: all .5s ease-in-out;
+    overflow: hidden;
+}
+#mypage .content-container .ad-detail-container .right-container .preview-box .keyword-wrap.open{
+    transition: all .5s ease-in-out;
+    height: auto!important;
+    max-height: 1000px;
+    overflow: unset;
+}
+#mypage .content-container .ad-detail-container .right-container .preview-box .keyword-wrap .keyword{
+    padding: 3px 17px;
+    box-sizing: border-box;
+    background: #FCFCFF;
+    border: 0.5px solid #E2E1FF;
+    border-radius: 16px;
+    text-align: center;
+    letter-spacing: -0.03em;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #7878FF;
+}
+#mypage .content-container .ad-detail-container .right-container .preview-box .price-wrap{
+    margin-top: 25px;
+    text-align: right;
+}
+#mypage .content-container .ad-detail-container .right-container .preview-box .price-wrap .sale{
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 29px;
+    /* identical to box height */
+    letter-spacing: -0.01em;
+    color: #5757FF;
+    margin-right: 10px;
+}
+#mypage .content-container .ad-detail-container .right-container .preview-box .price-wrap .cost{
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: -0.01em;
+    text-decoration-line: line-through;
+    color: #CCCCCC;
+    margin-right: 10px;
+}
+#mypage .content-container .ad-detail-container .right-container .preview-box .price-wrap .discount{
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 29px;
+    /* identical to box height */
+    letter-spacing: -0.01em;
+    color: #333333;
+}
+#mypage .content-container .ad-detail-container .right-container .edit-wrap{
+    display: flex;
+    width: 400px;
+    margin-top: 40px;
+    gap: 10px;
+}
+#mypage .content-container .ad-detail-container .right-container .edit-wrap .del{
+    background: #EEEEEE;
+    border-radius: 7px;
+    text-align: center;
+    width: 50%;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 32px;
+    text-align: center;
+    padding: 8px 0;
+    color: #333333;
+    cursor: pointer;
+}
+#mypage .content-container .ad-detail-container .right-container .edit-wrap .modify{
+    background: #5757FF;
+    border-radius: 7px;
+    text-align: center;
+    width: 50%;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 32px;
+    text-align: center;
+    padding: 8px 0;
+    color: #fff;
+    cursor: pointer;
+}

@@ -6,6 +6,7 @@ import Mypage from "/src/pages/mypage/Mypage.vue";
 import PointCharge from "/src/pages/mypage/PointCharge.vue";
 import MemberModify from "/src/pages/mypage/MemberModify.vue";
 import AccountSetting from "/src/pages/mypage/AccountSetting.vue";
+import AdvertiseDetail from "/src/pages/mypage/AdvertiseDetail.vue";
 
 const routes = [
     {
@@ -42,6 +43,12 @@ const routes = [
         path: "/AccountSetting",
         name: "AccountSetting",
         component: AccountSetting,
+        meta: { title: "세금 계산서 정보" },
+    },
+    {
+        path: "/advertisedetail",
+        name: "AdvertiseDetail",
+        component: AdvertiseDetail,
         meta: { title: "세금 계산서 정보" },
     },
 ];
