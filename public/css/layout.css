@@ -1096,6 +1096,7 @@
     /* identical to box height */
     text-align: left;
     color: #333333;
+    margin-bottom: 50px;
 }
 #mypage .content-container .ad-detail-container .right-container .peo span{
     font-weight: 400;
@@ -1275,6 +1276,131 @@
     cursor: pointer;
 }
 #mypage .content-container .ad-detail-container .right-container .edit-wrap .modify{
+    background: #5757FF;
+    border-radius: 7px;
+    text-align: center;
+    width: 50%;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 32px;
+    text-align: center;
+    padding: 8px 0;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* 광고 세팅 공통*/
+#ad-setting{
+
+}
+#ad-setting .step-container{
+    display: flex;
+}
+#ad-setting .step-container .left-container{
+    width: 60%;
+    border-right: 0.5px solid #DDDDDD;
+    padding: 50px 50px 100px;
+}
+#ad-setting .step-container .right-container{
+    width: 40%;
+    padding: 50px;
+    box-sizing: border-box;
+}
+#ad-setting .step-container .right-container .page-title{
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 26px;
+    /* identical to box height */
+    color: #333333;
+}
+#ad-setting .step-container .right-container .page-title .colored{
+    color: #5757FF;
+}
+#ad-setting .step-container .right-container .peo{
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 58px;
+    /* identical to box height */
+    text-align: left;
+    color: #333333;
+    margin-bottom: 50px;
+}
+#ad-setting .step-container .right-container .peo span{
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 23px;
+    color: #333333;
+}
+#ad-setting .step-container .right-container .txt{
+    font-weight: 300;
+    font-size: 28px;
+    line-height: 41px;
+    /* identical to box height */
+    color: #333333;
+    margin-bottom: 20px;
+}
+#ad-setting .step-container .left-container .menu-wrap{
+    display: flex;
+    justify-content: flex-start;
+    gap: 5px;
+}
+#ad-setting .step-container .left-container .menu-wrap .menu{
+    width: 110px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 23px;
+    text-align: center;
+    padding: 6px 0;
+    border-radius: 7px;
+}
+#ad-setting .step-container .left-container .menu-wrap .menu:nth-child(1){
+    color: #555555;
+    background: #EEEEEE;
+}
+#ad-setting .step-container .left-container .menu-wrap .menu:nth-child(2){
+    color: #fff;
+    background: #AAAAAA;
+}
+#ad-setting .step-container .left-container .title-wrap{
+    position: relative;
+    margin-top: 35px;
+    padding-top: 45px;
+    padding-left: 55px;
+    z-index: 2;
+}
+#ad-setting .step-container .left-container .title-wrap p{
+    font-weight: 300;
+    font-size: 34px;
+    line-height: 49px;
+    color: #333333;
+}
+#ad-setting .step-container .left-container .title-wrap img{
+    width: 120px;
+    left: -15px;
+    top: 0;
+    position: absolute;
+    z-index: 1;
+}
+#ad-setting .step-container .right-container .edit-wrap{
+    display: flex;
+    width: 400px;
+    margin-top: 40px;
+    gap: 10px;
+}
+#ad-setting .step-container .right-container .edit-wrap .del{
+    background: #EEEEEE;
+    border-radius: 7px;
+    text-align: center;
+    width: 50%;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 32px;
+    text-align: center;
+    padding: 8px 0;
+    color: #333333;
+    cursor: pointer;
+}
+#ad-setting .step-container .right-container .edit-wrap .modify{
     background: #5757FF;
     border-radius: 7px;
     text-align: center;

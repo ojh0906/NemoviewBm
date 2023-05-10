@@ -11,6 +11,8 @@ import AdvertiseDetail from "/src/pages/mypage/AdvertiseDetail.vue";
 import AffiliateServices from "/src/pages/mypage/AffiliateServices.vue";
 import Step1 from "/src/pages/ad/Step1.vue";
 import Step2 from "/src/pages/ad/Step2.vue";
+import Step3 from "/src/pages/ad/Step3.vue";
+import Step4 from "/src/pages/ad/Step4.vue";
 
 const routes = [
     {
@@ -68,20 +70,31 @@ const routes = [
         meta: { title: "세금 계산서 정보" },
     },
     {
-        path: "/ad",
-        name: "Ad",
+        path: "/ad/",
         children: [
             {
-                path: "/step1",
+                path: "step1",
                 name: "Step1",
                 component: Step1,
                 meta: { title: "광고 세팅1" },
             },
             {
-                path: "/step2",
+                path: "step2",
                 name: "Step2",
                 component: Step2,
                 meta: { title: "광고 세팅2" },
+            },
+            {
+                path: "step3",
+                name: "Step3",
+                component: Step3,
+                meta: { title: "광고 세팅3" },
+            },
+            {
+                path: "step4",
+                name: "Step4",
+                component: Step4,
+                meta: { title: "광고 세팅4" },
             },
         ]
     },
