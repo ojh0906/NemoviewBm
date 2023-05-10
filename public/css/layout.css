@@ -1204,7 +1204,6 @@
 }
 #mypage .content-container .ad-detail-container .right-container .preview-box .keyword-wrap.close{
     max-height: 0px;
-    transition: all .5s ease-in-out;
     overflow: hidden;
 }
 #mypage .content-container .ad-detail-container .right-container .preview-box .keyword-wrap.open{
@@ -1367,6 +1366,7 @@
     padding-top: 45px;
     padding-left: 55px;
     z-index: 2;
+    margin-bottom: 50px;
 }
 #ad-setting .step-container .left-container .title-wrap p{
     font-weight: 300;
@@ -1412,4 +1412,442 @@
     padding: 8px 0;
     color: #fff;
     cursor: pointer;
+}
+
+
+/* 광고세팅 1 */
+#ad-setting  #step1 .title-label{
+    font-weight: 300;
+    font-size: 28px;
+    line-height: 41px;
+    /* identical to box height */
+    color: #333333;
+    margin-bottom: 9px;
+}
+#ad-setting  #step1 input[name=title]{
+    background: #FFFFFF;
+    border: 1px solid #DDDDDD;
+    border-radius: 7px;
+    font-size: 22px;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    width: 740px;
+    margin-bottom: 67px;
+}
+#ad-setting  #step1 .tab-container{
+    margin-bottom: 54px;
+}
+#ad-setting  #step1 .tab-container .label{
+    font-weight: 300;
+    font-size: 28px;
+    line-height: 41px;
+    /* identical to box height */
+    color: #333333;
+    display: inline-block;
+    margin-right: 30px;
+}
+#ad-setting  #step1 .tab-container .tab{
+    background: #F3F3F3;
+    border-radius: 7px;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 29px;
+    /* identical to box height */
+    color: #333333;
+    padding: 11px 0;
+    width: 115px;
+    text-align: center;
+    display: inline-block;
+    margin: 0 3.5px;
+    cursor: pointer;
+}
+#ad-setting  #step1 .tab-container .tab.active{
+    background: #FED830;
+    color: #fff;
+}
+#ad-setting  #step1 .input-container{
+    padding: 50px 77px;
+    box-sizing: border-box;
+    width: 800px;
+    border: 1px solid #DDDDDD;
+    border-radius: 12px;
+}
+#ad-setting  #step1 .input-container .label{
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 32px;
+    /* identical to box height */
+    color: #333333;
+    margin-bottom: 10px;
+    margin-top: 50px;
+}
+#ad-setting  #step1 .input-container .label .tip{
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #808080;
+    margin-left: 5px;
+}
+#ad-setting  #step1 .input-container .label .tip2{
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 32px;
+    /* identical to box height */
+    color: #999999;
+}
+#ad-setting  #step1 .input-container .label:nth-child(1){
+    margin-top: 0;
+}
+#ad-setting  #step1 .input-container input[name=category]{
+    background: #FFFFFF;
+    border: 1px solid #DDDDDD;
+    border-radius: 7px;
+    padding: 9px 20px;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 22px;
+    /* identical to box height */
+    width: 300px;
+    letter-spacing: -0.01em;
+    margin-left: 18px;
+}
+#ad-setting  #step1 .input-container input[name=brand],
+#ad-setting  #step1 .input-container input[name=service]{
+    background: #FFFFFF;
+    border: 1px solid #DDDDDD;
+    border-radius: 7px;
+    padding: 9px 20px;
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 22px;
+    /* identical to box height */
+    width: 550px;
+    letter-spacing: -0.01em;
+    margin-left: 18px;
+}
+#ad-setting  #step1 .input-container input::placeholder{
+    letter-spacing: -0.01em;
+    color: #8B8B8B;
+}
+#ad-setting  #step1 .input-container textarea{
+    width: 605px;
+    height: 120px;
+    background: #FFFFFF;
+    border: 1px solid #DDDDDD;
+    border-radius: 7px;
+    resize: none;
+    padding: 20px;
+    box-sizing: border-box;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 22px;
+    margin-left: 18px;
+}
+#ad-setting  #step1 .input-container .numchk{
+    width: 620px;
+    text-align: right;
+}
+#ad-setting  #step1 .input-container .numchk span{
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: right;
+    color: #999999;
+}
+#ad-setting  #step1 .input-container .price-wrap{
+    display: flex;
+    gap: 60px;
+    margin-top: 20px;
+}
+#ad-setting  #step1 .input-container .price-wrap .wrap:nth-child(1){
+    width: 200px;
+}
+#ad-setting  #step1 .input-container .price-wrap .wrap:nth-child(2){
+    width: 83px;
+}
+#ad-setting  #step1 .input-container .price-wrap .wrap:nth-child(3){
+    width: 200px;
+}
+#ad-setting  #step1 .input-container .price-wrap .wrap p{
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 22px;
+    /* identical to box height */
+    color: #333333;
+    margin-bottom: 5px;
+}
+#ad-setting  #step1 .input-container .price-wrap .wrap span{
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 22px;
+    /* identical to box height */
+    color: #999999;
+}
+#ad-setting  #step1 .input-container .price-wrap .wrap input{
+    background: #FFFFFF;
+    border: 1px solid #DDDDDD;
+    border-radius: 7px;
+    padding: 9px 20px;
+    box-sizing: border-box;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 22px;
+    width: 100%;
+}
+#ad-setting  #step1 .input-container .price-wrap .wrap:nth-child(2) input{
+    width: 75%;
+    margin-right: 3px;
+}
+#ad-setting  #step1 .input-container input[name=link]{
+    background: #FFFFFF;
+    border: 1px solid #DDDDDD;
+    border-radius: 7px;
+    padding: 9px 20px;
+    box-sizing: border-box;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 22px;
+    width: 510px;
+    margin-right: 10px;
+}
+#ad-setting  #step1 .input-container .chk-btn{
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: -0.01em;
+    background: #F5F5F5;
+    border-radius: 7px;
+    color: #333333;
+    display: inline-block;
+    padding: 11px 15px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+#ad-setting  #step1 .input-container .sub{
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: -0.01em;
+    color: #AFAFAF;
+}
+#ad-setting  #step1 .input-container .keyword-list{
+    display: flex;
+    gap: 5px;
+    margin-top: 5px;
+}
+#ad-setting  #step1 .input-container .keyword-list .keyword{
+    background: #F9F8FD;
+    border: 1px solid #DEDCF1;
+    border-radius: 3px;
+    padding: 3px 11px;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 14px;
+    color: #8B8B8B;
+}
+#ad-setting  #step1 .input-container .keyword-list .keyword span{
+    cursor: pointer;
+    font-weight: 300;
+    font-size: 10px;
+    line-height: 14px;
+    letter-spacing: 0.04em;
+    color: #8B8B8B;
+    margin-left: 5px;
+    vertical-align: text-top;
+}
+#ad-setting  #step1 .input-container .chk-txt{
+    font-weight: 350;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: -0.01em;
+    color: #808080;
+}
+#ad-setting  #step1 .input-container .img-upload-container{
+    margin-top: 25px;
+}
+#ad-setting  #step1 .input-container .img-upload-container .img-txt{
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 26px;
+    color: #333;
+}
+#ad-setting  #step1 .input-container .img-upload-container .img-txt .colored{
+    color: #FF4337;
+}
+#ad-setting  #step1 .input-container .img-upload-container .img-txt .tip{
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #666666;
+    margin-left: 10px;
+}
+#ad-setting  #step1 .input-container .img-upload-container .img-txt img{
+    width: 17px;
+    vertical-align: middle;
+    margin-left: 10px;
+}
+#ad-setting  #step1 .input-container .img-upload-container .upload-area{
+    display: flex;
+    align-items: flex-end;
+    gap: 10px;
+    margin-top: 16px;
+}
+#ad-setting  #step1 .input-container .img-upload-container .upload-area .upload-wrap{
+    width: 300px;
+}
+#ad-setting  #step1 .input-container .img-upload-container .upload-area .upload-wrap img{
+    width: 100%;
+    cursor: pointer;
+}
+#ad-setting  #step1 .input-container .img-upload-container .upload-area .info-wrap{
+
+}
+#ad-setting  #step1 .input-container .img-upload-container .upload-area .info-wrap .info{
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 17px;
+    color: #999999;
+}
+#ad-setting .step-container .right-container .preview-box{
+    background: #FFFFFF;
+    border: 1px solid #DDDDDD;
+    border-radius: 15px;
+    padding: 40px 30px 33px;
+    box-sizing: border-box;
+    max-width: 400px;
+}
+#ad-setting .step-container .right-container .preview-box .img-wrap{
+    border-radius: 10px;
+    width: 100%;
+    height: 212px;
+    background-position: center center !important;
+    background-size: cover !important;
+    position: relative;
+    border: 1px solid #EEEEEE;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.05);
+}
+#ad-setting .step-container .right-container .preview-box .img-wrap .wish{
+    position: absolute;
+    right: 11px;
+    bottom: 11px;
+    width: 29px;
+    height: 29px;
+    cursor: pointer;
+}
+#ad-setting .step-container .right-container .preview-box .brand{
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: -0.01em;
+    color: #333333;
+}
+#ad-setting .step-container .right-container .preview-box .preview-title{
+    font-weight: 700;
+    font-size: 19px;
+    line-height: 24px;
+    /* or 126% */
+    letter-spacing: -0.01em;
+    color: #333333;
+    margin-bottom: 10px;
+}
+#ad-setting .step-container .right-container .preview-box .hashtag-wrap{
+    display: flex;
+    gap: 5px;
+    margin-bottom: 25px;
+}
+#ad-setting .step-container .right-container .preview-box .hashtag-wrap .hashtag{
+    background: #FFFFFF;
+    border: 0.5px solid #EEEEEE;
+    border-radius: 16px;
+    text-align: center;
+    letter-spacing: -0.03em;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #999999;
+    padding: 4px 18px;
+    box-sizing: border-box;
+    display: inline-block;
+}
+#ad-setting .step-container .right-container .preview-box .keyword-title{
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 17px;
+    letter-spacing: -0.01em;
+    color: #333333;
+}
+#ad-setting .step-container .right-container .preview-box .skeyword{
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 17px;
+    letter-spacing: -0.01em;
+    color: #5757FF;
+}
+#ad-setting .step-container .right-container .preview-box .keywordyn{
+    display: inline-block;
+    cursor: pointer;
+    margin-bottom: 7px;
+}
+#ad-setting .step-container .right-container .preview-box .keywordyn i{
+    color: #CCCCCC;
+    font-size: 14px;
+    margin-left: 5px;
+}
+#ad-setting .step-container .right-container .preview-box .keyword-wrap{
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+#ad-setting .step-container .right-container .preview-box .keyword-wrap.close{
+    max-height: 0px;
+    overflow: hidden;
+}
+#ad-setting .step-container .right-container .preview-box .keyword-wrap.open{
+    transition: all .5s ease-in-out;
+    height: auto!important;
+    max-height: 1000px;
+    overflow: unset;
+}
+#ad-setting .step-container .right-container .preview-box .keyword-wrap .keyword{
+    padding: 3px 17px;
+    box-sizing: border-box;
+    background: #FCFCFF;
+    border: 0.5px solid #E2E1FF;
+    border-radius: 16px;
+    text-align: center;
+    letter-spacing: -0.03em;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #7878FF;
+}
+#ad-setting .step-container .right-container .preview-box .price-wrap{
+    margin-top: 25px;
+    text-align: right;
+}
+#ad-setting .step-container .right-container .preview-box .price-wrap .sale{
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 29px;
+    /* identical to box height */
+    letter-spacing: -0.01em;
+    color: #5757FF;
+    margin-right: 10px;
+}
+#ad-setting .step-container .right-container .preview-box .price-wrap .cost{
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: -0.01em;
+    text-decoration-line: line-through;
+    color: #CCCCCC;
+    margin-right: 10px;
+}
+#ad-setting .step-container .right-container .preview-box .price-wrap .discount{
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 29px;
+    /* identical to box height */
+    letter-spacing: -0.01em;
+    color: #333333;
 }
