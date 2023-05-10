@@ -9,6 +9,7 @@ import MemberModify from "/src/pages/mypage/MemberModify.vue";
 import AccountSetting from "/src/pages/mypage/AccountSetting.vue";
 import AdvertiseDetail from "/src/pages/mypage/AdvertiseDetail.vue";
 import AffiliateServices from "/src/pages/mypage/AffiliateServices.vue";
+import Step2 from "/src/pages/ad/Step2.vue";
 
 const routes = [
     {
@@ -65,12 +66,24 @@ const routes = [
         component: AffiliateServices,
         meta: { title: "세금 계산서 정보" },
     },
+    {
+        path: "/ad",
+        name: "Ad",
+        children: [
+            {
+                path: "/step2",
+                name: "Step2",
+                component: Step2,
+                meta: { title: "광고 세팅2" },
+            },
+        ]
+    },
 ];
 
 const router = createRouter({
     history: createWebHistory(),
     routes,
-    scrollBehavior (to, from, savedPosition) {
+    scrollBehavior(to, from, savedPosition) {
         if (savedPosition) {
             return savedPosition
         } else {

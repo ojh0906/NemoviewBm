@@ -68,6 +68,7 @@
 #header-container .wrapper .alarm {
   width: 30px;
   height: 26px;
+  cursor: pointer;
 }
 
 #header-container .wrapper .alarm-box {
