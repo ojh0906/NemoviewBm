@@ -2,15 +2,13 @@ import { createStore } from "vuex";
 import createPersistedState from "vuex-persistedstate";
 
 import jwt from "../services/jwt";
-import http from "../services";
+import { http } from '@/services';
 
 // Create a new store instance.
 export default createStore({
   // state 속성 추가
   state: {
     member:null,
-    common:[],
-    mandatory:[],
     token: {
       accessToken: jwt.getToken(),
       expiryDate: new Date(),
@@ -36,18 +34,7 @@ export default createStore({
       // return state.member_confirm;
     },
     getLoginMember: function (state) {
-      if(state.member != null){
-        return {
-          member: state.member,
-          common: state.common,
-          mandatory: state.mandatory
-        };
-      } else {
-        return null;
-      }
-    },
-    getInfoDelYn: function (state) {
-      return state.delYn;
+      return state.member;
     },
   },
   mutations: {
@@ -62,27 +49,11 @@ export default createStore({
       state.token.accessToken = payload.accessToken;
       state.isAuthenticated = true;
       state.member = payload.member;
-      const keywords = JSON.parse(state.member.keywords);
-      for(var i=0; i<keywords.length; i++){
-        keywords[i].selected = false;
-      }
-
-      const common = keywords.filter(function(element){
-        return element.type == '1';
-      });
-      const mandatory = keywords.filter(function(element){
-        return element.type == '2';
-      });
-
-      state.common = common;
-      state.mandatory = mandatory;
 
       jwt.saveToken(payload.accessToken);
-
       const date = new Date();
       date.setHours(date.getHours() + payload.expiryHour);
       state.token.expiryDate = date;
-
       if(payload.remember != null){
         jwt.saveRemember(payload.remember);
       }
@@ -106,26 +77,6 @@ export default createStore({
       state.auth_result = String(payload.auth_result);
       console.log("mutations auth_result", state.auth_result);
     },
-    memberUpdate: function (state, payload = {}) {
-      state.member = payload.member;
-      const keywords = JSON.parse(state.member.keywords);
-      for(var i=0; i<keywords.length; i++){
-        keywords[i].selected = false;
-      }
-
-      const common = keywords.filter(function(element){
-        return element.type == '1';
-      });
-      const mandatory = keywords.filter(function(element){
-        return element.type == '2';
-      });
-
-      state.common = common;
-      state.mandatory = mandatory;
-    },
-    setDelYn: function (state, payload = {}) {
-      state.delYn = payload.delYn;
-    },
   },
   actions: {
     logout: function (context, payload) {
@@ -140,9 +91,6 @@ export default createStore({
       let params = {
         email: payload.email,
         password: payload.password,
-        remember: payload.remember,
-        android_device_token: payload.android_device_token,
-        ios_device_token: payload.ios_device_token,
       };
       return new Promise((resolve, reject) => {
         http
@@ -153,7 +101,6 @@ export default createStore({
                 context.commit("login", {
                   accessToken: data.BODY.token,
                   member: data.BODY.member,
-                  remember: data.BODY.remember,
                   expiryHour: data.BODY.expiryHour,
                 });
               } else {
