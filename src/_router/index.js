@@ -9,6 +9,7 @@ import MemberModify from "/src/pages/mypage/MemberModify.vue";
 import AccountSetting from "/src/pages/mypage/AccountSetting.vue";
 import AdvertiseDetail from "/src/pages/mypage/AdvertiseDetail.vue";
 import AffiliateServices from "/src/pages/mypage/AffiliateServices.vue";
+import Step1 from "/src/pages/ad/Step1.vue";
 import Step2 from "/src/pages/ad/Step2.vue";
 
 const routes = [
@@ -70,6 +71,12 @@ const routes = [
         path: "/ad",
         name: "Ad",
         children: [
+            {
+                path: "/step1",
+                name: "Step1",
+                component: Step1,
+                meta: { title: "광고 세팅1" },
+            },
             {
                 path: "/step2",
                 name: "Step2",
