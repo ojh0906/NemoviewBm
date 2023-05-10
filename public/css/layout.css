@@ -1,3 +1,108 @@
+/* 메인 */
+#main{
+    padding: 140px 0 230px;
+}
+#main .wrapper{
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    margin-left: auto;
+}
+#main .wrapper .left-container{
+    width: 450px;
+}
+#main .wrapper .left-container .sub{
+    font-weight: 300;
+    font-size: 34px;
+    line-height: 49px;
+    letter-spacing: -0.01em;
+    color: #333333;
+}
+#main .wrapper .left-container .title{
+    font-weight: 700;
+    font-size: 80px;
+    line-height: 116px;
+    /* identical to box height */
+    color: #333333;
+    margin-bottom: 40px;
+}
+#main .wrapper .left-container .txt1{
+    font-weight: 300;
+    font-size: 24px;
+    line-height: 33px;
+    /* identical to box height, or 138% */
+    letter-spacing: -0.01em;
+    color: #333333;
+}
+#main .wrapper .left-container .txt2{
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 23px;
+    letter-spacing: -0.01em;
+    color: #333333;
+}
+#main .wrapper .left-container .start{
+    background: #FFDE2F;
+    border: 1px solid #FFF3B5;
+    border-radius: 7px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 23px;
+    text-align: center;
+    letter-spacing: -0.01em;
+    color: #333333;
+    width: 150px;
+    padding: 11px 10px;
+    box-sizing: border-box;
+    margin-top: 20px;
+    display: inline-block;
+    cursor: pointer;
+}
+#main .wrapper .right-container{
+    width: calc(100% - 450px);
+    overflow: hidden;
+}
+#main .wrapper .right-container img{
+    width: 100%;
+    position: relative;
+    right: -150px;
+}
+#main .modal-container{
+    position: absolute;
+    width: 410px;
+    left: calc(50% - 205px);
+    top: 205px;
+}
+#main .modal-container.open{
+    display: block;
+    animation: fadein 1s;
+    -moz-animation: fadein 1s; /* Firefox */
+    -webkit-animation: fadein 1s; /* Safari and Chrome */
+    -o-animation: fadein 1s; /* Opera */
+}
+#main .modal-container.hide{
+    animation: fadeout 1s;
+    -moz-animation: fadeout 1s; /* Firefox */
+    -webkit-animation: fadeout 1s; /* Safari and Chrome */
+    -o-animation: fadeout 1s; /* Opera */
+    display: none;
+}
+@keyframes fadein {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+@keyframes fadeout {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
 /* 로그인 */
 #login{
     padding: 124px 0 186px;

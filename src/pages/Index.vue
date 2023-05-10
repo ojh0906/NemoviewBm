@@ -1,27 +1,44 @@
 <template>
-  <div id="login">
-    <div class="login-box">
-      <p class="title">
-        지금 가입하고 <strong>10,000원 상당의</strong><br>
-        <strong>무료 광고</strong>를 진행해 보세요!
-      </p>
-      <form>
-        <input type="text" name="id" class="userid" placeholder="아이디">
-        <input type="password" name="password" class="password" placeholder="비밀번호">
-        <div class="option">
-          <div class="chk-wrap">
-            <label>
-              <input type="checkbox">
-              아이디 저장
-            </label>
+  <div id="main">
+    <div class="wrapper">
+      <div class="left-container">
+        <p class="sub">누구나 쉽고 더 정확하게,</p>
+        <p class="title">네모뷰 광고</p>
+        <p class="txt1">광고 효과를 제대로 보지 못하시고 계신가요?</p>
+        <p class="txt2">
+          디테일한 사용자 키워드를 통해<br>
+          더 정밀한 타겟팅 광고를 진행해 보세요!
+        </p>
+        <span class="start" @click="modalOpenYn = true">시작하기</span>
+      </div>
+      <div class="right-container">
+        <img src="/image/common/main.png">
+      </div>
+    </div>
+    <div class="modal-container" :class="modalOpenYn ? 'open' : 'hide'">
+      <div class="login-box">
+        <p class="title">
+          지금 가입하고 <strong>10,000원 상당의</strong><br>
+          <strong>무료 광고</strong>를 진행해 보세요!
+        </p>
+        <form>
+          <input type="text" name="id" class="userid" placeholder="아이디">
+          <input type="password" name="password" class="password" placeholder="비밀번호">
+          <div class="option">
+            <div class="chk-wrap">
+              <label>
+                <input type="checkbox">
+                아이디 저장
+              </label>
+            </div>
+            <div>
+              <a class="find">아이디/비밀번호 찾기</a>
+            </div>
           </div>
-          <div>
-            <a class="find">아이디/비밀번호 찾기</a>
-          </div>
-        </div>
-        <input type="submit" class="submit" value="로그인" />
-        <a class="register">회원가입</a>
-      </form>
+          <input type="submit" class="submit" value="로그인" />
+          <a class="register">회원가입</a>
+        </form>
+      </div>
     </div>
   </div>
 </template>
@@ -33,6 +50,7 @@ export default {
   props: [''],
   data() {
     return {
+      modalOpenYn: false,
     }
   },
   watch: {
