@@ -1,17 +1,14 @@
 #mypage .content-container .service-page {
   margin: 43px 50px;
+  min-height: calc(100vh - 275px);
 }
 
 #mypage .content-container .service-page .title {
   font-weight: 700;
   font-size: 20px;
   line-height: 29px;
-  /* identical to box height */
-
-  letter-spacing: -0.01em;
-
-  color: #333333;
 }
+
 #mypage .content-container .service-page .sub-title {
   font-weight: 400;
   font-size: 16px;
@@ -20,6 +17,27 @@
 }
 
 #mypage .content-container .service-page .gray-box {
+  background: #fbfbfb;
+  border: 0.5px solid #cccccc;
+  border-radius: 10px;
+  width: 1000px;
+  padding: 35px 45px;
+  margin-top: 35px;
+}
+#mypage .content-container .service-page .gray-box .link-box {
+  padding: 10px 25px;
+  background: #0f5332;
+  border-radius: 26.5px;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 26px;
+  text-align: center;
+  color: #ffffff;
+  width: auto;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
 }
 #mypage .content-container .service-page .zoom {
   width: 30px;
