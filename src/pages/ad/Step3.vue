@@ -10,7 +10,7 @@
             <p>홍보할 <strong>제품/서비스</strong>를 소개해 주세요!</p>
             <img src="/image/ad/question.png">
           </div>
-          <div id="step2">
+          <div id="step3">
 
           </div>
         </div>
