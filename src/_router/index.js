@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
+import Index from "/src/pages/Index.vue";
 import Login from "/src/pages/Login.vue";
 import Register from "/src/pages/register/Register.vue";
 import Mypage from "/src/pages/mypage/Mypage.vue";
@@ -10,6 +11,12 @@ import AdvertiseDetail from "/src/pages/mypage/AdvertiseDetail.vue";
 import AffiliateServices from "/src/pages/mypage/AffiliateServices.vue";
 
 const routes = [
+    {
+        path: "/",
+        name: "index",
+        component: Index,
+        meta: { title: "" },
+    },
     {
         path: "/login",
         name: "Login",
