@@ -17,9 +17,9 @@
       <div class="login-side-wrap" v-if="true">
         <div class="profile" :style="{ background: 'url(' + '/image/common/logo.png' + ') no-repeat' }">
         </div>
-        <img class="alarm" src="/image/common/alarm.png" />
+        <img class="alarm" @click="this.onAlarmPopup" src="/image/common/alarm.png" />
         <!-- 알림 화면 -->
-        <div class="alarm-box" v-if="false">
+        <div class="alarm-box" :class="this.onAlarmBox ? 'onAlm' : 'offAlm'">
           <div v-for="v in 5">
             <span>포인트를 모두 소진하셨습니다.</span><span class="new">NEW</span>
             <p class="date">2023.02.21</p>
@@ -36,13 +36,16 @@ export default {
   props: [''],
   data() {
     return {
+      onAlarmBox: false,
     }
   },
   watch: {
 
   },
   methods: {
-
+    onAlarmPopup() {
+      this.onAlarmBox ? this.onAlarmBox = false : this.onAlarmBox = true;
+    }
   },
   created() {
   }

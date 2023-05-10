@@ -8,7 +8,7 @@
         <div class="gray-box">
           <p class="">광고 효율이 좋지 않으신가요?<img class="zoom" src="/image/mypage/zoom.png" /></p>
           <p>그린테스터 서비스를 통해 제품/서비스를 검증해 보세요!</p>
-          <a class="">'그린테스터' 바로가기</a>
+          <div class="link-box">'그린테스터' 바로가기</div>
         </div>
       </div>
     </div>
