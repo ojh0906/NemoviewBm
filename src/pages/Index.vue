@@ -42,7 +42,6 @@
     </div>
   </div>
 </template>
-
 <script>
 import { mapGetters } from "vuex"
 import { http,http2 } from '@/services';
