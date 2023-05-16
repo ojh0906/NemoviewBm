@@ -7,6 +7,7 @@ import Mypage from "/src/pages/mypage/Mypage.vue";
 import PointCharge from "/src/pages/mypage/PointCharge.vue";
 import ProfileModify from "/src/pages/mypage/ProfileModify.vue";
 import TaxSetting from "/src/pages/mypage/TaxSetting.vue";
+import AccountSetting from "/src/pages/mypage/AccountSetting.vue";
 import AdvertiseDetail from "/src/pages/mypage/AdvertiseDetail.vue";
 import AffiliateServices from "/src/pages/mypage/AffiliateServices.vue";
 import Step1 from "/src/pages/ad/Step1.vue";
@@ -55,7 +56,13 @@ const routes = [
         path: "/taxSetting",
         name: "TaxSetting",
         component: TaxSetting,
-        meta: { title: "세금 계산서 정보" },
+        meta: { title: "세금 계산서 관리" },
+    },
+    {
+        path: "/accountSetting",
+        name: "AccountSetting",
+        component: AccountSetting,
+        meta: { title: "계정 관리" },
     },
     {
         path: "/advertisedetail",

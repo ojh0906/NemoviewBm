@@ -7,34 +7,26 @@
         <span class="submit">저장</span>
         <div class="menu-wrap">
           <router-link :to="{ name: 'ProfileModify', query: {} }" class="menu" >프로필 관리</router-link>
-          <router-link :to="{ name: 'TaxSetting', query: {} }" class="menu active" >세금계산서 관리</router-link>
-          <router-link :to="{ name: 'AccountSetting', query: {} }" class="menu" >계정 관리</router-link>        </div>
+          <router-link :to="{ name: 'TaxSetting', query: {} }" class="menu" >세금계산서 관리</router-link>
+          <router-link :to="{ name: 'AccountSetting', query: {} }" class="menu active" >계정 관리</router-link>        </div>
         <div class="modify-box">
           <div class="line">
             <div class="label">
-              세금계산서 담당자<span class="required">*</span>
+              계정
             </div>
-            <input type="text" required>
+            <span class="account-use">사용중</span>
           </div>
           <div class="line">
             <div class="label">
-              담당자 연락처<span class="required">*</span>
+              비밀번호
             </div>
-            <input type="text" required>
-          </div>
-          <div class="line">
-            <div class="label">
-              세금계산서 발급 이메일<span class="required">*</span>
+            <div class="password-setting">
+              <img class="icon" src="/image/common/password-icon.png"/>
+              <input type="password" id="password" placeholder="비밀번호"/>
+              <img class="show" src="/image/common/password-show.png" @click="showPassword()"/>
             </div>
-            <input type="text" required>
-          </div>
-          <div class="line">
-            <div class="label">
-              사업자 등록증<span class="required">*</span>
-            </div>
-            <p class="file-name">[가자] 사업자 등록증.PDF</p>
-            <span class="upload">파일 첨부</span>
-            <input type="file" value="파일 첨부">
+            <span class="pw-submit">변경하기</span>
+            <span class="pw-cancel">취소하기</span>
           </div>
         </div>
       </div>
@@ -59,7 +51,14 @@ export default {
 
   },
   methods: {
-
+    showPassword() {
+      var x = document.getElementById("password");
+      if (x.type === "password") {
+        x.type = "text";
+      } else {
+        x.type = "password";
+      }
+    }
   },
   created() {
   }
