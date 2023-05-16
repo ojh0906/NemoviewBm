@@ -37,7 +37,7 @@
             <p class="email">hong@gmail.com</p>
           </div>
           <div>
-            <router-link :to="{ name: '', query: {} }">
+            <router-link :to="{ name: 'AccountSetting', query: {} }">
               계정 관리
             </router-link>
           </div>
