@@ -5,8 +5,8 @@ import Login from "/src/pages/Login.vue";
 import Register from "/src/pages/register/Register.vue";
 import Mypage from "/src/pages/mypage/Mypage.vue";
 import PointCharge from "/src/pages/mypage/PointCharge.vue";
-import MemberModify from "/src/pages/mypage/MemberModify.vue";
-import AccountSetting from "/src/pages/mypage/AccountSetting.vue";
+import ProfileModify from "/src/pages/mypage/ProfileModify.vue";
+import TaxSetting from "/src/pages/mypage/TaxSetting.vue";
 import AdvertiseDetail from "/src/pages/mypage/AdvertiseDetail.vue";
 import AffiliateServices from "/src/pages/mypage/AffiliateServices.vue";
 import Step1 from "/src/pages/ad/Step1.vue";
@@ -46,15 +46,15 @@ const routes = [
         meta: { title: "포인트 충전" },
     },
     {
-        path: "/membermodify",
-        name: "MemberModify",
-        component: MemberModify,
-        meta: { title: "세금 계산서 정보" },
+        path: "/profileModify",
+        name: "ProfileModify",
+        component: ProfileModify,
+        meta: { title: "프로필 관리" },
     },
     {
-        path: "/AccountSetting",
-        name: "AccountSetting",
-        component: AccountSetting,
+        path: "/taxSetting",
+        name: "TaxSetting",
+        component: TaxSetting,
         meta: { title: "세금 계산서 정보" },
     },
     {

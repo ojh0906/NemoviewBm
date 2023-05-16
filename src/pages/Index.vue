@@ -16,7 +16,7 @@
       </div>
     </div>
     <div class="modal-container" :class="modalOpenYn ? 'open' : 'hide'">
-      <div class="login-box">
+      <div class="login-box" v-if="loginYn">
         <p class="title">
           지금 가입하고 <strong>10,000원 상당의</strong><br>
           <strong>무료 광고</strong>를 진행해 보세요!
@@ -32,12 +32,26 @@
               </label>
             </div>
             <div>
-              <a class="find">아이디/비밀번호 찾기</a>
+              <a class="find" @click="loginYn = false; findStep1 = true;">비밀번호 찾기</a>
             </div>
           </div>
           <input type="submit" class="submit" value="로그인" />
           <a class="register">회원가입</a>
         </form>
+      </div>
+      <div class="login-box" v-if="findStep1">
+          <p class="find-title">비밀번호 찾기</p>
+          <p class="sub-txt">가입하신 이메일로 비밀번호 재설정 방법을 보내드립니다.</p>
+          <p class="label">이메일</p>
+          <input type="email" class="email" placeholder="이메일을 입력하세요.">
+          <p class="wrong">올바른 형식의 이메일을 입력하세요.</p>
+          <input type="submit" class="find-submit" value="임시 비밀번호 메일 전송"  @click="findStep1 = false; findStep2 = true;" />
+      </div>
+      <div class="login-box" v-if="findStep2">
+        <p class="find-title">비밀번호 찾기</p>
+        <p class="sub-txt">회원님의 이메일로 임시 비밀번호가 발송되었습니다.</p>
+        <p class="email-info">ga**********@gmail.com</p>
+        <span class="find-submit" @click="findStep2 = false; loginYn = true;" >로그인 하기</span>
       </div>
     </div>
   </div>
@@ -56,6 +70,11 @@ export default {
       modalOpenYn: false,
       email:'',
       password:'',
+      loginYn: true,
+      findStep1: false,
+      findStep2: false,
+      findStep3: false,
+      findStep4: false,
     }
   },
   watch: {

@@ -132,7 +132,8 @@
     color: #5757FF;
 }
 .login-box .userid,
-.login-box .password{
+.login-box .password,
+.login-box .email{
     background: #FFFFFF;
     border: 1px solid #DDDDDD;
     border-radius: 7px;
@@ -147,12 +148,17 @@
     margin-bottom: 5px;
 }
 .login-box .userid:focus,
-.login-box .password:focus{
+.login-box .password:focus,
+.login-box .email:focus{
     border: 1px solid #5757FF;
 }
 .login-box .userid::placeholder,
-.login-box .password::placeholder{
+.login-box .password::placeholder,
+.login-box .email::placeholder{
     color: #BBBBBB;;
+}
+.login-box .email:invalid{
+    border: 1px solid #FF4337;
 }
 .login-box .option{
     display: flex;
@@ -167,6 +173,7 @@
     line-height: 14px;
     letter-spacing: -0.01em;
     color: #666666;
+    cursor: pointer;
 }
 .login-box .option input{
     width: 14px;
@@ -209,8 +216,70 @@
     text-align: center;
 }
 
+/* 비밀번호 찾기 */
+.login-box .find-title{
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 35px;
+    /* identical to box height */
+    text-align: center;
+    letter-spacing: -0.01em;
+    color: #333333;
+    margin-bottom: 10px;
+}
+.login-box .sub-txt{
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    letter-spacing: -0.01em;
+    color: #777777;
+    margin-bottom: 35px;
+}
+.login-box .label{
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 17px;
+    letter-spacing: -0.01em;
+    color: #333333;
+    margin-bottom: 5px;
+}
+.login-box .find-submit{
+    background: #5757FF;
+    border-radius: 7px;
+    width: 260px;
+    margin: 68px auto 5px;
+    border: 0;
+    outline: none;
+    cursor: pointer;
+    display: block;
+    color: #fff;
+    padding: 11px 0;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: -0.01em;
+    text-align: center;
+}
+.login-box .wrong{
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 14px;
+    letter-spacing: -0.01em;
+    color: #FF4337;
+    display: none;
+}
+.login-box .email-info{
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 23px;
+    letter-spacing: -0.01em;
+    color: #333333;
+    text-align: center;
+}
 
-/* 회원가입 */
+
+    /* 회원가입 */
 #register{
     padding: 85px 0 67px;
     width: 1200px;
@@ -746,9 +815,10 @@
     /* identical to box height */
     letter-spacing: -0.01em;
     color: #555555;
-}
-#mypage .content-container .mypage-setting-container .menu-wrap .menu:nth-child(1){
     margin-right: 50px;
+}
+#mypage .content-container .mypage-setting-container .menu-wrap .menu:nth-last-child(1){
+    margin-right: 0;
 }
 #mypage .content-container .mypage-setting-container .menu-wrap .menu.active{
     text-decoration-line: underline;
