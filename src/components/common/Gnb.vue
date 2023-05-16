@@ -5,9 +5,9 @@
         <img src="/image/common/logo.png">
       </div>
       <div class="menu-container">
-        <a class="menu">광고 소개</a>
-        <a class="menu">고객센터</a>
-        <a class="menu">이 키워드도 추가해 주세요</a>
+        <a class="menu" href="https://sour-potato-420.notion.site/7eed62d4e1b641d58eaa797fed9f3c15" target="_blank">광고 소개</a>
+        <a class="menu" href="https://sour-potato-420.notion.site/4bfc4f28513f436784ab9efc1e46f75d" target="_blank">고객센터</a>
+        <a class="menu" href="https://sour-potato-420.notion.site/ff5b3e88a6114135a9306d9be4073d96" target="_blank">이 키워드도 추가해 주세요</a>
       </div>
       <div class="side-wrap" v-if="false">
         <a class="login">로그인</a>
