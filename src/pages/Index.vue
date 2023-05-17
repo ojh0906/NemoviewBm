@@ -90,7 +90,8 @@ export default {
           .then(response => {
             if(response.data.CODE == 200){
               this.modalOpenYn = false;
-              this.$forceUpdate();
+              //this.$forceUpdate();
+              this.$router.push('/mypage');
             } else {
               this.warning = true;
             }
@@ -114,7 +115,9 @@ export default {
     },
   },
   created() {
-    //this.getCategoryList();
+    if(this.getLoginMember != null){
+      this.$router.push('/mypage');
+    }
   }
 }
 </script>

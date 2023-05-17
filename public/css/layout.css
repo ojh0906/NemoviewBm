@@ -434,6 +434,7 @@
     background: #EEEEEE;
     border-radius: 7px;
     margin-left: 15px;
+    cursor:pointer;
 }
 #register .register-box .tip{
     font-weight: 400;
@@ -490,7 +491,7 @@
     border-radius: 10px;
     width: 600px;
     overflow: hidden;
-    display: none;
+    z-index: 100;
 }
 #register .register-box .select-container .select-list p{
     font-weight: 400;
@@ -501,6 +502,7 @@
     padding: 18px 30px;
     box-sizing: border-box;
     border-bottom: 0.5px solid #DDDDDD;
+    cursor: pointer;
 }
 #register .register-box .select-container .select-list p:nth-last-child(1){
     border-bottom: none;

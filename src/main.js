@@ -25,10 +25,10 @@ const globalMixin = {
         getOneImagePath: (path) => {
             return fileServer+path;
         },
-        getDiffDays: (date1, date2) => {
+        getDiffDays: (date1, date2, form="days") => {
             const reg = dayjs(date1);
             const upd = dayjs(date2);
-            return reg.diff(upd, "days");
+            return reg.diff(upd, form);
         },
         getDateFormat: (date, format) => {
             return dayjs(date).add(-9,'h').format(format);

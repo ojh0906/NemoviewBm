@@ -53,7 +53,7 @@ export default {
           .then(response => {
             if(response.data.CODE == 200){
               this.modalOpenYn = false;
-              this.$router.push('/');
+              this.$router.push('/mypage');
             } else {
               this.warning = true;
             }
@@ -64,7 +64,7 @@ export default {
   },
   created() {
     if(this.getLoginMember != null){
-      this.$router.push('/');
+      this.$router.push('/mypage');
     }
   }
 }
