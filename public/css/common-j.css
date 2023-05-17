@@ -1,0 +1,28 @@
+#header-container .wrapper .profile-box > div:nth-child(1) {
+  padding: 35px !important;
+}
+
+#header-container .wrapper .profile-box > div {
+  padding: 20px 30px !important;
+  box-sizing: border-box;
+}
+
+#header-container .wrapper .profile-box > div .name {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 29px;
+  color: #333333 !important;
+}
+
+#header-container .wrapper .profile-box > div .email {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 23px;
+  color: #777777 !important;
+  margin-top: 5px;
+}
+
+#header-container .wrapper .profile-box {
+  width: 320px !important;
+  right: calc(5% + 45px) !important;
+}

@@ -6,8 +6,9 @@
         <span class="page-title">설정</span>
         <span class="submit">저장</span>
         <div class="menu-wrap">
-          <router-link :to="{ name: 'Mypage', query: {} }" class="menu active" >계정 정보</router-link>
-          <router-link :to="{ name: 'Mypage', query: {} }" class="menu" >세금계산서 정보</router-link>
+          <router-link :to="{ name: 'ProfileModify', query: {} }" class="menu active" >프로필 관리</router-link>
+          <router-link :to="{ name: 'TaxSetting', query: {} }" class="menu" >세금계산서 관리</router-link>
+          <router-link :to="{ name: 'AccountSetting', query: {} }" class="menu" >계정 관리</router-link>
         </div>
         <div class="modify-box">
           <div class="line">
