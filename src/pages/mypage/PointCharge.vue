@@ -24,7 +24,7 @@
             <a href="http://pf.kakao.com/_xojDkxj/chat" target="_blank">
               <img src="/image/mypage/ch.png">
             </a>
-            <router-link :to="{ name: 'AccountSetting', query: {} }" class="account-setting" >세금계산서 정보 등록하기 ></router-link>
+            <router-link :to="{ name: 'TaxSetting', query: {} }" class="account-setting" >세금계산서 정보 등록하기 ></router-link>
           </div>
         </div>
       </div>
