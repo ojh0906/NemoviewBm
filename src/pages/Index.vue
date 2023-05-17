@@ -9,7 +9,7 @@
           디테일한 사용자 키워드를 통해<br>
           더 정밀한 타겟팅 광고를 진행해 보세요!
         </p>
-        <span class="start" @click="modalOpenYn = true">시작하기</span>
+        <span class="start" @click="modalOpenYn = true" v-if="this.getLoginMember == null">시작하기</span>
       </div>
       <div class="right-container">
         <img src="/image/common/main.png">
@@ -36,7 +36,7 @@
             </div>
           </div>
           <input type="submit" class="submit" value="로그인" />
-          <a class="register">회원가입</a>
+          <router-link :to="{ name: 'Register', query: {} }" class="register">회원가입</router-link>
         </form>
       </div>
       <div class="login-box" v-if="findStep1">
@@ -89,6 +89,7 @@ export default {
           })
           .then(response => {
             if(response.data.CODE == 200){
+              this.modalOpenYn = false;
               this.$forceUpdate();
             } else {
               this.warning = true;
@@ -113,8 +114,7 @@ export default {
     },
   },
   created() {
-    console.log(this.getLoginMember);
-    this.getCategoryList();
+    //this.getCategoryList();
   }
 }
 </script>
