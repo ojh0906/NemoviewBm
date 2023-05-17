@@ -55,7 +55,7 @@ export default {
               this.modalOpenYn = false;
               this.$router.push('/mypage');
             } else {
-              this.warning = true;
+              alert('일치하는 회원정보가 없습니다.');
             }
           })
           .catch(({ message }) => alert(message))
