@@ -9,12 +9,12 @@
         <a class="menu">고객센터</a>
         <a class="menu">이 키워드도 추가해 주세요</a>
       </div>
-      <div class="side-wrap" v-if="false">
-        <a class="login">로그인</a>
+      <div class="side-wrap" v-if="this.getLoginMember == null">
+        <router-link :to="{ name: 'Login', query: {} }" class="login">로그인</router-link>
         <span>|</span>
-        <a class="register">회원가입</a>
+        <router-link :to="{ name: 'Register', query: {} }" class="register">회원가입</router-link>
       </div>
-      <div class="login-side-wrap" v-if="true">
+      <div class="login-side-wrap" v-else>
         <div class="profile" :style="{ background: 'url(' + '/image/common/logo.png' + ') no-repeat' }">
         </div>
         <img class="alarm" @click="this.onAlarmPopup" src="/image/common/alarm.png" />
@@ -31,8 +31,12 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex"
 
 export default {
+  computed: {
+    ...mapGetters(["getLoginMember"]),
+  },
   props: [''],
   data() {
     return {
@@ -45,7 +49,14 @@ export default {
   methods: {
     onAlarmPopup() {
       this.onAlarmBox ? this.onAlarmBox = false : this.onAlarmBox = true;
-    }
+    },
+    logout() {
+      this.$store
+          .dispatch("logout", {})
+          .then(() => {this.$router.push('/')})
+          .catch(({ message }) => alert(message))
+    },
+
   },
   created() {
   }

@@ -23,7 +23,7 @@ http.interceptors.request.use(
   (error) => {
     // Do something with request error
       if (401 === error.response.status) {
-          router.push('/login/login');
+          router.push('/login');
       } else {
           Promise.reject(error);
       }
@@ -35,7 +35,7 @@ http.interceptors.response.use(
         return response;
     }, function (error){
         if (401 === error.response.status) {
-            router.push('/login/login');
+            router.push('/login');
         } else {
             Promise.reject(error);
         }
