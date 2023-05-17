@@ -277,9 +277,6 @@ export default {
         name: this.name,
         phone: this.phone,
         company: this.company,
-        position: this.position,
-        company_size: this.company_size,
-        inflow: this.inflow,
       }
       if(this.position !== ''){
         param.position = this.position;

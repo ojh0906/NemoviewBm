@@ -810,6 +810,7 @@
     width: 110px;
     text-align: center;
     box-sizing: border-box;
+    cursor: pointer;
 }
 #mypage .content-container .mypage-setting-container .menu-wrap{
     margin-top: 7px;
@@ -915,7 +916,7 @@
     border-radius: 10px;
     width: 600px;
     overflow: hidden;
-    display: none;
+    z-index: 100;
 }
 #mypage .content-container .mypage-setting-container .modify-box .line .select-container .select-list p{
     font-weight: 400;
@@ -926,6 +927,7 @@
     padding: 18px 30px;
     box-sizing: border-box;
     border-bottom: 0.5px solid #DDDDDD;
+    cursor: pointer;
 }
 #mypage .content-container .mypage-setting-container .modify-box .line .select-container .select-list p:nth-last-child(1){
     border-bottom: none;
@@ -954,7 +956,7 @@
     border-radius: 10px;
     width: 600px;
     overflow: hidden;
-    display: none;
+    z-index: 100;
 }
 #mypage .content-container .mypage-setting-container .modify-box .line .select-container .select-list p{
     font-weight: 400;
@@ -965,6 +967,7 @@
     padding: 18px 30px;
     box-sizing: border-box;
     border-bottom: 0.5px solid #DDDDDD;
+    cursor: pointer;
 }
 #mypage .content-container .mypage-setting-container .modify-box .line .select-container .select-list p:nth-last-child(1){
     border-bottom: none;

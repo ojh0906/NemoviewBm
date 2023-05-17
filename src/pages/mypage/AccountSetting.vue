@@ -72,7 +72,7 @@ export default {
       let param = {
         password: this.password,
       }
-      http.post("/member/"+this.getLoginMember.member, param).then((response) => {
+      http.put("/member/"+this.getLoginMember.member+"/password", param).then((response) => {
         if (response.data.CODE == 200) {
           alert('비밀번호가 변경되었습니다.');
           this.$store

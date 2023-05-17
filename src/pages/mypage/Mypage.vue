@@ -131,7 +131,6 @@ export default {
   methods: {
     getMember() {
       http.get("/member/" + this.getLoginMember.member).then((response) => {
-        console.log(response)
         if (response.data.CODE == 200) {
           this.$store
               .dispatch("memberUpdate", { member: response.data.BODY })
