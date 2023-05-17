@@ -2,7 +2,7 @@
   <div id="header-container">
     <div class="wrapper">
       <div class="logo-wrap">
-        <img src="/image/common/logo.png">
+        <img src="/image/common/logo.png" @click="goHome()">
       </div>
       <div class="menu-container">
         <a class="menu" href="https://sour-potato-420.notion.site/7eed62d4e1b641d58eaa797fed9f3c15" target="_blank">광고
@@ -33,15 +33,15 @@
         <!-- 프로필 팝업 화면 -->
         <div class="alarm-box profile-box" :class="this.onProfileBox ? 'onAlm' : 'offAlm'">
           <div>
-            <p class="name">홍길동</p>
-            <p class="email">hong@gmail.com</p>
+            <p class="name">{{ this.getLoginMember != null ? this.getLoginMember.name :'' }}</p>
+            <p class="email">{{ this.getLoginMember != null ? this.getLoginMember.email :'' }}</p>
           </div>
           <div>
-            <router-link :to="{ name: 'AccountSetting', query: {} }">
+            <router-link :to="{ name: 'AccountSetting', query: {} }" @click="this.onProfileBox = !this.onProfileBox">
               계정 관리
             </router-link>
           </div>
-          <div @click="logout">로그아웃</div>
+          <div @click="logout(); this.onProfileBox = !this.onProfileBox" style="cursor: pointer" >로그아웃</div>
         </div>
       </div>
     </div>
@@ -80,6 +80,9 @@ export default {
           .then(() => {this.$router.push('/')})
           .catch(({ message }) => alert(message))
     },
+    goHome(){
+      this.$router.push('/');
+    }
   },
   created() {
   }

@@ -31,7 +31,7 @@ import { mapGetters } from "vuex"
 
 export default {
   computed: {
-    ...mapGetters(["getLoginMember"]),
+    ...mapGetters(["getLoginMember","isExpired"]),
   },
   props: [''],
   data() {
@@ -64,7 +64,14 @@ export default {
   },
   created() {
     if(this.getLoginMember != null){
-      this.$router.push('/mypage');
+      if(this.isExpired){
+        this.$store
+            .dispatch("logout", {})
+            .then(() => {this.$router.push('/')})
+            .catch(({ message }) => alert(message))
+      } else {
+        this.$router.push('/mypage');
+      }
     }
   }
 }

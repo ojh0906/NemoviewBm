@@ -15,7 +15,7 @@
             <div class="label">
               담당자<span class="required">*</span>
             </div>
-            <input type="text" required>
+            <input type="text" v-model="this.getLoginMember.name">
           </div>
           <div class="line">
             <div class="label">
@@ -74,9 +74,14 @@
 
 
 <script>
-import Nav from '/src/components/mypage/nav.vue';
+import Nav from '/src/components/mypage/Nav.vue';
+import { mapGetters } from "vuex"
+import { http,http2 } from '@/services';
 
 export default {
+  computed: {
+    ...mapGetters(["getLoginMember"]),
+  },
   components: {
     Nav,
   },

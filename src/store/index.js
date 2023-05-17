@@ -77,6 +77,9 @@ export default createStore({
       state.auth_result = String(payload.auth_result);
       console.log("mutations auth_result", state.auth_result);
     },
+    memberUpdate: function (state, payload = {}) {
+      state.member = payload.member;
+    },
   },
   actions: {
     logout: function (context, payload) {

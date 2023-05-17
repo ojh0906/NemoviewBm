@@ -3,7 +3,7 @@
     <Nav />
     <div class="content-container">
       <div class="mypage-top">
-        <span class="point">보유 포인트 : <strong>52,000</strong></span>
+        <span class="point">보유 포인트 : <strong>{{ this.addComma(this.getLoginMember != null ? this.getLoginMember.point:0) }}</strong></span>
         <router-link :to="{ name: 'PointCharge', query: {} }" class="charge" >충전하기</router-link>
       </div>
       <div class="mypage-content">
@@ -109,9 +109,14 @@
 
 
 <script>
-import Nav from '/src/components/mypage/nav.vue';
+import Nav from '/src/components/mypage/Nav.vue';
+import { mapGetters } from "vuex"
+import { http,http2 } from '@/services';
 
 export default {
+  computed: {
+    ...mapGetters(["getLoginMember"]),
+  },
   components: {
     Nav,
   },
@@ -124,9 +129,37 @@ export default {
 
   },
   methods: {
-
+    getMember() {
+      http.get("/member/" + this.getLoginMember.member).then((response) => {
+        console.log(response)
+        if (response.data.CODE == 200) {
+          this.$store
+              .dispatch("memberUpdate", { member: response.data.BODY })
+              .then(() => { })
+              .catch(({ message }) => alert(message));
+        }
+      }).catch((error) => {
+        console.log(error);
+      });
+    },
+    getCategoryList() {
+      let param = {
+        state: '1', //true
+      }
+      http2.post("/main/category/list", param).then((response) => {
+        if (response.data.CODE == 200) {
+          console.log(response);
+        } else {
+          console.log('aa');
+        }
+      }).catch((error) => {
+        console.log(error);
+      });
+    },
   },
   created() {
+    this.getMember(); // 회원정보 갱신
+    this.getCategoryList();
   }
 }
 </script>
