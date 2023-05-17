@@ -27,7 +27,6 @@ http2.interceptors.response.use(
     function (response) {
         return response;
     }, function (error){
-        console.log(error)
         if (401 === error.response.status) {
             router.push('/login');
         } else {

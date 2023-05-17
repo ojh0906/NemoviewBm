@@ -15,7 +15,7 @@ http.interceptors.request.use(
     const isExpired = store.getters["isExpired"];
     if (isAuthenticated && !isExpired) {
       const token = store.getters["getAccessToken"];
-      config.headers.common["Authorization"] = `Bearer ${token}`;
+      config.headers.Authorization = `Bearer ${token}`;
       //console.log("http token", store.getters["getAccessToken"]);
     }
     return config;
