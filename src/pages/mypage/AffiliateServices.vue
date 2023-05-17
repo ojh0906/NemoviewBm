@@ -5,10 +5,9 @@
       <div class="service-page">
         <p class="title">제휴 서비스</p>
         <p class="sub-title">원하는 제휴 서비스가 있으시다면 gajahcompany@gmail.com으로 문의주세요.</p>
-        <div class="gray-box">
-          <p class="">광고 효율이 좋지 않으신가요?<img class="zoom" src="/image/mypage/zoom.png" /></p>
-          <p>그린테스터 서비스를 통해 제품/서비스를 검증해 보세요!</p>
-          <div class="link-box">'그린테스터' 바로가기</div>
+        <div class="gray-box" v-for="service in this.serviceList">
+          <div v-html="service.content"></div>
+          <div class="link-box" @click="goToLink(service.link)">{{ service.title }}</div>
         </div>
       </div>
     </div>
@@ -18,6 +17,7 @@
 
 <script>
 import Nav from '/src/components/mypage/Nav.vue';
+import { http,http2 } from '@/services';
 
 export default {
   components: {
@@ -26,15 +26,28 @@ export default {
   props: [''],
   data() {
     return {
+      serviceList:[],
     }
   },
   watch: {
 
   },
   methods: {
-
+    getServiceList() {
+      http.post("/service/list",{}).then((response) => {
+        if (response.data.CODE == 200) {
+          this.serviceList = response.data.BODY.LIST;
+        }
+      }).catch((error) => {
+        console.log(error);
+      });
+    },
+    goToLink(link){
+      location.href = link;
+    }
   },
   created() {
+    this.getServiceList();
   }
 }
 </script>
