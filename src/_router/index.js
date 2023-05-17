@@ -15,6 +15,19 @@ import Step2 from "/src/pages/ad/Step2.vue";
 import Step3 from "/src/pages/ad/Step3.vue";
 import Step4 from "/src/pages/ad/Step4.vue";
 
+import store from "../store";
+
+const beforeAuth = (isAuth) => (to, from, next) => {
+    const isAuthenticated = store.getters["isAuthenticated"];
+    const isExpired = store.getters["isExpired"];
+    if (isAuthenticated && isAuth && !isExpired) {
+        return next();
+    } else {
+        alert("로그인이 필요합니다.");
+        next({ name: "Login" });
+    }
+};
+
 const routes = [
     {
         path: "/",
@@ -39,42 +52,49 @@ const routes = [
         name: "Mypage",
         component: Mypage,
         meta: { title: "마이페이지" },
+        beforeEnter: beforeAuth(true),
     },
     {
         path: "/pointcharge",
         name: "PointCharge",
         component: PointCharge,
         meta: { title: "포인트 충전" },
+        beforeEnter: beforeAuth(true),
     },
     {
         path: "/profileModify",
         name: "ProfileModify",
         component: ProfileModify,
         meta: { title: "프로필 관리" },
+        beforeEnter: beforeAuth(true),
     },
     {
         path: "/taxSetting",
         name: "TaxSetting",
         component: TaxSetting,
         meta: { title: "세금 계산서 관리" },
+        beforeEnter: beforeAuth(true),
     },
     {
         path: "/accountSetting",
         name: "AccountSetting",
         component: AccountSetting,
         meta: { title: "계정 관리" },
+        beforeEnter: beforeAuth(true),
     },
     {
         path: "/advertisedetail",
         name: "AdvertiseDetail",
         component: AdvertiseDetail,
         meta: { title: "세금 계산서 정보" },
+        beforeEnter: beforeAuth(true),
     },
     {
         path: "/affiliateServices",
         name: "AffiliateServices",
         component: AffiliateServices,
         meta: { title: "세금 계산서 정보" },
+        beforeEnter: beforeAuth(true),
     },
     {
         path: "/ad/",
@@ -84,24 +104,28 @@ const routes = [
                 name: "Step1",
                 component: Step1,
                 meta: { title: "광고 세팅1" },
+                beforeEnter: beforeAuth(true),
             },
             {
                 path: "step2",
                 name: "Step2",
                 component: Step2,
                 meta: { title: "광고 세팅2" },
+                beforeEnter: beforeAuth(true),
             },
             {
                 path: "step3",
                 name: "Step3",
                 component: Step3,
                 meta: { title: "광고 세팅3" },
+                beforeEnter: beforeAuth(true),
             },
             {
                 path: "step4",
                 name: "Step4",
                 component: Step4,
                 meta: { title: "광고 세팅4" },
+                beforeEnter: beforeAuth(true),
             },
         ]
     },
