@@ -23,7 +23,7 @@
             <div class="input-date-wrap">
               <input type="date" id="startdate" name="startdate" />
             </div>
-            <span class="search-btn">조회</span>
+            <span class="search-btn">조정</span>
           </div>
         </div>
         <div class="ad-container">

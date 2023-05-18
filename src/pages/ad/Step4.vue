@@ -26,51 +26,53 @@
           </div>
         </div>
         <div class="right-container">
-          <p class="page-title">해당 키워드를 보유한 <span class="colored">회원 수</span></p>
-          <p class="peo">
-            <span>약 </span>
-            10,000
-            <span> 명</span>
-          </p>
-          <p class="txt">이렇게 <strong>광고 되고 있어요!</strong></p>
-          <div class="preview-box">
-            <div class="img-wrap" style="background: url('/image/temp/ad-temp.png')">
-              <img class="wish" src="/image/mypage/wish.png">
-            </div>
-            <p class="brand">NIKE</p>
-            <p class="preview-title">
-              나이키 덩크로우 범고래 PS 에어 포스 111
-              PLT.AF.ORM 올화이트 GS 검흰1111111
+          <div class="right-wrap">
+            <p class="page-title">해당 키워드를 보유한 <span class="colored">회원 수</span></p>
+            <p class="peo">
+              <span>약 </span>
+              10,000
+              <span> 명</span>
             </p>
-            <div class="hashtag-wrap">
-              <span class="hashtag">#운동화</span>
-              <span class="hashtag">#농구화</span>
-              <span class="hashtag">#덩크로우</span>
+            <p class="txt">이렇게 <strong>광고 되고 있어요!</strong></p>
+            <div class="preview-box">
+              <div class="img-wrap" style="background: url('/image/temp/ad-temp.png')">
+                <img class="wish" src="/image/mypage/wish.png">
+              </div>
+              <p class="brand">NIKE</p>
+              <p class="preview-title">
+                나이키 덩크로우 범고래 PS 에어 포스 111
+                PLT.AF.ORM 올화이트 GS 검흰1111111
+              </p>
+              <div class="hashtag-wrap">
+                <span class="hashtag">#운동화</span>
+                <span class="hashtag">#농구화</span>
+                <span class="hashtag">#덩크로우</span>
+              </div>
+              <div class="keywordyn" @click="keywordOpenYn = !keywordOpenYn">
+                <span class="keyword-title">내 키워드와 </span>
+                <span class="skeyword">5개</span>
+                <span class="keyword-title"> 일치해요</span>
+                <i class="fas fa-chevron-down" v-if="!keywordOpenYn" ></i>
+                <i class="fas fa-chevron-up" v-if="keywordOpenYn"></i>
+              </div>
+              <div class="keyword-wrap" :class="keywordOpenYn ? 'open' : 'close'">
+                <span class="keyword">브랜드 중요</span>
+                <span class="keyword">직장인</span>
+                <span class="keyword">서울</span>
+                <span class="keyword">여</span>
+                <span class="keyword">남</span>
+                <span class="keyword">원룸 거주</span>
+              </div>
+              <div class="price-wrap">
+                <span class="sale">50%</span>
+                <span class="cost">90,000원</span>
+                <span class="discount">45,000원</span>
+              </div>
             </div>
-            <div class="keywordyn" @click="keywordOpenYn = !keywordOpenYn">
-              <span class="keyword-title">내 키워드와 </span>
-              <span class="skeyword">5개</span>
-              <span class="keyword-title"> 일치해요</span>
-              <i class="fas fa-chevron-down" v-if="!keywordOpenYn" ></i>
-              <i class="fas fa-chevron-up" v-if="keywordOpenYn"></i>
+            <div class="edit-wrap">
+              <span class="del">삭제</span>
+              <span class="modify">최종 제출</span>
             </div>
-            <div class="keyword-wrap" :class="keywordOpenYn ? 'open' : 'close'">
-              <span class="keyword">브랜드 중요</span>
-              <span class="keyword">직장인</span>
-              <span class="keyword">서울</span>
-              <span class="keyword">여</span>
-              <span class="keyword">남</span>
-              <span class="keyword">원룸 거주</span>
-            </div>
-            <div class="price-wrap">
-              <span class="sale">50%</span>
-              <span class="cost">90,000원</span>
-              <span class="discount">45,000원</span>
-            </div>
-          </div>
-          <div class="edit-wrap">
-            <span class="del">삭제</span>
-            <span class="modify">최종 제출</span>
           </div>
         </div>
       </div>
@@ -86,3 +88,55 @@
 
     </div>
 </template>
+
+
+
+<script>
+export default {
+  components: {
+  },
+  props: [''],
+  data() {
+    return {
+      keywordOpenYn: false,
+    }
+  },
+  watch: {
+
+  },
+  methods: {
+    fixedMenu() {
+      let fixedContainer = document.querySelector(".right-wrap");
+      let box = document.querySelector("#step4");
+      let footer = document.querySelector('#footer-container');
+      console.log(box.clientHeight);
+      window.onscroll = () => {
+        if (window.scrollY >= 80) {
+          fixedContainer.classList.add("is-fixed");
+        }
+        else {
+          fixedContainer.classList.remove("is-fixed");
+        }
+        if(window.scrollY >= box.clientHeight - fixedContainer.clientHeight + 350){
+          fixedContainer.classList.add("is-stop");
+          fixedContainer.style.top = box.clientHeight - fixedContainer.clientHeight + 350 +'px';
+        }
+        else {
+          fixedContainer.classList.remove("is-stop");
+          fixedContainer.style.top = '20px';
+
+        }
+      }
+    },
+    getRectTop(el){
+      var rect = el.getBoundingClientRect();
+      return rect.top;
+    },
+  },
+  created() {
+  },
+  mounted() {
+    this.fixedMenu();
+  }
+}
+</script>

@@ -1544,6 +1544,8 @@
 }
 #ad-setting .step-container{
     display: flex;
+    max-width: 1440px;
+    margin: 0 auto;
 }
 #ad-setting .step-container .left-container{
     width: 60%;
@@ -1554,6 +1556,15 @@
     width: 40%;
     padding: 50px;
     box-sizing: border-box;
+    position: relative;
+}
+#ad-setting .step-container .right-container .right-wrap.is-fixed{
+    position: fixed;
+    top: 20px;
+}
+#ad-setting .step-container .right-container .right-wrap.is-stop{
+    position: absolute;
+    top: 1200px;
 }
 #ad-setting .step-container .right-container .page-title{
     font-weight: 400;
@@ -1905,12 +1916,15 @@
     margin-left: 5px;
     vertical-align: text-top;
 }
-#ad-setting  #step1 .input-container .chk-txt{
+#ad-setting #step1 .input-container .chk-txt{
     font-weight: 350;
     font-size: 14px;
     line-height: 20px;
     letter-spacing: -0.01em;
     color: #808080;
+}
+#ad-setting #step1 .input-container .chk-txt input[type=checkbox]{
+    vertical-align: bottom;
 }
 #ad-setting  #step1 .input-container .img-upload-container{
     margin-top: 25px;
@@ -2298,6 +2312,7 @@
     justify-content: end;
     align-items: center;
     margin-top: 10px;
+    width: 740px;
 }
 
 #ad-setting .step-container .left-container .add-btn {

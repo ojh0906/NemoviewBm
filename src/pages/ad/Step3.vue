@@ -71,22 +71,24 @@
         </div>
       </div>
       <div class="right-container">
-        <p class="page-title">해당 키워드를 보유한 <span class="colored">회원 수</span></p>
-        <p class="peo">
-          <span>약 </span>
-          10,000
-          <span> 명</span>
-        </p>
-        <p class="txt">이렇게 <strong>광고 돼요!</strong></p>
-        <p class="keyword-title">반드시 포함되어야할 키워드<img class="q-mark" src="/image/ad/q-mark.png" /></p>
-        <div class="keyword-box">
-          <span class="color-tag tag">성별 전체 <span class="close">X</span></span>
-          <span class="tag">남 <span class="close">X</span></span>
-          <span class="color-tag2 tag">주거 전체 <span class="close">X</span></span>
-        </div>
-        <div class="edit-wrap">
-          <span class="del">이전</span>
-          <span class="modify">다음</span>
+        <div class="right-wrap">
+          <p class="page-title">해당 키워드를 보유한 <span class="colored">회원 수</span></p>
+          <p class="peo">
+            <span>약 </span>
+            10,000
+            <span> 명</span>
+          </p>
+          <p class="txt">이렇게 <strong>광고 돼요!</strong></p>
+          <p class="keyword-title">반드시 포함되어야할 키워드<img class="q-mark" src="/image/ad/q-mark.png" /></p>
+          <div class="keyword-box">
+            <span class="color-tag tag">성별 전체 <span class="close">X</span></span>
+            <span class="tag">남 <span class="close">X</span></span>
+            <span class="color-tag2 tag">주거 전체 <span class="close">X</span></span>
+          </div>
+          <div class="edit-wrap">
+            <span class="del">이전</span>
+            <span class="modify">다음</span>
+          </div>
         </div>
       </div>
     </div>
@@ -107,9 +109,28 @@ export default {
 
   },
   methods: {
-
+    fixedMenu() {
+      let fixedContainer = document.querySelector(".right-wrap");
+      let box = document.querySelector("#step2");
+      let footer = document.querySelector('#footer-container');
+      window.onscroll = () => {
+        if (window.scrollY >= 80) {
+          fixedContainer.classList.add("is-fixed");
+        }
+        else {
+          fixedContainer.classList.remove("is-fixed");
+        }
+      }
+    },
+    getRectTop(el){
+      var rect = el.getBoundingClientRect();
+      return rect.top;
+    },
   },
   created() {
+  },
+  mounted() {
+    this.fixedMenu();
   }
 }
 </script>
