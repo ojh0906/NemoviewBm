@@ -2439,6 +2439,7 @@ p:nth-last-child(1) {
     width: 600px;
     top: 180px;
     left: calc( 50% - 300px );
+    z-index: 100;
 }
 #ad-setting .modal-container .title{
     font-weight: 500;
