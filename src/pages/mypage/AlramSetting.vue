@@ -8,27 +8,19 @@
         <div class="menu-wrap">
           <router-link :to="{ name: 'ProfileModify', query: {} }" class="menu" >프로필 관리</router-link>
           <router-link :to="{ name: 'TaxSetting', query: {} }" class="menu" >세금계산서 관리</router-link>
-          <router-link :to="{ name: 'AccountSetting', query: {} }" class="menu active" >계정 관리</router-link>
-          <router-link :to="{ name: 'AlramSetting', query: {} }" class="menu" >알림 관리</router-link>
+          <router-link :to="{ name: 'AccountSetting', query: {} }" class="menu" >계정 관리</router-link>
+          <router-link :to="{ name: 'AlramSetting', query: {} }" class="menu active" >알림 관리</router-link>
         </div>
         <div class="modify-box">
-          <div class="line">
-            <div class="label">
-              계정
-            </div>
-            <span class="account-use">사용중</span>
+          <div class="alarm-line">
+            <p class="title">모바일 알림</p>
+            <p class="txt">포인트 소진 및 광고 현황, 업데이트, 이벤트 등의 소식을 휴대폰 번호로 받을 수 있습니다.</p>
+            <img src="/image/mypage/switch-on.png">
           </div>
-          <div class="line">
-            <div class="label">
-              비밀번호
-            </div>
-            <div class="password-setting">
-              <img class="icon" src="/image/common/password-icon.png"/>
-              <input type="password" id="password" placeholder="비밀번호" v-model="this.password"/>
-              <img class="show" src="/image/common/password-show.png" @click="showPassword()"/>
-            </div>
-            <span class="pw-submit" @click="modifyMember">변경하기</span>
-            <span class="pw-cancel" @click="this.password = '';">취소하기</span>
+          <div class="alarm-line">
+            <p class="title">이메일 알림</p>
+            <p class="txt">포인트 소진 및 광고 현황, 업데이트, 이벤트 등의 소식을 이메일로 받을 수 있습니다.</p>
+            <img src="/image/mypage/switch-off.png">
           </div>
         </div>
       </div>

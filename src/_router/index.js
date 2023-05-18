@@ -8,6 +8,7 @@ import PointCharge from "/src/pages/mypage/PointCharge.vue";
 import ProfileModify from "/src/pages/mypage/ProfileModify.vue";
 import TaxSetting from "/src/pages/mypage/TaxSetting.vue";
 import AccountSetting from "/src/pages/mypage/AccountSetting.vue";
+import AlramSetting from "/src/pages/mypage/AlramSetting.vue";
 import AdvertiseDetail from "/src/pages/mypage/AdvertiseDetail.vue";
 import AffiliateServices from "/src/pages/mypage/AffiliateServices.vue";
 import Step1 from "/src/pages/ad/Step1.vue";
@@ -80,6 +81,13 @@ const routes = [
         name: "AccountSetting",
         component: AccountSetting,
         meta: { title: "계정 관리" },
+        beforeEnter: beforeAuth(true),
+    },
+    {
+        path: "/alramSetting",
+        name: "AlramSetting",
+        component: AlramSetting,
+        meta: { title: "알림 설정" },
         beforeEnter: beforeAuth(true),
     },
     {

@@ -483,7 +483,7 @@
 }
 #register .register-box .select-container .select-list{
     position: absolute;
-    left: 0;
+    left: 215px;
     top: 56px;
     background: #FFFFFF;
     border: 0.5px solid #DDDDDD;
@@ -546,6 +546,35 @@
     /* identical to box height */
     letter-spacing: -0.01em;
     color: #555555;
+}
+#mypage .mypage-nav-container .nav-wrap ul{
+    margin-top: 12px;
+    padding-left:20px;
+}
+#mypage .mypage-nav-container .nav-wrap li{
+    position: relative;
+}
+#mypage .mypage-nav-container .nav-wrap li::after{
+    position: absolute;
+    content: "";
+    width: 3px;
+    height: 3px;
+    background: #777777;
+    border-radius: 100%;
+    top: 12px;
+    left: -8px;
+}
+#mypage .mypage-nav-container .nav-wrap li.active a{
+    text-decoration-line: underline;
+    color: #555555;
+    font-weight: 700;
+}
+#mypage .mypage-nav-container .nav-wrap li a{
+    letter-spacing: -0.01em;
+    font-weight: 400;
+    font-size: 14px;
+    color: #777777;
+
 }
 #mypage .content-container{
     width: calc(100% - 200px);
@@ -884,6 +913,7 @@
     padding: 50px 77px;
     box-sizing: border-box;
     margin-top: 45px;
+    width: 961px;
 }
 #mypage .content-container .mypage-setting-container .modify-box .line{
     display: flex;
@@ -936,7 +966,7 @@
     width: 100%;
     min-height: 56px;
     font-weight: 400;
-    font-size: 22px;
+    font-size: 16px;
     line-height: 32px;
     position: relative;
     cursor: pointer;
@@ -986,14 +1016,14 @@
     width: 100%;
     min-height: 56px;
     font-weight: 400;
-    font-size: 22px;
+    font-size: 16px;
     line-height: 32px;
     position: relative;
     cursor: pointer;
 }
 #mypage .content-container .mypage-setting-container .modify-box .line .select-container .select-list{
     position: absolute;
-    left: 0;
+    left: 215px;
     top: 56px;
     background: #FFFFFF;
     border: 0.5px solid #DDDDDD;
@@ -1120,7 +1150,31 @@
     margin-left:5px;
     cursor: pointer;
 }
-
+#mypage .content-container .mypage-setting-container .modify-box .alarm-line{
+    position: relative;
+    margin-bottom: 55px;
+}
+#mypage .content-container .mypage-setting-container .modify-box .alarm-line .title{
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 26px;
+    /* identical to box height */
+    color: #333333;
+    margin-bottom: 10px;
+}
+#mypage .content-container .mypage-setting-container .modify-box .alarm-line .txt{
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 23px;
+    color: #777777;
+}
+#mypage .content-container .mypage-setting-container .modify-box .alarm-line img{
+    width: 140px;
+    position: absolute;
+    right: 0;
+    top: 20px;
+    cursor: pointer;
+}
     /* 광고 상세페이지 */
 #mypage .content-container .ad-detail-container{
     display: flex;
