@@ -858,7 +858,7 @@
 
 /* 마이페이지 계정정보 / 세금계산서 정보 */
 #mypage .content-container .mypage-setting-container{
-    padding: 37px 43px 67px;
+    padding: 37px 43px 150px;
     box-sizing: border-box;
     max-width: 960px;
     min-height: 80vh;

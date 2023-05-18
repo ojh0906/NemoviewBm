@@ -168,6 +168,8 @@ export default {
       if(this.getLoginMember.company_size != null) this.company_size = this.getLoginMember.company_size;
       if(this.getLoginMember.inflow != null) this.inflow = this.getLoginMember.inflow;
     }
+  },
+  mounted() {
   }
 }
 </script>
