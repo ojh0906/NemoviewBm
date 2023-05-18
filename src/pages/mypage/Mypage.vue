@@ -15,6 +15,16 @@
           <span class="filter">최근 7일</span>
           <span class="filter">최근 한 달</span>
           <span class="setting">기간 설정</span>
+          <div class="setting-wrap">
+            <div class="input-date-wrap">
+              <input type="date" id="startdate" name="startdate" />
+            </div>
+            <span class="gap">~</span>
+            <div class="input-date-wrap">
+              <input type="date" id="startdate" name="startdate" />
+            </div>
+            <span class="search-btn">조회</span>
+          </div>
         </div>
         <div class="ad-container">
           <div class="add-new">

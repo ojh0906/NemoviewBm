@@ -617,10 +617,55 @@
     line-height: 17px;
     text-align: center;
     letter-spacing: -0.01em;
-    text-decoration-line: underline;
     color: #777777;
     margin-left: 20px;
     cursor: pointer;
+}
+#mypage .content-container .filter-wrap  .setting-wrap{
+    display: inline-flex;
+    margin-left: 10px;
+}
+#mypage .content-container .filter-wrap  .setting-wrap .input-date-wrap{
+    position: relative;
+}
+#mypage .content-container .filter-wrap  .setting-wrap .input-date-wrap input:focus ~ #mypage .content-container .filter-wrap  .setting-wrap .input-date-wrap label,
+#mypage .content-container .filter-wrap  .setting-wrap .input-date-wrap input:valid ~ #mypage .content-container .filter-wrap  .setting-wrap .input-date-wrap label {display:none}
+#mypage .content-container .filter-wrap  .setting-wrap input[type='date']{
+    background: #FFFFFF;
+    border: 0.5px solid #CCCCCC;
+    border-radius: 4px;
+    padding: 6px 7px;
+    box-sizing: border-box;
+    width: 100px;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 17px;
+    letter-spacing: -2px;
+}
+#mypage .content-container .filter-wrap  .setting-wrap input[type='date']::placeholder{
+    color: #999999;
+
+}
+#mypage .content-container .filter-wrap  .setting-wrap .gap{
+    margin: 0 7px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 30px;
+}
+#mypage .content-container .filter-wrap  .setting-wrap .search-btn{
+    background: #EEEEEE;
+    border-radius: 22.5px;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 26px;
+    text-align: center;
+    letter-spacing: -0.01em;
+    padding: 3px 17px;
+    box-sizing: border-box;
+    color: #777777;
+    cursor: pointer;
+    margin-left: 10px;
+
 }
 #mypage .content-container .ad-container{
     display: flex;
