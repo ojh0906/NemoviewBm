@@ -15,13 +15,21 @@
           <input type="text" name="title" />
           <div class="tab-container">
             <span class="label">Q. 무엇을 홍보 하시겠나요?</span>
-            <span class="tab" :class="tabSwitch ? 'active' : ''" @click="tabSwitch = !tabSwitch">제출</span>
+            <span class="tab" :class="tabSwitch ? 'active' : ''" @click="tabSwitch = !tabSwitch">제품</span>
             <span class="tab" :class="tabSwitch ? '' : 'active'" @click="tabSwitch = !tabSwitch">서비스</span>
           </div>
           <!--   제출   -->
           <div class="input-container" v-if="tabSwitch">
             <p class="label">1. 제품 카테고리</p>
-            <input type="text" name="category">
+            <div class="select-container">
+              <div class="select-box" @click="this.productCategoryYn = !this.productCategoryYn">
+                카테고리1
+                <span class="icn"></span>
+              </div>
+              <div class="select-list" v-if="this.productCategoryYn">
+                <p>vgggggg</p>
+              </div>
+            </div>
             <p class="label">2. 제품 브랜드</p>
             <input type="text" name="brand"/>
             <p class="label">3. 제품명 <span class="tip">*50자 이내 권장</span></p>
@@ -77,7 +85,15 @@
           <!--   서비스    -->
           <div class="input-container" v-if="!tabSwitch">
             <p class="label">1. 제품 카테고리</p>
-            <input type="text" name="category">
+            <div class="select-container">
+              <div class="select-box" @click="this.serviceCategoryYn = !this.serviceCategoryYn">
+                카테고리1
+                <span class="icn"></span>
+              </div>
+              <div class="select-list" v-if="this.serviceCategoryYn">
+                <p>vgggggg</p>
+              </div>
+            </div>
             <p class="label">2. 서비스명</p>
             <input type="text" name="service"/>
             <p class="label">3. 서비스 소개 <span class="tip">*50자 이내 권장</span></p>
@@ -180,6 +196,8 @@ export default {
     return {
       tabSwitch: true,
       keywordOpenYn: false,
+      productCategoryYn: false,
+      serviceCategoryYn: false,
     }
   },
   watch: {
