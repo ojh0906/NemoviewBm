@@ -21,7 +21,15 @@
           <!--   제품   -->
           <div class="input-container">
             <p class="label">1. {{ this.category === 1 ? '제품':'서비스' }} 카테고리</p>
-            <input type="text" name="category">
+            <div class="select-container">
+              <div class="select-box" @click="this.productCategoryYn = !this.productCategoryYn">
+                카테고리1
+                <span class="icn"></span>
+              </div>
+              <div class="select-list" v-if="this.productCategoryYn">
+                <p>vgggggg</p>
+              </div>
+            </div>
             <p class="label">2. {{ this.category === 1 ? '제품 브랜드':'서비스명' }}</p>
             <input type="text" name="brand"/>
             <p class="label">3. {{ this.category === 1 ? '제품명':'서비스 소개' }} <span class="tip">*50자 이내 권장</span></p>
@@ -155,6 +163,8 @@ export default {
       keywords:'',
       images:'',
       image_support:false,
+      productCategoryYn: false,
+      serviceCategoryYn: false,
     }
   },
   watch: {
