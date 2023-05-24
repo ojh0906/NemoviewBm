@@ -3,8 +3,8 @@
     <div class="step-container">
       <div class="left-container">
         <div class="menu-wrap">
-          <router-link :to="{ name: 'Mypage', query: {} }" class="menu" >마이페이지</router-link>
-          <router-link :to="{ name: '', query: {} }" class="menu" >임시 저장</router-link>
+          <a class="menu" @click="goToMyPage();">마이페이지</a>
+          <a class="menu" @click="saveTemp();">임시 저장</a>
         </div>
         <div class="title-wrap">
           <p>홍보할 <strong>제품/서비스</strong>를 소개해 주세요!</p>
@@ -15,22 +15,22 @@
           <input type="text" name="title" />
           <div class="tab-container">
             <span class="label">Q. 무엇을 홍보 하시겠나요?</span>
-            <span class="tab" :class="tabSwitch ? 'active' : ''" @click="tabSwitch = !tabSwitch">제출</span>
-            <span class="tab" :class="tabSwitch ? '' : 'active'" @click="tabSwitch = !tabSwitch">서비스</span>
+            <span class="tab" :class="this.category === 1 ? 'active' : ''" @click="this.category = 1;">제품</span>
+            <span class="tab" :class="this.category === 2 ? 'active' : ''" @click="this.category = 2;">서비스</span>
           </div>
-          <!--   제출   -->
-          <div class="input-container" v-if="tabSwitch">
-            <p class="label">1. 제품 카테고리</p>
+          <!--   제품   -->
+          <div class="input-container">
+            <p class="label">1. {{ this.category === 1 ? '제품':'서비스' }} 카테고리</p>
             <input type="text" name="category">
-            <p class="label">2. 제품 브랜드</p>
+            <p class="label">2. {{ this.category === 1 ? '제품 브랜드':'서비스명' }}</p>
             <input type="text" name="brand"/>
-            <p class="label">3. 제품명 <span class="tip">*50자 이내 권장</span></p>
+            <p class="label">3. {{ this.category === 1 ? '제품명':'서비스 소개' }} <span class="tip">*50자 이내 권장</span></p>
             <textarea name="product-name" maxlength="50"></textarea>
             <div class="numchk">
               <span >0 / 50</span>
             </div>
-            <p class="label">4. 제품 가격 <span class="tip">할인율이 큰 제품은 네모뷰 특가상품 영역에 소개됩니다.</span></p>
-            <div class="price-wrap">
+            <p class="label" v-if="this.category === 1">4. 제품 가격 <span class="tip">할인율이 큰 제품은 네모뷰 특가상품 영역에 소개됩니다.</span></p>
+            <div class="price-wrap" v-if="this.category === 1">
               <div class="wrap">
                 <p>판매 가격</p>
                 <input type="text">
@@ -45,11 +45,11 @@
                 <input type="text" readonly>
               </div>
             </div>
-            <p class="label">5. 제품 링크 <span class="tip">제품 가격의 ‘최종 판매 가격’의 가격과 동일한 제품 링크를 입력해 주세요!</span></p>
+            <p class="label">{{ this.category === 1 ? '5. 제품 링크':'4. 연결 링크' }} <span class="tip">제품 가격의 ‘최종 판매 가격’의 가격과 동일한 제품 링크를 입력해 주세요!</span></p>
             <input type="text" name="link" />
             <span class="chk-btn">연결 확인</span>
             <p class="sub">* 구매를 확인할 수 있는 링크를 첨부해 보세요!</p>
-            <p class="label">6. 제품 관련 키워드 <span class="tip2">(선택)</span></p>
+            <p class="label">{{ this.category === 1 ? '6. 제품':'5. 서비스' }} 관련 키워드 <span class="tip2">(선택)</span></p>
             <input type="text" name="link" />
             <span class="chk-btn">추가</span>
             <div class="keyword-list">
@@ -57,48 +57,8 @@
               <div class="keyword">#의자 <span>x</span></div>
               <div class="keyword">#의자 <span>x</span></div>
             </div>
-            <p class="label">7. 홍보 이미지</p>
+            <p class="label">{{ this.category === 1 ? '7. 홍보 이미지':'6. 홍보 이미지' }}</p>
             <label class="chk-txt"><input type="checkbox"> 이미지 제작 지원이 필요하신 분은 체크해 주세요. (사이즈 조절 범위, 디자인 지원)</label>
-            <div class="img-upload-container">
-              <p class="img-txt"><span class="colored">[필수]</span> 이미지1 <span class="tip">(맞춤 추천 페이지에 노출됩니다.)<img src="/image/ad/q-mark.png"></span></p>
-              <div class="upload-area">
-                <div class="upload-wrap">
-                  <img class="" src="/image/ad/img-upload.png">
-                </div>
-                <div class="info-wrap">
-                  <p class="info">
-                    *사이즈:0000*000 (px)<br>
-                    *파일 형식: jepg, png ..
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!--   서비스    -->
-          <div class="input-container" v-if="!tabSwitch">
-            <p class="label">1. 제품 카테고리</p>
-            <input type="text" name="category">
-            <p class="label">2. 서비스명</p>
-            <input type="text" name="service"/>
-            <p class="label">3. 서비스 소개 <span class="tip">*50자 이내 권장</span></p>
-            <textarea name="product-name" maxlength="50"></textarea>
-            <div class="numchk">
-              <span >0 / 50</span>
-            </div>
-            <p class="label">4. 제품 링크 <span class="tip">제품 가격의 ‘최종 판매 가격’의 가격과 동일한 제품 링크를 입력해 주세요!</span></p>
-            <input type="text" name="link" />
-            <span class="chk-btn">연결 확인</span>
-            <p class="sub">* 구매를 확인할 수 있는 링크를 첨부해 보세요!</p>
-            <p class="label">5. 제품 관련 키워드 <span class="tip2">(선택)</span></p>
-            <input type="text" name="link" />
-            <span class="chk-btn">추가</span>
-            <div class="keyword-list">
-              <div class="keyword">#의자 <span>x</span></div>
-              <div class="keyword">#의자 <span>x</span></div>
-              <div class="keyword">#의자 <span>x</span></div>
-            </div>
-            <p class="label">6. 홍보 이미지</p>
-            <p class="chk-txt">ㅁ 이미지 제작 지원이 필요하신 분은 체크해 주세요. (사이즈 조절 범위, 디자인 지원)</p>
             <div class="img-upload-container">
               <p class="img-txt"><span class="colored">[필수]</span> 이미지1 <span class="tip">(맞춤 추천 페이지에 노출됩니다.)<img src="/image/ad/q-mark.png"></span></p>
               <div class="upload-area">
@@ -171,15 +131,30 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex"
 
 export default {
+  computed: {
+    ...mapGetters(["getLoginMember","isExpired"]),
+  },
   components: {
   },
   props: [''],
   data() {
     return {
-      tabSwitch: true,
       keywordOpenYn: false,
+      ad:0,
+      title:'',
+      type:0,
+      category:1,
+      brand:'',
+      name:'',
+      price:0,
+      discount:0,
+      link:'',
+      keywords:'',
+      images:'',
+      image_support:false,
     }
   },
   watch: {
@@ -205,6 +180,23 @@ export default {
         }
       }
     },
+    getMember() {
+      http.get("/member/" + this.getLoginMember.member).then((response) => {
+        if (response.data.CODE == 200) {
+          this.$store
+              .dispatch("memberUpdate", { member: response.data.BODY })
+              .then(() => { })
+              .catch(({ message }) => alert(message));
+        }
+      }).catch((error) => {
+        console.log(error);
+      });
+    },
+    goToMyPage(){
+      if(confirm('임시저장하지 않은 내용은 적용되지 않습니다.\n진행하시겠습니까?')){
+        this.$router.push({ name: 'Mypage', query: {} });
+      }
+    }
   },
   created() {
   },

@@ -39,6 +39,9 @@ const globalMixin = {
             }
             return "";
         },
+        goToPage(name){
+            router.push({ name: name, query: {} })
+        }
     },
 };
 

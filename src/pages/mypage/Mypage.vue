@@ -27,7 +27,7 @@
           </div>
         </div>
         <div class="ad-container">
-          <div class="add-new">
+          <div class="add-new" @click="this.goToPage('Step1')">
             <div class="wrap">
               <i class="fas fa-plus"></i>
               <p>3분 만에 광고 제작</p>
@@ -151,24 +151,9 @@ export default {
         console.log(error);
       });
     },
-    getCategoryList() {
-      let param = {
-        state: '1', //true
-      }
-      http2.post("/main/category/list", param).then((response) => {
-        if (response.data.CODE == 200) {
-          console.log(response);
-        } else {
-          console.log('aa');
-        }
-      }).catch((error) => {
-        console.log(error);
-      });
-    },
   },
   created() {
     this.getMember(); // 회원정보 갱신
-    this.getCategoryList();
   }
 }
 </script>
