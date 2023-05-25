@@ -67,7 +67,7 @@ export default {
       if(this.isExpired){
         this.$store
             .dispatch("logout", {})
-            .then(() => {this.$router.push('/')})
+            .then(() => {})
             .catch(({ message }) => alert(message))
       } else {
         this.$router.push('/mypage');

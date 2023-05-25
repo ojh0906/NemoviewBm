@@ -3,7 +3,7 @@ import store from "../store";
 import router from "../_router";
 
 export const http2 = axios.create({
-    baseURL: "https://testapi.nemoview.com",
+    baseURL: "https://api.nemoview.com",
     // baseURL: "http://52.79.71.82:8888",
     // baseURL: "http://localhost:10001",
     headers: { "content-type": "application/json" },
