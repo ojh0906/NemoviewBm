@@ -3,7 +3,7 @@
     <Nav />
     <div class="content-container">
       <div class="mypage-top">
-        <span class="point">보유 포인트 : <strong>{{ addComma(this.getLoginMember.point) }}</strong></span>
+        <span class="point">보유 포인트 : <strong>{{ this.addComma(this.getLoginMember != null ? this.getLoginMember.point:0) }}</strong></span>
         <router-link :to="{ name: 'PointCharge', query: {} }" class="charge" >충전하기</router-link>
       </div>
       <div class="ad-detail-container">
@@ -32,7 +32,7 @@
             </div>
             <div class="item">
               <p class="label">클릭률 (CTR)</p>
-              <p class="val">{{ (this.hits / this.shows) * 100 }}%</p>
+              <p class="val">{{ this.shows === 0 ? 0 : (this.hits / this.shows) * 100 }}%</p>
             </div>
           </div>
           <p class="area-title">클릭한 사용자의 보유 키워드 순위</p>

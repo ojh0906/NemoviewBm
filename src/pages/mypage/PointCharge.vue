@@ -3,14 +3,14 @@
     <Nav />
     <div class="content-container">
       <div class="mypage-top">
-        <span class="point">보유 포인트 : <strong>52,000</strong></span>
+        <span class="point">보유 포인트 : <strong>{{ this.addComma(this.getLoginMember != null ? this.getLoginMember.point:0) }}</strong></span>
         <router-link :to="{ name: 'PointCharge', query: {} }" class="charge" >충전하기</router-link>
       </div>
       <div class="mypage-content">
         <p class="page-title-lg">포인트 충전</p>
         <div class="point-charge-container">
           <p class="title">현재 포인트</p>
-          <p class="point"><strong>52,000</strong> 원</p>
+          <p class="point"><strong>{{ this.addComma(this.getLoginMember != null ? this.getLoginMember.point:0) }}</strong> 원</p>
           <p class="title">포인트 충전 방법</p>
           <p class="txt">
             현재 포인트 충전은 계좌이체를 통해서만 가능합니다.<br>
@@ -35,8 +35,13 @@
 
 <script>
 import Nav from '/src/components/mypage/Nav.vue';
+import { mapGetters } from "vuex"
+import { http,http2 } from '@/services';
 
 export default {
+  computed: {
+    ...mapGetters(["getLoginMember"]),
+  },
   components: {
     Nav,
   },
