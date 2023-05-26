@@ -59,7 +59,7 @@
               <div class="price-wrap">
                 <span class="sale">{{ this.discount }}%</span>
                 <span class="cost">{{ addComma(this.price/1) }}원</span>
-                <span class="discount">{{ this.addComma(Math.ceil(this.price * ( 1 - (this.discount / 100) ))) }}원</span>
+                <span class="discount">{{ this.addComma(Math.round(this.price * ( 1 - (this.discount / 100) ))) }}원</span>
               </div>
             </div>
             <div class="edit-wrap">

@@ -32,7 +32,7 @@
             </div>
             <div class="item">
               <p class="label">클릭률 (CTR)</p>
-              <p class="val">{{ this.shows === 0 ? 0 : (this.hits / this.shows) * 100 }}%</p>
+              <p class="val">{{ this.shows === 0 ? 0 : Math.round((this.hits / this.shows) * 100) }}%</p>
             </div>
           </div>
           <p class="area-title">클릭한 사용자의 보유 키워드 순위</p>
@@ -100,7 +100,7 @@
               <div class="price-wrap">
                 <span class="sale">{{ this.discount }}%</span>
                 <span class="cost">{{ addComma(this.price/1) }}원</span>
-                <span class="discount">{{ this.addComma(Math.ceil(this.price * ( 1 - (this.discount / 100) ))) }}원</span>
+                <span class="discount">{{ this.addComma(Math.round(this.price * ( 1 - (this.discount / 100) ))) }}원</span>
               </div>
             </div>
             <div class="edit-wrap">
