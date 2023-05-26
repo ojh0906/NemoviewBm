@@ -52,15 +52,15 @@
           <p class="page-title">해당 키워드를 보유한 <span class="colored">회원 수</span></p>
           <p class="peo">
             <span>약 </span>
-            10,000
+            0,000
             <span> 명</span>
           </p>
           <p class="txt">이렇게 <strong>광고 돼요!</strong></p>
 
           <p class="keyword-title">현재까지 선택한 키워드<img class="q-mark" src="/image/ad/q-mark.png" /></p>
           <div class="keyword-box">
-            <span class="color-tag tag" v-for="(c,i) in this.ad.commonKeywordList">{{ c.name }}<span class="close" style="cursor: pointer;" @click="removeCommonKeyword(i)">X</span></span>
-            <span class="color-tag2 tag" v-for="(k,i) in this.ad.keywordList">{{ k.name }}<span class="close" style="cursor: pointer;" @click="removeKeyword(i)">X</span></span>
+            <span class="color-tag tag" v-for="(c,i) in this.commonKeywordList">{{ c.name }}<span class="close" style="cursor: pointer;" @click="removeCommonKeyword(i)">X</span></span>
+            <span class="color-tag2 tag" v-for="(k,i) in this.keywordList">{{ k.name }}<span class="close" style="cursor: pointer;" @click="removeKeyword(i)">X</span></span>
           </div>
           <div class="edit-wrap">
             <span class="del" @click="goToPrevStep()">이전</span>
@@ -94,13 +94,11 @@ export default {
   },
   data() {
     return {
-      ad:{
-        ad:0,
-        commonKeywordList:[],
-        keywordList:[],
-        commonKeywordList_del:[],
-        keywordList_del:[],
-      },
+      ad:0,
+      commonKeywordList:[],
+      keywordList:[],
+      commonKeywordList_del:[],
+      keywordList_del:[],
       keywordOpenYn: false,
       classificationList:[
         {name:'', keywords:[{keyword: 0, name: ''}]}
@@ -143,18 +141,23 @@ export default {
         this.$router.push({ name: 'Mypage', query: {} });
       }
     },
+    goToPrevStep(){
+      if(confirm('임시저장하지 않은 내용은 적용되지 않습니다.\n진행하시겠습니까?')){
+        this.$router.push({ name: 'Step1', query: {key:this.ad} });
+      }
+    },
     saveAdTemp(next){
       let param = {
-        commonKeywordList:this.ad.commonKeywordList,
-        commonKeywordList_del:this.ad.commonKeywordList_del,
-        keywordList:this.ad.keywordList,
-        keywordList_del:this.ad.keywordList_del,
+        commonKeywordList:this.commonKeywordList,
+        commonKeywordList_del:this.commonKeywordList_del,
+        keywordList:this.keywordList,
+        keywordList_del:this.keywordList_del,
       }
-      http.put("/ad/"+this.ad.ad, param).then((response) => {
+      http.put("/ad/"+this.ad, param).then((response) => {
         if (response.data.CODE == 200) {
           alert('저장되었습니다.');
           if(next){
-            this.$router.push({ name: 'Step3', query: {} });
+            this.$router.push({ name: 'Step3', query: {key:this.ad} });
           } else { // 임시저장
             this.getAd();
           }
@@ -193,9 +196,8 @@ export default {
           // 전체 추가
           header.keywords.unshift({name:header.name+' 전체', key:header.category, all:true});
           header.keywords.forEach(keyword =>{
-            const filterList = this.ad.commonKeywordList.filter(item => item.common_keyword == keyword.common_keyword);
+            const filterList = this.commonKeywordList.filter(item => item.common_keyword == keyword.common_keyword);
             if(filterList.length !== 0){
-              filterList[0].name = keyword.name;
               keyword.match = true;
             }
           });
@@ -217,9 +219,8 @@ export default {
             classific.keywords.unshift({name:classific.name+' 전체', key:classific.classification, all:true});
 
             classific.keywords.forEach(keyword =>{
-              const filterList = this.ad.keywordList.filter(item => item.keyword == keyword.keyword);
+              const filterList = this.keywordList.filter(item => item.keyword == keyword.keyword);
               if(filterList.length !== 0){
-                filterList[0].name = keyword.name;
                 keyword.match = true;
               }
             });
@@ -230,26 +231,21 @@ export default {
       });
     },
     getAd(){
-      http.get("/ad/"+this.ad.ad).then((response) => {
+      http.get("/ad/"+this.ad).then((response) => {
         if (response.data.CODE == 200) {
-          this.ad.commonKeywordList = response.data.BODY.commonKeywordList;
-          this.ad.keywordList = response.data.BODY.keywordList;
+          this.commonKeywordList = response.data.BODY.commonKeywordList;
+          this.keywordList = response.data.BODY.keywordList;
           this.getCommonHeaderList();
         }
       }).catch((error) => {
         console.log(error);
       });
     },
-    goToPrevStep(){
-      if(confirm('임시저장하지 않은 내용은 적용되지 않습니다.\n진행하시겠습니까?')){
-        this.$router.push({ name: 'Step1', query: {key:this.ad.ad} });
-      }
-    },
-    removeCommonKeyword(i){
-      const keyword_del = this.ad.commonKeywordList.splice(i,1);
-      const filterList = this.ad.commonKeywordList_del.filter(item => item.common_keyword == keyword_del[0].common_keyword);
+    removeCommonKeyword(idx){
+      const keyword_del = this.commonKeywordList.splice(idx,1);
+      const filterList = this.commonKeywordList_del.filter(item => item.common_keyword == keyword_del[0].common_keyword);
       if(filterList.length === 0) {
-        this.ad.commonKeywordList_del.push(keyword_del[0]);
+        this.commonKeywordList_del.push(keyword_del[0]);
       }
 
       // 체크 해제
@@ -261,11 +257,11 @@ export default {
         });
       });
     },
-    removeKeyword(i){
-      const keyword_del = this.ad.keywordList.splice(i,1);
-      const filterList = this.ad.keywordList_del.filter(item => item.keyword == keyword_del[0].keyword);
+    removeKeyword(idx){
+      const keyword_del = this.keywordList.splice(idx,1);
+      const filterList = this.keywordList_del.filter(item => item.keyword == keyword_del[0].keyword);
       if(filterList.length === 0) {
-        this.ad.keywordList_del.push(keyword_del[0]);
+        this.keywordList_del.push(keyword_del[0]);
       }
 
       // 체크 해제
@@ -281,14 +277,13 @@ export default {
       if(keyword.all){ // 전체 체크
         if(type === 1){
           const checkList = this.commonHeaderList.filter(h => h.category == keyword.key)[0].keywords;
-          console.log(checkList);
 
           checkList.forEach(check => {
             if(!check.all){
               check.match = true;
-              const filterList = this.ad.commonKeywordList.filter(item => item.common_keyword == check.common_keyword);
+              const filterList = this.commonKeywordList.filter(item => item.common_keyword == check.common_keyword);
               if(filterList.length === 0){
-                this.ad.commonKeywordList.push(check);
+                this.commonKeywordList.push(check);
               }
             }
           })
@@ -298,9 +293,9 @@ export default {
           checkList.forEach(check => {
             if(!check.all){
               check.match = true;
-              const filterList = this.ad.keywordList.filter(item => item.keyword == check.keyword);
+              const filterList = this.keywordList.filter(item => item.keyword == check.keyword);
               if(filterList.length === 0){
-                this.ad.keywordList.push(check);
+                this.keywordList.push(check);
               }
             }
           })
@@ -309,14 +304,14 @@ export default {
         keyword.match = true;
 
         if(type === 1){
-          const filterList = this.ad.commonKeywordList.filter(item => item.common_keyword == keyword.common_keyword);
+          const filterList = this.commonKeywordList.filter(item => item.common_keyword == keyword.common_keyword);
           if(filterList.length === 0){
-            this.ad.commonKeywordList.push(keyword);
+            this.commonKeywordList.push(keyword);
           }
         } else {
-          const filterList = this.ad.keywordList.filter(item => item.keyword == keyword.keyword);
+          const filterList = this.keywordList.filter(item => item.keyword == keyword.keyword);
           if(filterList.length === 0){
-            this.ad.keywordList.push(keyword);
+            this.keywordList.push(keyword);
           }
         }
       }
@@ -327,7 +322,7 @@ export default {
   mounted() {
     this.fixedMenu();
     if(this.$route.query.key != null){
-      this.ad.ad = this.$route.query.key;
+      this.ad = this.$route.query.key;
       this.getAd();
     } else {
       alert('잘못된 접근입니다.');

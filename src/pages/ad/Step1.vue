@@ -52,11 +52,11 @@
             <div class="price-wrap" v-if="this.type === 1">
               <div class="wrap">
                 <p>판매 가격</p>
-                <input type="text" v-model="this.price" @keyup="checkPrice()">
+                <input type="text" v-model="this.price" @keyup="checkNum">
               </div>
               <div class="wrap">
                 <p>할인율 <span>(선택)</span></p>
-                <input type="text" v-model="this.discount" @keyup="checkDiscount()">
+                <input type="text" v-model="this.discount" @keyup="checkNum">
                 %
               </div>
               <div class="wrap">
@@ -109,11 +109,6 @@
             <div class="img-wrap" style="background: url('/image/ad/img-upload.png')" v-if="this.images_new.length === 0 && this.images_view.length === 0"></div>
             <div class="img-wrap" :style="'background: url('+this.images_new[0].preview+')'" v-if="this.images_new.length !== 0 && this.images_view.length === 0"></div>
             <div class="img-wrap" :style="'background: url('+getOneImagePath(this.images_view[0].path)+')'" v-if="this.images_new.length === 0 && this.images_view.length !== 0"></div>
-<!--
-            <img class="" src="/image/ad/img-upload.png" >
-            <img class="" :src="" v-if="this.images_new.length !== 0 && this.images_view.length === 0">
-            <img class="" :src="getOneImagePath(this.images_view[0].path)" v-if="this.images_new.length === 0 && this.images_view.length !== 0">
--->
             <p class="brand">{{ this.brand }}</p>
             <p class="preview-title" v-html="this.replaceContent(this.name)"></p>
             <div class="hashtag-wrap">
@@ -325,11 +320,7 @@ export default {
       if(this.ad === 0){ // 마이페이지로 이동
         this.goToPage('Mypage')
       } else {
-        http.post("/ad/save", formData, {
-          headers: {
-            "Content-Type": "multipart/form-data"
-          }
-        }).then((response) => {
+        http.delete("/ad/"+this.ad).then((response) => {
           if (response.data.CODE == 200) {
             alert('저장되었습니다.');
             if(next){
@@ -376,7 +367,7 @@ export default {
               this.categoryName = filterItem[0].name;
             }
           } else { // 서비스
-            const filterItem = this.serviceCategoryList.filter(item => item.service_category === this.category);
+            const filterItem = this.serviceCategoryList.filter(item => item.category === this.category);
             if(filterItem.length === 0){
               this.categoryName = 'error';
             } else {
@@ -402,11 +393,8 @@ export default {
         console.log(error);
       });
     },
-    checkPrice(){
-      this.price = this.price.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');
-    },
-    checkDiscount(){
-      this.discount = this.discount.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');
+    checkNum(e){
+      e.target.value = Number.parseInt(e.target.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1'));
     },
     addKeyword(){
       if(this.keyword_input === '') {
