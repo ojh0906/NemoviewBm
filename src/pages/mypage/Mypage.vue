@@ -17,13 +17,13 @@
           <span class="filter" :class="this.filter_name === 'custom' ? 'active':''" @click="setFilter('custom');">기간 설정</span>
           <div class="setting-wrap" v-if="this.filter_name === 'custom'">
             <div class="input-date-wrap">
-              <input type="date" id="startdate" name="startdate" />
+              <input type="date" id="startdate" name="startdate" v-model="this.start_date"/>
             </div>
             <span class="gap">~</span>
             <div class="input-date-wrap">
-              <input type="date" id="startdate" name="startdate" />
+              <input type="date" id="startdate" name="startdate" v-model="this.end_date"/>
             </div>
-            <span class="search-btn">조정</span>
+            <span class="search-btn" @click="checkDate">조회</span>
           </div>
         </div>
         <div class="ad-container">
@@ -37,12 +37,12 @@
           <div class="item" v-for="ad in adList" @click="goToAd(ad);">
             <p class="title">{{ ad.title === '' ? '광고명이 미정입니다.':ad.title }}</p>
             <div class="desc">
-              <p class="val">클릭 수 : {{ addComma(1000) }}</p>
-              <p class="val">노출 수 : {{ addComma(1000) }}</p>
+              <p class="val">클릭 수 : {{ addComma(ad.hits) }}</p>
+              <p class="val">노출 수 : {{ addComma(ad.shows) }}</p>
               <div class="result-wrap">
                 <div class="wrap">
                   <span class="label">클릭률 : </span>
-                  <span class="result">25%</span>
+                  <span class="result">{{ ad.shows === 0 ? 0 : Math.round((ad.hits / ad.shows) * 100) }}%</span>
                 </div>
                 <div class="wrap">
                   <span class="label">클릭 당 비용 : </span>
@@ -83,6 +83,8 @@ export default {
     return {
       filter_name:'all',
       adList:[],
+      start_date:null,
+      end_date:null,
     }
   },
   watch: {
@@ -105,9 +107,9 @@ export default {
       this.adList = [];
       let param = {
         member : this.getLoginMember.member,
-      }
-      if(this.filter_name !== 'all'){
-        param.filter = this.filter_name;
+        filter_name : this.filter_name,
+        start_date : this.start_date + ' 00:00:00',
+        end_date : this.end_date + ' 23:59:59',
       }
       http.post("/ad/list",param).then((response) => {
         if (response.data.CODE == 200) {
@@ -118,7 +120,19 @@ export default {
       });
     },
     setFilter(value){
+      this.start_date = null;
+      this.end_date = null;
       this.filter_name = value;
+      if(value !== 'custom'){
+        this.getAdList();
+      }
+    },
+    checkDate(){
+      if(this.start_date == null || this.end_date == null || this.start_date > this.end_date){
+        alert('시작일과 종료일을 정확히 설정해주세요.');
+        return;
+      }
+      this.getAdList();
     },
     goToAd(ad){
       if(ad.state === 4 || ad.state === 0){ // 수정 이동

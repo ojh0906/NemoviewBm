@@ -14,12 +14,22 @@
           </div>
           <p class="name">나이키 신발 광고 그룹 1</p>
           <div class="filter-wrap">
-            <span class="filter active">전체기간</span>
-            <span class="filter">오늘</span>
-            <span class="filter">어제</span>
-            <span class="filter">최근 7일</span>
-            <span class="filter">최근 한 달</span>
-            <span class="setting">기간 설정</span>
+            <span class="filter" :class="this.filter_name === 'all' ? 'active':''" @click="setFilter('all');">전체기간</span>
+            <span class="filter" :class="this.filter_name === 'today' ? 'active':''" @click="setFilter('today');">오늘</span>
+            <span class="filter" :class="this.filter_name === 'yesterday' ? 'active':''" @click="setFilter('yesterday');">어제</span>
+            <span class="filter" :class="this.filter_name === 'last7' ? 'active':''" @click="setFilter('last7');">최근 7일</span>
+            <span class="filter" :class="this.filter_name === 'last30' ? 'active':''" @click="setFilter('last30');">최근 한 달</span>
+            <span class="filter" :class="this.filter_name === 'custom' ? 'active':''" @click="setFilter('custom');">기간 설정</span>
+            <div class="setting-wrap" v-if="this.filter_name === 'custom'">
+              <div class="input-date-wrap">
+                <input type="date" id="startdate" name="startdate" v-model="this.start_date"/>
+              </div>
+              <span class="gap">~</span>
+              <div class="input-date-wrap">
+                <input type="date" id="startdate" name="startdate" v-model="this.end_date"/>
+              </div>
+              <span class="search-btn" @click="checkDate">조회</span>
+            </div>
           </div>
           <div class="status-box">
             <div class="item">
@@ -131,6 +141,9 @@ export default {
     return {
       switchYn: false,
       keywordOpenYn: false,
+      filter_name:'all',
+      start_date:null,
+      end_date:null,
       ad:0,
       title:'',
       type:1,
@@ -184,8 +197,23 @@ export default {
       var rect = el.getBoundingClientRect();
       return rect.top;
     },
+    setFilter(value){
+      this.start_date = null;
+      this.end_date = null;
+      this.filter_name = value;
+      if(value !== 'custom'){
+        this.getAd();
+      }
+    },
+    checkDate(){
+      if(this.start_date == null || this.end_date == null || this.start_date > this.end_date){
+        alert('시작일과 종료일을 정확히 설정해주세요.');
+        return;
+      }
+      this.getAd();
+    },
     getAd(){
-      http.get("/ad/"+this.ad).then((response) => {
+      http.get("/ad/"+this.ad+"/"+this.filter_name+"/"+this.start_date+"/"+this.end_date).then((response) => {
         if (response.data.CODE == 200) {
           this.ad = response.data.BODY.ad;
           this.title = response.data.BODY.title;
