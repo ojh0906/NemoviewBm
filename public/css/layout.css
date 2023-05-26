@@ -1334,6 +1334,14 @@
     box-sizing: border-box;
     width: 40%;
 }
+#mypage .content-container .ad-detail-container .right-container .right-wrap.is-fixed{
+    position: fixed;
+    top: 20px;
+}
+#mypage .content-container .ad-detail-container .right-container .right-wrap.is-stop{
+    position: absolute;
+    top: 600px;
+}
 #mypage .content-container .ad-detail-container .right-container .page-title{
     font-weight: 400;
     font-size: 18px;

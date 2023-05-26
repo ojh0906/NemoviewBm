@@ -322,12 +322,8 @@ export default {
       } else {
         http.delete("/ad/"+this.ad).then((response) => {
           if (response.data.CODE == 200) {
-            alert('저장되었습니다.');
-            if(next){
-              this.$router.push({ name: 'Step2', query: {} });
-            } else { // 임시저장
-              this.getAd();
-            }
+            alert('삭제되었습니다.');
+            this.$router.push({ name: 'Mypage', query: {} });
           } else {
             alert('시스템문제 발생. 관리자에게 문의하세요.');
           }
@@ -394,7 +390,12 @@ export default {
       });
     },
     checkNum(e){
-      e.target.value = Number.parseInt(e.target.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1'));
+      const v = e.target.value === '' ? 0:Number.parseInt(e.target.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1'));
+      if(v != NaN){
+        e.target.value = v;
+      } else {
+        e.target.value = 0;
+      }
     },
     addKeyword(){
       if(this.keyword_input === '') {

@@ -34,7 +34,7 @@
             </div>
           </div>
           <!--   ------    -->
-          <div class="item" v-for="ad in adList" @click="goToAd(ad.ad);">
+          <div class="item" v-for="ad in adList" @click="goToAd(ad);">
             <p class="title">{{ ad.title === '' ? '광고명이 미정입니다.':ad.title }}</p>
             <div class="desc">
               <p class="val">클릭 수 : {{ addComma(1000) }}</p>
@@ -54,9 +54,7 @@
                   <span class="date">{{ getDateFormat(ad.regdate, 'YYYY.MM.DD') }}</span>
                 </div>
                 <div class="wrap">
-                  <span class="status ready">광고 세팅 중</span>
-                  <span class="status show">광고 진행 중</span>
-                  <span class="status stop">광고 중지</span>
+                  <span class="status ready" :class="getStatus(ad.state, ad.state_error).class">{{ getStatus(ad.state, ad.state_error).name }}</span>
                 </div>
               </div>
             </div>
@@ -122,8 +120,31 @@ export default {
     setFilter(value){
       this.filter_name = value;
     },
-    goToAd(key){
-      this.$router.push({ name: 'Step1', query: {key:key} });
+    goToAd(ad){
+      if(ad.state === 4 || ad.state === 0){ // 수정 이동
+        this.$router.push({ name: 'Step1', query: {key:ad.ad} });
+      } else { // 상세 이동
+        this.$router.push({ name: 'AdvertiseDetail', query: {key:ad.ad} });
+      }
+    },
+    getStatus(status, error){
+      // 0: 임시저장(광고셋팅중), 1: 저장완료(검수중), 2: 검수완료(진행중), 3: 광고중지 (STATE_ERROR 수정), 4: 광고반려
+      let className = '';
+      let name = '';
+      switch (status){
+        case 0: className = 'ready'; name = '광고 셋팅 중';
+          break;
+        case 1: className = 'ready'; name = '광고 검수 중';
+          break;
+        case 2: className = 'show'; name = '광고 진행 중';
+          break;
+        case 3: className = 'stop'; name = '광고 중지 (' + error + ')';
+          break;
+        case 4: className = 'stop'; name = '광고 반려';
+          break;
+      }
+
+      return {class:className, name:name};
     }
   },
   created() {

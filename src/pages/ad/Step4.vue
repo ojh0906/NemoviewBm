@@ -134,10 +134,6 @@ export default {
         }
       }
     },
-    getRectTop(el){
-      var rect = el.getBoundingClientRect();
-      return rect.top;
-    },
     goToMyPage(){
       if(confirm('임시저장하지 않은 내용은 적용되지 않습니다.\n진행하시겠습니까?')){
         this.$router.push({ name: 'Mypage', query: {} });
@@ -205,7 +201,6 @@ export default {
       });
     },
     checkNum(e){
-
       const v = e.target.value === '' ? 0:Number.parseInt(e.target.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1'));
       if(v != NaN){
         e.target.value = v;
