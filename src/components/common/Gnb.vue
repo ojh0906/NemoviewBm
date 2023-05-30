@@ -1,5 +1,5 @@
 <template>
-  <div id="header-container">
+  <div id="header-container" @click="clickSelect">
     <div class="wrapper">
       <div class="logo-wrap">
         <img src="/image/common/logo.png" @click="goHome()">
@@ -33,15 +33,15 @@
         <!-- 프로필 팝업 화면 -->
         <div class="alarm-box profile-box" :class="this.onProfileBox ? 'onAlm' : 'offAlm'">
           <div>
-            <p class="name">{{ this.getLoginMember != null ? this.getLoginMember.name :'' }}</p>
-            <p class="email">{{ this.getLoginMember != null ? this.getLoginMember.email :'' }}</p>
+            <p class="name">{{ this.getLoginMember != null ? this.getLoginMember.name : '' }}</p>
+            <p class="email">{{ this.getLoginMember != null ? this.getLoginMember.email : '' }}</p>
           </div>
           <div>
             <router-link :to="{ name: 'AccountSetting', query: {} }" @click="this.onProfileBox = !this.onProfileBox">
               계정 관리
             </router-link>
           </div>
-          <div @click="logout(); this.onProfileBox = !this.onProfileBox" style="cursor: pointer" >로그아웃</div>
+          <div @click="logout(); this.onProfileBox = !this.onProfileBox" style="cursor: pointer">로그아웃</div>
         </div>
       </div>
     </div>
@@ -76,13 +76,25 @@ export default {
     },
     logout() {
       this.$store
-          .dispatch("logout", {})
-          .then(() => {this.$router.push('/')})
-          .catch(({ message }) => alert(message))
+        .dispatch("logout", {})
+        .then(() => { this.$router.push('/') })
+        .catch(({ message }) => alert(message))
     },
-    goHome(){
+    goHome() {
       this.$router.push('/');
-    }
+    },
+    clickSelect(event) {
+      if (event.target.classList.contains('profile') || event.target.classList.contains('alarm-box')) {
+        this.onAlarmBox = false;
+        this.onProfileBox = true;
+      } else if (event.target.classList.contains('alarm') || event.target.classList.contains('alarm-box')) {
+        this.onProfileBox = false;
+        this.onAlarmBox = true;
+      } else {
+        this.onProfileBox = false;
+        this.onAlarmBox = false;
+      }
+    },
   },
   created() {
   }

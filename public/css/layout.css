@@ -483,7 +483,7 @@
 }
 #register .register-box .select-container .select-list{
     position: absolute;
-    left: 215px;
+    /* left: 215px; */
     top: 56px;
     background: #FFFFFF;
     border: 0.5px solid #DDDDDD;
@@ -715,6 +715,7 @@
 #mypage .content-container .ad-container .add-new .wrap{
     text-align: center;
     color: #fff;
+    padding: 65px 0;
 }
 #mypage .content-container .ad-container .add-new .wrap i{
     font-size: 30px;
@@ -1029,7 +1030,8 @@
     border: 0.5px solid #DDDDDD;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.07);
     border-radius: 10px;
-    width: 600px;
+    /* width: 600px; */
+    width: calc(100% - 215px);
     overflow: hidden;
     z-index: 100;
 }
