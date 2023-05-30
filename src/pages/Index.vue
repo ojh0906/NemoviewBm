@@ -99,20 +99,6 @@ export default {
           .catch(({ message }) => alert(message))
       return true
     },
-    getCategoryList() {
-      let param = {
-        state: '1', //true
-      }
-      http2.post("/main/category/list", param).then((response) => {
-        if (response.data.CODE == 200) {
-          console.log(response);
-        } else {
-          console.log('aa');
-        }
-      }).catch((error) => {
-        console.log(error);
-      });
-    },
   },
   created() {
     if(this.getLoginMember != null){

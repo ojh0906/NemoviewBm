@@ -3,8 +3,8 @@
     <div class="step-container">
       <div class="left-container">
         <div class="menu-wrap">
-          <router-link :to="{ name: 'Mypage', query: {} }" class="menu">마이페이지</router-link>
-          <router-link :to="{ name: '', query: {} }" class="menu">임시 저장</router-link>
+          <a class="menu" @click="goToMyPage();">마이페이지</a>
+          <a class="menu" @click="saveAdTemp(false);">임시 저장</a>
         </div>
         <div class="title-wrap step3-title-wrap">
           <p>홍보할 <strong>타겟의 키워드</strong>를 소개해 주세요!</p>
@@ -19,19 +19,18 @@
               <div class="keyword-box">
                 <div>
                   <div class="tag-box">
-                    <span class="color-tag tag">원룸거주</span>
-                    <span class="color-tag2 tag">주거 전체</span>
-                    <span class="color-tag3 tag">원룸거주</span>
+                    <span class="tag" :class="k.mandatory ? 'color-tag3':'color-tag'" v-for="k in commonKeywordList" @click="k.mandatory = true;">{{ k.name }}</span>
+                    <span class="tag" :class="k.mandatory ? 'color-tag3':'color-tag2'" v-for="k in keywordList" @click="k.mandatory = true;">{{ k.name }}</span>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="add-btn-wrap">
+<!--          <div class="add-btn-wrap">
             <div class="add-btn">
               추가하기
             </div>
-          </div>
+          </div>-->
         </div>
 
         <!-- 선택 -->
@@ -47,9 +46,8 @@
               <div class="keyword-box">
                 <div>
                   <div class="tag-box">
-                    <span class="color-tag tag">원룸거주 <span class="close">X</span></span>
-                    <span class="color-tag2 tag">주거 전체 <span class="close">X</span></span>
-                    <span class="color-tag3 tag">원룸거주 <span class="close">X</span></span>
+                    <span class="color-tag3 tag" v-for="(k,i) in commonKeywordList.filter(item => item.mandatory)">{{ k.name }}<span class="close" @click="k.mandatory = false;">X</span></span>
+                    <span class="color-tag3 tag" v-for="(k,i) in keywordList.filter(item => item.mandatory)">{{ k.name }}<span class="close" @click="k.mandatory = false;">X</span></span>
                   </div>
                 </div>
               </div>
@@ -75,19 +73,18 @@
           <p class="page-title">해당 키워드를 보유한 <span class="colored">회원 수</span></p>
           <p class="peo">
             <span>약 </span>
-            10,000
+            0,000
             <span> 명</span>
           </p>
           <p class="txt">이렇게 <strong>광고 돼요!</strong></p>
           <p class="keyword-title">반드시 포함되어야할 키워드<img class="q-mark" src="/image/ad/q-mark.png" /></p>
           <div class="keyword-box">
-            <span class="color-tag tag">성별 전체 <span class="close">X</span></span>
-            <span class="tag">남 <span class="close">X</span></span>
-            <span class="color-tag2 tag">주거 전체 <span class="close">X</span></span>
+            <span class="color-tag3 tag" v-for="(k,i) in commonKeywordList.filter(item => item.mandatory)">{{ k.name }}<span class="close" @click="k.mandatory = false;">X</span></span>
+            <span class="color-tag3 tag" v-for="(k,i) in keywordList.filter(item => item.mandatory)">{{ k.name }}<span class="close" @click="k.mandatory = false;">X</span></span>
           </div>
           <div class="edit-wrap">
-            <span class="del">이전</span>
-            <span class="modify">다음</span>
+            <span class="del" @click="goToPrevStep()">이전</span>
+            <span class="modify" @click="saveAdTemp(true)">다음</span>
           </div>
         </div>
       </div>
@@ -96,13 +93,18 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex"
+import { http,http2 } from '@/services';
+
 export default {
   components: {
   },
   props: [''],
   data() {
     return {
-      keywordOpenYn: false,
+      ad:0,
+      commonKeywordList:[],
+      keywordList:[],
     }
   },
   watch: {
@@ -126,11 +128,58 @@ export default {
       var rect = el.getBoundingClientRect();
       return rect.top;
     },
+    goToMyPage(){
+      if(confirm('임시저장하지 않은 내용은 적용되지 않습니다.\n진행하시겠습니까?')){
+        this.$router.push({ name: 'Mypage', query: {} });
+      }
+    },
+    goToPrevStep(){
+      if(confirm('임시저장하지 않은 내용은 적용되지 않습니다.\n진행하시겠습니까?')){
+        this.$router.push({ name: 'Step2', query: {key:this.ad} });
+      }
+    },
+    saveAdTemp(next){
+      let param = {
+        commonKeywordList:this.commonKeywordList,
+        keywordList:this.keywordList,
+      }
+      http.put("/ad/"+this.ad+"/keyword/mandatory", param).then((response) => {
+        if (response.data.CODE == 200) {
+          alert('저장되었습니다.');
+          if(next){
+            this.$router.push({ name: 'Step4', query: {key:this.ad} });
+          } else { // 임시저장
+            this.getAd();
+          }
+        } else {
+          alert('시스템문제 발생. 관리자에게 문의하세요.');
+        }
+      }).catch((error) => {
+        console.log(error);
+      });
+    },
+    getAd(){
+      http.get("/ad/"+this.ad).then((response) => {
+        if (response.data.CODE == 200) {
+          this.commonKeywordList = response.data.BODY.commonKeywordList;
+          this.keywordList = response.data.BODY.keywordList;
+        }
+      }).catch((error) => {
+        console.log(error);
+      });
+    },
   },
   created() {
   },
   mounted() {
     this.fixedMenu();
+    if(this.$route.query.key != null){
+      this.ad = this.$route.query.key;
+      this.getAd();
+    } else {
+      alert('잘못된 접근입니다.');
+      this.$router.push({ name: 'Mypage', query: {} });
+    }
   }
 }
 </script>

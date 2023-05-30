@@ -2,7 +2,7 @@
   <div id="header-container" @click="clickSelect">
     <div class="wrapper">
       <div class="logo-wrap">
-        <img src="/image/common/logo.png" @click="goHome()">
+        <img src="/image/common/logo.png" @click="this.goToPage('index')">
       </div>
       <div class="menu-container">
         <a class="menu" href="https://sour-potato-420.notion.site/7eed62d4e1b641d58eaa797fed9f3c15" target="_blank">광고
@@ -79,9 +79,6 @@ export default {
         .dispatch("logout", {})
         .then(() => { this.$router.push('/') })
         .catch(({ message }) => alert(message))
-    },
-    goHome() {
-      this.$router.push('/');
     },
     clickSelect(event) {
       if (event.target.classList.contains('profile') || event.target.classList.contains('alarm-box')) {
