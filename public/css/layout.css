@@ -653,7 +653,15 @@
 #mypage .content-container .filter-wrap  .setting-wrap{
     display: inline-flex;
     margin-left: 10px;
+    margin-top: 0;
 }
+
+#mypage .content-container .ad-detail-container .filter-wrap .setting-wrap {
+    display: inline-flex;
+    margin-left: 0;
+    margin-top: 20px;
+}
+
 #mypage .content-container .filter-wrap  .setting-wrap .input-date-wrap{
     position: relative;
 }
