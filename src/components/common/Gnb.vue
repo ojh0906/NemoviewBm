@@ -24,9 +24,9 @@
         <img class="alarm" @click="onAlarmPopup" src="/image/common/alarm.png" />
         <!-- 알림 핍압 화면 -->
         <div class="alarm-box" :class="this.onAlarmBox ? 'onAlm' : 'offAlm'">
-          <div v-for="v in 5">
-            <span>포인트를 모두 소진하셨습니다.</span><span class="new">NEW</span>
-            <p class="date">2023.02.21</p>
+          <div v-for="info in this.getLoginMember.infoList">
+            <span>{{ info.content }}</span><span class="new" v-if="getNew(info.regdate)">NEW</span>
+            <p class="date">{{ getDateFormat(info.regdate,'YYYY.MM.DD') }}</p>
           </div>
         </div>
 
@@ -50,6 +50,7 @@
 
 <script>
 import { mapGetters } from "vuex"
+import dayjs from "dayjs";
 
 export default {
   computed: {
@@ -91,6 +92,15 @@ export default {
         this.onProfileBox = false;
         this.onAlarmBox = false;
       }
+    },
+    getNew(date) {
+      const now = dayjs(new Date());
+      const dateTime = dayjs(date);
+      const h = now.diff(dateTime.add(-9, 'h'), 'h');
+      if (h < 24) {
+        return true;
+      }
+      return false;
     },
   },
   created() {
