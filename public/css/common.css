@@ -1,6 +1,8 @@
 #container {
   width: 100%;
   min-width: 1300px;
+  height: 100%;
+  min-height: 100vh;
 }
 
 /* Header */
@@ -112,7 +114,7 @@
   font-size: 8px;
   line-height: 17px;
   color: #ffffff;
-  background: #FFDE2F;
+  background: #ffde2f;
   border-radius: 3px;
   display: inline-flex;
   width: auto;
@@ -137,7 +139,6 @@
   background-size: contain !important;
   cursor: pointer;
 }
-
 
 /* 알림 */
 #header-container .wrapper .profile-box > div:nth-child(1) {
@@ -173,6 +174,7 @@
 #footer-container {
   background: #444444;
   padding: 30px 0;
+  width: 100%;
 }
 #footer-container .wrapper {
   width: 90%;
@@ -208,7 +210,7 @@
   color: #fff;
 }
 
-.modal-background{
+.modal-background {
   position: fixed;
   height: 100%;
   width: 100%;
@@ -254,6 +256,3 @@
     opacity: 1;
   }
 }
-
-
-
