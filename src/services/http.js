@@ -3,9 +3,9 @@ import store from "../store";
 import router from "../_router";
 
 export const http = axios.create({
-   // baseURL: "https://bmapi.nemoview.com",
+   baseURL: "https://bmapi.nemoview.com",
   // baseURL: "http://52.79.71.82:8888",
-  baseURL: "http://localhost:10001",
+  // baseURL: "http://localhost:10001",
   headers: { "content-type": "application/json" },
 });
 
