@@ -7,6 +7,9 @@
         <p class="sub-title">원하는 제휴 서비스가 있으시다면 gajahcompany@gmail.com으로 문의주세요.</p>
         <div class="gray-box" v-for="service in this.serviceList">
           <div v-html="service.content"></div>
+          <div class="img-wrap" v-if="service.image != '[]'">
+            <img :src="getImagePath(service.image, 0)">
+          </div>
           <div class="link-box" @click="goToLink(service.link)">{{ service.title }}</div>
         </div>
       </div>
@@ -17,7 +20,7 @@
 
 <script>
 import Nav from '/src/components/mypage/Nav.vue';
-import { http,http2 } from '@/services';
+import { http, http2 } from '@/services';
 
 export default {
   components: {
@@ -26,7 +29,7 @@ export default {
   props: [''],
   data() {
     return {
-      serviceList:[],
+      serviceList: [],
     }
   },
   watch: {
@@ -34,7 +37,7 @@ export default {
   },
   methods: {
     getServiceList() {
-      http.post("/service/list",{}).then((response) => {
+      http.post("/service/list", {}).then((response) => {
         if (response.data.CODE == 200) {
           this.serviceList = response.data.BODY.LIST;
         }
@@ -42,7 +45,7 @@ export default {
         console.log(error);
       });
     },
-    goToLink(link){
+    goToLink(link) {
       location.href = link;
     }
   },
