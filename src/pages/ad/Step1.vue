@@ -15,8 +15,8 @@
           <input type="text" name="title" v-model="this.title" />
           <div class="tab-container">
             <span class="label">Q. 무엇을 홍보 하시겠나요?</span>
-            <span class="tab" :class="this.type === 1 ? 'active' : ''" @click="this.type = 1;">제품</span>
-            <span class="tab" :class="this.type === 2 ? 'active' : ''" @click="this.type = 2;">서비스</span>
+            <span class="tab" :class="this.type === 1 ? 'active' : ''" @click="this.type = 1; this.category = 0;">제품</span>
+            <span class="tab" :class="this.type === 2 ? 'active' : ''" @click="this.type = 2; this.category = 0;">서비스</span>
           </div>
           <!--   제품   -->
           <div class="input-container">
@@ -366,7 +366,7 @@ export default {
           if (this.type === 1) { // 제품
             const filterItem = this.categoryList.filter(item => item.category === this.category);
             if (filterItem.length === 0) {
-              this.categoryName = 'error';
+              this.categoryName = '';
             } else {
               this.categoryName = filterItem[0].name;
             }
