@@ -35,7 +35,7 @@ export default {
   },
   methods: {
     getServiceList() {
-      http.post("/service/list", {}).then((response) => {
+      http.post("/service/list", {state:1}).then((response) => {
         if (response.data.CODE == 200) {
           this.serviceList = response.data.BODY.LIST;
         }

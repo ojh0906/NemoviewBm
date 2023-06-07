@@ -201,6 +201,7 @@ export default {
       }
       if (this.checkEmail(this.email)) {
         alert('이메일을 정확히 입력해주세요');
+        return;
       }
       let param = {
         email: this.email, //true
@@ -271,7 +272,7 @@ export default {
       if (!this.terms1 || !this.terms2 || !this.terms3) { alert('약관에 동의해주세요.'); return; }
       if (!this.emailCheck || !this.codeCheck) { alert('이메일 인증을 해주세요.'); return; }
       if (this.password !== this.password2) { alert('비밀번호가 맞지 않습니다.'); return; }
-      if (!this.checkPw(this.password)) { return alert('비밀번호는 영문+숫자+특수문자 8~20자리입니다.'); }
+      if (!this.checkPw(this.password)) { alert('비밀번호는 영문+숫자+특수문자 8~20자리입니다.'); return;}
       if (this.email === '' || this.password === '' || this.password2 === '' || this.name === '' || this.phone === '' || this.company === '') {
         alert('필수값을 입력해주세요.');
         return;
