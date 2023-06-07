@@ -272,7 +272,7 @@ export default {
           return;
         }
         if (this.type === 1) { // 제품일시
-          if (this.price === 0 || this.discount === 0) {
+          if (this.price === 0) {
             alert('필수값을 입력해주세요.');
             return;
           }
