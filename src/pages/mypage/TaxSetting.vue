@@ -6,10 +6,10 @@
         <span class="page-title">설정</span>
         <span class="submit" @click="modifyMember">저장</span>
         <div class="menu-wrap">
-          <router-link :to="{ name: 'ProfileModify', query: {} }" class="menu" >프로필 관리</router-link>
-          <router-link :to="{ name: 'TaxSetting', query: {} }" class="menu active" >세금계산서 관리</router-link>
-          <router-link :to="{ name: 'AccountSetting', query: {} }" class="menu" >계정 관리</router-link>
-          <router-link :to="{ name: 'AlramSetting', query: {} }" class="menu" >알림 관리</router-link>
+          <router-link :to="{ name: 'ProfileModify', query: {} }" class="menu">프로필 관리</router-link>
+          <router-link :to="{ name: 'TaxSetting', query: {} }" class="menu active">세금계산서 관리</router-link>
+          <router-link :to="{ name: 'AccountSetting', query: {} }" class="menu">계정 관리</router-link>
+          <router-link :to="{ name: 'AlramSetting', query: {} }" class="menu">알림 관리</router-link>
         </div>
         <div class="modify-box">
           <div class="line">
@@ -28,7 +28,7 @@
             <div class="label">
               세금계산서 발급 이메일<span class="required">*</span>
             </div>
-            <input type="text" v-model="this.tax_email">
+            <input type="email" v-model="this.tax_email">
           </div>
           <div class="line">
             <div class="label">
@@ -37,7 +37,8 @@
             <p class="file-name" v-if="this.tax_file_new.length === 0">{{ getFileName() }}</p>
             <p class="file-name" v-else>{{ this.tax_file_new[0].name }}</p>
             <span class="upload" @click="addFiles()">파일 첨부</span>
-            <input type="file" ref="tax_file_new" v-on:change="handleFilesUpload()" class="hidden" style="display: none;"/>
+            <input type="file" ref="tax_file_new" v-on:change="handleFilesUpload()" class="hidden"
+              style="display: none;" />
           </div>
         </div>
       </div>
@@ -49,7 +50,7 @@
 <script>
 import Nav from '/src/components/mypage/Nav.vue';
 import { mapGetters } from "vuex"
-import { http,http2 } from '@/services';
+import { http, http2 } from '@/services';
 
 export default {
   computed: {
@@ -61,11 +62,11 @@ export default {
   props: [''],
   data() {
     return {
-      tax_name:'',
-      tax_phone:'',
-      tax_email:'',
-      tax_file:'',
-      tax_file_new:[],
+      tax_name: '',
+      tax_phone: '',
+      tax_email: '',
+      tax_file: '',
+      tax_file_new: [],
     }
   },
   watch: {
@@ -76,16 +77,19 @@ export default {
       http.get("/member/" + this.getLoginMember.member).then((response) => {
         if (response.data.CODE == 200) {
           this.$store
-              .dispatch("memberUpdate", { member: response.data.BODY })
-              .then(() => { this.$forceUpdate(); })
-              .catch(({ message }) => alert(message));
+            .dispatch("memberUpdate", { member: response.data.BODY })
+            .then(() => { this.$forceUpdate(); })
+            .catch(({ message }) => alert(message));
         }
       }).catch((error) => {
         console.log(error);
       });
     },
-    modifyMember(){
-      if(this.tax_name === '' || this.tax_phone === '' || this.tax_email === '' || (this.tax_file === '' && this.tax_file_new.length === 0)){ alert('필수값을 입력해주세요.'); return;}
+    modifyMember() {
+      if (this.tax_name === '' || this.tax_phone === '' || this.tax_email === '' || (this.tax_file === '' && this.tax_file_new.length === 0)) { alert('필수값을 입력해주세요.'); return; }
+      if (this.checkEmail(this.tax_email)) {
+        alert('이메일을 정확히 입력해주세요');
+      }
 
       let formData = new FormData();
       formData.append("tax_name", this.tax_name);
@@ -95,7 +99,7 @@ export default {
       for (var i = 0; i < this.tax_file_new.length; i++) {
         formData.append('tax_file_new', this.tax_file_new[i]);
       }
-      http.put("/member/"+this.getLoginMember.member+"/tax", formData, {
+      http.put("/member/" + this.getLoginMember.member + "/tax", formData, {
         headers: {
           "Content-Type": "multipart/form-data"
         }
@@ -110,8 +114,8 @@ export default {
         console.log(error);
       });
     },
-    getFileName(){
-      return this.tax_file === '' ? '-': JSON.parse(this.tax_file)[0].name;
+    getFileName() {
+      return this.tax_file === '' ? '-' : JSON.parse(this.tax_file)[0].name;
     },
     addFiles() {
       this.$refs.tax_file_new.click();
@@ -129,13 +133,25 @@ export default {
         this.tax_file_new.push(uploadedFiles[i]);
       }
     },
+    checkEmail(str) {
+      if (str == '') {
+        return true;
+      }
+      var reg_email = /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
+      if (!reg_email.test(str)) {
+        return true;
+      }
+      else {
+        return false;
+      }
+    },
   },
   created() {
-    if(this.getLoginMember != null){
-      if(this.getLoginMember.tax_name != null) this.tax_name = this.getLoginMember.tax_name;
-      if(this.getLoginMember.tax_phone != null) this.tax_phone = this.getLoginMember.tax_phone;
-      if(this.getLoginMember.tax_email != null) this.tax_email = this.getLoginMember.tax_email;
-      if(this.getLoginMember.tax_file != null) this.tax_file = this.getLoginMember.tax_file;
+    if (this.getLoginMember != null) {
+      if (this.getLoginMember.tax_name != null) this.tax_name = this.getLoginMember.tax_name;
+      if (this.getLoginMember.tax_phone != null) this.tax_phone = this.getLoginMember.tax_phone;
+      if (this.getLoginMember.tax_email != null) this.tax_email = this.getLoginMember.tax_email;
+      if (this.getLoginMember.tax_file != null) this.tax_file = this.getLoginMember.tax_file;
     }
   }
 }
