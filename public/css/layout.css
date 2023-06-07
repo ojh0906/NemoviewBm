@@ -1970,15 +1970,19 @@
 }
 
 #mypage .content-container .service-page .gray-box {
-  /* background: #fbfbfb;
   border: 0.5px solid #cccccc;
-  border-radius: 10px; */
+  border-radius: 10px;
   width: 1000px;
-  /* padding: 35px 45px; */
+  padding: 35px 45px;
   margin-top: 35px;
+  background-color: #fbfbfb;
+  background-size: cover !important;
+  background-position: center !important;
+  height: 100px;
 }
-#mypage .content-container .service-page .gray-box img {
+#mypage .content-container .service-page .gray-box .bg-img {
   width: 100%;
+  height: auto;
   border-radius: 10px;
 }
 #mypage .content-container .service-page .gray-box .link-box {
