@@ -234,6 +234,8 @@ export default {
           this.state = response.data.BODY.state;
           if(this.state === 2){
             this.switchYn = true;
+          } else {
+            this.switchYn = false;
           }
           if(response.data.BODY.commonKeywordList != null){
             this.commonKeywordList = response.data.BODY.commonKeywordList;
