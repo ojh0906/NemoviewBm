@@ -602,6 +602,10 @@
   color: #333333;
   margin-left: 20px;
 }
+#mypage .content-container .mypage-top .refund {
+    margin-left: 7px;
+}
+
 #mypage .content-container .mypage-content {
   padding: 0 50px;
 }
