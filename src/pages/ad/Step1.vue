@@ -278,7 +278,7 @@ export default {
           }
         }
         if (!this.image_support) {
-          if (this.images_new.length === 0) {
+          if (this.images_new.length === 0 && this.images_view.length === 0) {
             alert('이미지 업로드는 필수입니다.\n이미지 제작 지원을 원하시면 상단 체크박스를 클릭해주세요.');
             return;
           }
