@@ -12,7 +12,7 @@
           <div class="switch-wrap">
             <img :src="switchYn ? '/image/mypage/switch-on.png':'/image/mypage/switch-off.png'" @click="setAdState">
           </div>
-          <p class="name">나이키 신발 광고 그룹 1</p>
+          <p class="name">{{ this.title }}</p>
           <div class="filter-wrap">
             <span class="filter" :class="this.filter_name === 'all' ? 'active':''" @click="setFilter('all');">전체기간</span>
             <span class="filter" :class="this.filter_name === 'today' ? 'active':''" @click="setFilter('today');">오늘</span>
