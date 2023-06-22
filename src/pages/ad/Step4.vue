@@ -30,7 +30,7 @@
             <p class="page-title">해당 키워드를 보유한 <span class="colored">회원 수</span></p>
             <p class="peo">
               <span>약 </span>
-              0,000
+              {{ addComma(this.memberCnt) }}
               <span> 명</span>
             </p>
             <p class="txt">이렇게 <strong>광고 되고 있어요!</strong></p>
@@ -106,6 +106,7 @@ export default {
       images_view:[],
       click_price:0,
       day_price:0,
+      memberCnt:0,
     }
   },
   watch: {
@@ -183,6 +184,16 @@ export default {
           if(this.keywords != null) this.keywordsList = JSON.parse(this.keywords);
           this.images = response.data.BODY.images;
           this.images_view = JSON.parse(this.images);
+          this.getCntMemberMatchKeyword();
+        }
+      }).catch((error) => {
+        console.log(error);
+      });
+    },
+    getCntMemberMatchKeyword(){
+      http.get("/ad/"+this.ad+"/cnt/match").then((response) => {
+        if (response.data.CODE == 200) {
+          this.memberCnt = response.data.BODY;
         }
       }).catch((error) => {
         console.log(error);

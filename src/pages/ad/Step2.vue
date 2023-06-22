@@ -52,7 +52,7 @@
           <p class="page-title">해당 키워드를 보유한 <span class="colored">회원 수</span></p>
           <p class="peo">
             <span>약 </span>
-            0,000
+            {{ addComma(this.memberCnt) }}
             <span> 명</span>
           </p>
           <p class="txt">이렇게 <strong>광고 돼요!</strong></p>
@@ -104,6 +104,7 @@ export default {
         {name:'', keywords:[{keyword: 0, name: ''}]}
       ],
       commonHeaderList:[],
+      memberCnt:0,
     }
   },
   watch: {
@@ -236,6 +237,16 @@ export default {
           this.commonKeywordList = response.data.BODY.commonKeywordList;
           this.keywordList = response.data.BODY.keywordList;
           this.getCommonHeaderList();
+          this.getCntMemberMatchKeyword();
+        }
+      }).catch((error) => {
+        console.log(error);
+      });
+    },
+    getCntMemberMatchKeyword(){
+      http.get("/ad/"+this.ad+"/cnt/match").then((response) => {
+        if (response.data.CODE == 200) {
+          this.memberCnt = response.data.BODY;
         }
       }).catch((error) => {
         console.log(error);
