@@ -12,7 +12,7 @@
         </div>
         <div id="step1">
           <p class="title-label">광고를 구분할 광고명을 입력해 주세요 :)</p>
-          <input type="text" name="title" v-model="this.title" />
+          <input type="text" name="title" v-model="this.title" maxlength="30"/>
           <div class="tab-container">
             <span class="label">Q. 무엇을 홍보 하시겠나요?</span>
             <span class="tab" :class="this.type === 1 ? 'active' : ''" @click="this.type = 1; this.category = 0;">제품</span>
