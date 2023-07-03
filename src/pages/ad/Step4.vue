@@ -63,7 +63,7 @@
               </div>
             </div>
             <div class="edit-wrap">
-              <span class="del" @click="removeAd">삭제</span>
+              <span class="del" @click="goToPrevStep()">이전</span>
               <span class="modify" @click="this.background = true; saveAdTemp(true)">최종제출</span>
             </div>
           </div>
@@ -142,7 +142,7 @@ export default {
     },
     goToPrevStep(){
       if(confirm('임시저장하지 않은 내용은 적용되지 않습니다.\n진행하시겠습니까?')){
-        this.$router.push({ name: 'Step2', query: {key:this.ad} });
+        this.$router.push({ name: 'Step3', query: {key:this.ad} });
       }
     },
     saveAdTemp(next){
