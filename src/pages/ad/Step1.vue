@@ -42,7 +42,7 @@
             <p class="label">3. {{ this.type === 1 ? '제품명' : '서비스 소개' }} <span class="tip">*50자 이내 권장</span></p>
             <textarea name="product-name" maxlength="50" v-model="this.name"></textarea>
             <div class="numchk">
-              <span>0 / 50</span>
+              <span>{{ this.name.length }} / 50</span>
             </div>
             <p class="label" v-if="this.type === 1">4. 제품 가격 <span class="tip">할인율이 큰 제품은 네모뷰 특가상품 영역에 소개됩니다.</span></p>
             <div class="price-wrap" v-if="this.type === 1">
@@ -92,7 +92,7 @@
                 </div>
                 <div class="info-wrap">
                   <p class="info">
-                    *사이즈:0000*000 (px)<br>
+                    *사이즈:240*150 (px)<br>
                     *파일 형식: jepg, png ..
                   </p>
                 </div>
