@@ -2544,6 +2544,7 @@
   padding: 40px 30px 33px;
   box-sizing: border-box;
   max-width: 400px;
+  position: relative;
 }
 #ad-setting .step-container .right-container .preview-box .img-wrap {
   border-radius: 10px;

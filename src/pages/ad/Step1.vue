@@ -236,7 +236,7 @@ export default {
         else {
           fixedContainer.classList.remove("is-fixed");
         }
-        if (window.scrollY >= 1200) {
+        if (window.scrollY >= 1400) {
           fixedContainer.classList.add("is-stop");
           // fixedContainer.style.top = getRectTop(footer)+'px';
         }
