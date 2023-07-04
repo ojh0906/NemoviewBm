@@ -92,7 +92,7 @@
                 </div>
                 <div class="info-wrap">
                   <p class="info">
-                    *사이즈:240*150 (px)<br>
+                    *노출 사이즈: 240px*150px (8:5 비율)<br>
                     *파일 형식: jepg, png ..
                   </p>
                 </div>
