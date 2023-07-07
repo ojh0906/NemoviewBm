@@ -1563,6 +1563,7 @@
   .keyword-table
   .line {
   display: flex;
+  flex-wrap: wrap;
   gap: 5px;
   margin-bottom: 8px;
 }
@@ -1581,9 +1582,11 @@
   line-height: 23px;
   color: #333333;
   text-align: center;
-  width: 95px;
-  padding: 4px;
+  /* width: 95px;
+  padding: 4px; */
   box-sizing: border-box;
+  width: auto;
+  padding: 4px 10px;
 }
 #mypage
   .content-container
@@ -2383,6 +2386,7 @@
 }
 #ad-setting #step1 .input-container .keyword-list {
   display: flex;
+  flex-wrap: wrap;
   gap: 5px;
   margin-top: 5px;
 }
@@ -2743,6 +2747,7 @@
   border: 1px solid #dddddd;
   border-radius: 12px;
   margin-top: 40px;
+  overflow-y: scroll;
 }
 #ad-setting .step-container .left-container #step2 .keyword-hr {
   border-top: 1px solid #eeeeee;

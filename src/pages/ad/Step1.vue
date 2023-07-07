@@ -12,7 +12,7 @@
         </div>
         <div id="step1">
           <p class="title-label">광고를 구분할 광고명을 입력해 주세요 :)</p>
-          <input type="text" name="title" v-model="this.title" maxlength="30"/>
+          <input type="text" name="title" v-model="this.title" maxlength="30" />
           <div class="tab-container">
             <span class="label">Q. 무엇을 홍보 하시겠나요?</span>
             <span class="tab" :class="this.type === 1 ? 'active' : ''" @click="this.type = 1; this.category = 0;">제품</span>
@@ -39,10 +39,10 @@
             </div>
             <p class="label">2. {{ this.type === 1 ? '제품 브랜드' : '서비스명' }}</p>
             <input type="text" name="brand" v-model="this.brand" />
-            <p class="label">3. {{ this.type === 1 ? '제품명' : '서비스 소개' }} <span class="tip">*50자 이내 권장</span></p>
-            <textarea name="product-name" maxlength="50" v-model="this.name"></textarea>
+            <p class="label">3. {{ this.type === 1 ? '제품명' : '서비스 소개' }} <span class="tip">*30자 이내 권장</span></p>
+            <textarea name="product-name" maxlength="30" v-model="this.name"></textarea>
             <div class="numchk">
-              <span>{{ this.name.length }} / 50</span>
+              <span>{{ this.name.length }} / 30</span>
             </div>
             <p class="label" v-if="this.type === 1">4. 제품 가격 <span class="tip">할인율이 큰 제품은 네모뷰 특가상품 영역에 소개됩니다.</span></p>
             <div class="price-wrap" v-if="this.type === 1">
@@ -61,12 +61,13 @@
               </div>
             </div>
             <p class="label">{{ this.type === 1 ? '5. 제품 링크' : '4. 연결 링크' }} <span class="tip">제품 가격의 ‘최종 판매 가격’의 가격과 동일한
-                제품
-                링크를 입력해 주세요!</span></p>
+                제품 링크를 입력해 주세요!</span></p>
             <input type="text" name="link" v-model="this.link" />
             <span class="chk-btn" @click="goToLink(this.link)">연결 확인</span>
             <p class="sub">* 구매를 확인할 수 있는 링크를 첨부해 보세요!</p>
-            <p class="label">{{ this.type === 1 ? '6. 제품' : '5. 서비스' }} 관련 키워드 <span class="tip2">(선택)</span></p>
+            <p class="label">{{ this.type === 1 ? '6. 제품' : '5. 서비스' }} 관련 키워드
+              <span class="tip2">{{ this.type === 1 ? '(선택)' : '(선택, 3개까지 가능)' }}</span>
+            </p>
             <input type="text" name="link" v-model="this.keyword_input" @keypress.enter="addKeyword" />
             <span class="chk-btn" @click="addKeyword">추가</span>
             <div class="keyword-list">
@@ -399,8 +400,8 @@ export default {
         console.log(error);
       });
     },
-    getCntMemberMatchKeyword(){
-      http.get("/ad/"+this.ad+"/cnt/match").then((response) => {
+    getCntMemberMatchKeyword() {
+      http.get("/ad/" + this.ad + "/cnt/match").then((response) => {
         if (response.data.CODE == 200) {
           this.memberCnt = response.data.BODY;
         }
@@ -421,10 +422,18 @@ export default {
         alert('키워드를 입력하세요.');
         return;
       }
-      const keyword = {
-        type: 3, key: 0, value: this.keyword_input
+
+
+      if (this.type == 2 && this.keywordsList.length >= 3) {
+        return alert('키워드는 3개까지 가능합니다.')
+      } else {
+        const keyword = {
+          type: 3, key: 0, value: this.keyword_input
+        }
+
+        this.keywordsList.push(keyword);
       }
-      this.keywordsList.push(keyword);
+
       this.keyword_input = '';
     },
     removeKeyword(i) {
