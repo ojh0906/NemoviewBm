@@ -199,7 +199,7 @@ export default {
           header.keywords.forEach(keyword =>{
             const filterList = this.commonKeywordList.filter(item => item.common_keyword == keyword.common_keyword);
             if(filterList.length !== 0){
-              keyword.match = true;
+              this.checkKeyword(1,keyword);
             }
           });
         }
@@ -213,16 +213,16 @@ export default {
       }
       http2.post("/bm/classification/list", param).then((response) => {
         if (response.data.CODE == 200) {
-          console.log(response)
           this.classificationList = response.data.BODY.LIST;
           this.classificationList.forEach(classific => {
             // 전체 추가
             classific.keywords.unshift({name:classific.name+' 전체', key:classific.classification, all:true});
 
             classific.keywords.forEach(keyword =>{
+              keyword.key = classific.classification;
               const filterList = this.keywordList.filter(item => item.keyword == keyword.keyword);
               if(filterList.length !== 0){
-                keyword.match = true;
+                this.checkKeyword(2,keyword);
               }
             });
           });
@@ -267,6 +267,9 @@ export default {
           }
         });
       });
+
+      // 전체 버튼 체크 해제
+      this.commonHeaderList.filter(h => h.category == keyword_del[0].category)[0].keywords[0].match = false;
     },
     removeKeyword(idx){
       const keyword_del = this.keywordList.splice(idx,1);
@@ -283,18 +286,32 @@ export default {
           }
         });
       });
+
+      // 전체 버튼 체크 해제
+      this.classificationList.filter(c => c.classification == keyword_del[0].key)[0].keywords[0].match = false;
     },
     checkKeyword(type, keyword){
       if(keyword.all){ // 전체 체크
+        let result = !keyword.match
+        keyword.match = result;
         if(type === 1){
           const checkList = this.commonHeaderList.filter(h => h.category == keyword.key)[0].keywords;
 
           checkList.forEach(check => {
             if(!check.all){
-              check.match = true;
-              const filterList = this.commonKeywordList.filter(item => item.common_keyword == check.common_keyword);
-              if(filterList.length === 0){
-                this.commonKeywordList.push(check);
+              check.match = result;
+              if(result){ // 추가
+                const filterList = this.commonKeywordList.filter(item => item.common_keyword == check.common_keyword);
+                if(filterList.length === 0){
+                  this.commonKeywordList.push(check);
+                }
+              } else { // 해제
+                for(let i=0; i<this.commonKeywordList.length; i++){
+                  if(this.commonKeywordList[i].common_keyword == check.common_keyword){
+                    this.removeCommonKeyword(i);
+                    break;
+                  }
+                }
               }
             }
           })
@@ -303,26 +320,73 @@ export default {
 
           checkList.forEach(check => {
             if(!check.all){
-              check.match = true;
-              const filterList = this.keywordList.filter(item => item.keyword == check.keyword);
-              if(filterList.length === 0){
-                this.keywordList.push(check);
+              check.match = result;
+              if(result){ // 추가
+                const filterList = this.keywordList.filter(item => item.keyword == check.keyword);
+                if(filterList.length === 0){
+                  this.keywordList.push(check);
+                }
+              } else { // 해제
+                for(let i=0; i<this.keywordList.length; i++){
+                  if(this.keywordList[i].keyword == check.keyword){
+                    this.removeKeyword(i);
+                    break;
+                  }
+                }
               }
             }
           })
         }
       } else {
-        keyword.match = true;
-
-        if(type === 1){
-          const filterList = this.commonKeywordList.filter(item => item.common_keyword == keyword.common_keyword);
-          if(filterList.length === 0){
-            this.commonKeywordList.push(keyword);
+        if(keyword.match){ // 체크 해제
+          keyword.match = false;
+          if(type === 1){
+            for(let i=0; i<this.commonKeywordList.length; i++){
+              if(this.commonKeywordList[i].common_keyword == keyword.common_keyword){
+                this.removeCommonKeyword(i);
+                break;
+              }
+            }
+          } else {
+            for(let i=0; i<this.keywordList.length; i++){
+              if(this.keywordList[i].keyword == keyword.keyword){
+                this.removeKeyword(i);
+                break;
+              }
+            }
           }
         } else {
-          const filterList = this.keywordList.filter(item => item.keyword == keyword.keyword);
-          if(filterList.length === 0){
-            this.keywordList.push(keyword);
+          keyword.match = true;
+          if(type === 1){
+            // 전체 버튼 체크
+            let result = true;
+            const filterCommonHeaderList = this.commonHeaderList.filter(h => h.category == keyword.category)[0].keywords;
+            filterCommonHeaderList.forEach(filterHeader =>{
+              if(!filterHeader.all && !filterHeader.match){
+                result = false;
+              }
+            });
+            this.commonHeaderList.filter(h => h.category == keyword.category)[0].keywords[0].match = result;
+
+            const filterList = this.commonKeywordList.filter(item => item.common_keyword == keyword.common_keyword);
+            if(filterList.length === 0){
+              this.commonKeywordList.push(keyword);
+            }
+          } else {
+            // 전체 버튼 체크
+            let result = true;
+            const filterKeywordList = this.keywordList.filter(h => h.category == keyword.category)[0].keywords;
+            filterKeywordList.forEach(filterKeyword =>{
+              if(!filterKeyword.all && !filterKeyword.match){
+                result = false;
+              }
+            });
+            this.classificationList.filter(c => c.classification == keyword.key)[0].keywords[0].match = result;
+
+            const filterList = this.keywordList.filter(item => item.keyword == keyword.keyword);
+            if(filterList.length === 0){
+              this.keywordList.push(keyword);
+            }
           }
         }
       }
