@@ -143,8 +143,8 @@ export default {
     },
     saveAdTemp(next) {
       let param = {
-        click_price: this.click_price,
-        day_price: this.day_price,
+        click_price: Number.parseInt(this.click_price.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')),
+        day_price: Number.parseInt(this.day_price.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')),
       }
       if (next) {
         param.state = 1 // 검수중 진행상태
@@ -174,8 +174,8 @@ export default {
           this.name = response.data.BODY.name;
           this.price = response.data.BODY.price;
           this.discount = response.data.BODY.discount;
-          this.click_price = response.data.BODY.click_price;
-          this.day_price = response.data.BODY.day_price;
+          this.click_price = this.addComma(response.data.BODY.click_price);
+          this.day_price = this.addComma(response.data.BODY.day_price);
           this.keywords = response.data.BODY.keywords;
           this.keywordsList = [];
           if (this.keywords != null) this.keywordsList = JSON.parse(this.keywords);
@@ -211,7 +211,7 @@ export default {
     checkNum(e) {
       const v = e.target.value === '' ? 0 : Number.parseInt(e.target.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1'));
       if (v != NaN) {
-        e.target.value = v;
+        e.target.value = this.addComma(v);
       } else {
         e.target.value = 0;
       }
