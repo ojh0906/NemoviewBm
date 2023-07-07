@@ -151,10 +151,11 @@ export default {
       }
       http.put("/ad/" + this.ad + "/price", param).then((response) => {
         if (response.data.CODE == 200) {
-          alert('제출되었습니다.');
           if (next) {
+            alert('제출되었습니다.');
             this.success = true;
           } else { // 임시저장
+            alert('저장되었습니다.');
             this.getAd();
           }
         } else {

@@ -292,10 +292,10 @@ export default {
           }
         }).then((response) => {
           if (response.data.CODE == 200) {
-            alert('저장되었습니다.');
             if (next) {
               this.$router.push({ name: 'Step2', query: { key: this.ad } });
             } else { // 임시저장
+              alert('저장되었습니다.');
               this.getAd();
             }
           } else {
