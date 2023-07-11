@@ -60,7 +60,7 @@
           <div class="keyword-title-wrap">
             <p class="keyword-title">현재까지 선택한 키워드<img class="q-mark" src="/image/ad/q-mark.png" /></p>
             <!-- 전체삭제 버튼 -->
-            <div class="del-btn" @click="">전체삭제</div>
+            <div class="del-btn" @click="removeKeywordAll">전체삭제</div>
           </div>
           <div class="keyword-box">
             <span class="color-tag tag" v-for="(c,i) in this.commonKeywordList">{{ c.name }}<span class="close" style="cursor: pointer;" @click="removeCommonKeyword(i)">X</span></span>
@@ -223,7 +223,6 @@ export default {
             classific.keywords.unshift({name:classific.name+' 전체', key:classific.classification, all:true});
 
             classific.keywords.forEach(keyword =>{
-              keyword.key = classific.classification;
               const filterList = this.keywordList.filter(item => item.keyword == keyword.keyword);
               if(filterList.length !== 0){
                 this.checkKeyword(2,keyword);
@@ -273,7 +272,7 @@ export default {
       });
 
       // 전체 버튼 체크 해제
-      this.commonHeaderList.filter(h => h.category == keyword_del[0].category)[0].keywords[0].match = false;
+      // this.commonHeaderList.filter(h => h.category == keyword_del[0].category)[0].keywords[0].match = false;
     },
     removeKeyword(idx){
       const keyword_del = this.keywordList.splice(idx,1);
@@ -292,12 +291,12 @@ export default {
       });
 
       // 전체 버튼 체크 해제
-      this.classificationList.filter(c => c.classification == keyword_del[0].key)[0].keywords[0].match = false;
+      //this.classificationList.filter(c => c.classification == keyword_del[0].key)[0].keywords[0].match = false;
     },
     checkKeyword(type, keyword){
       if(keyword.all){ // 전체 체크
         let result = !keyword.match
-        keyword.match = result;
+        //keyword.match = result;
         if(type === 1){
           const checkList = this.commonHeaderList.filter(h => h.category == keyword.key)[0].keywords;
 
@@ -363,14 +362,14 @@ export default {
           keyword.match = true;
           if(type === 1){
             // 전체 버튼 체크
-            let result = true;
+/*            let result = true;
             const filterCommonHeaderList = this.commonHeaderList.filter(h => h.category == keyword.category)[0].keywords;
             filterCommonHeaderList.forEach(filterHeader =>{
               if(!filterHeader.all && !filterHeader.match){
                 result = false;
               }
             });
-            this.commonHeaderList.filter(h => h.category == keyword.category)[0].keywords[0].match = result;
+            this.commonHeaderList.filter(h => h.category == keyword.category)[0].keywords[0].match = result;*/
 
             const filterList = this.commonKeywordList.filter(item => item.common_keyword == keyword.common_keyword);
             if(filterList.length === 0){
@@ -378,14 +377,14 @@ export default {
             }
           } else {
             // 전체 버튼 체크
-            let result = true;
-            const filterKeywordList = this.keywordList.filter(h => h.category == keyword.category)[0].keywords;
+            /*let result = true;
+            const filterKeywordList = this.classificationList.filter(c => c.classification == keyword.key)[0].keywords;
             filterKeywordList.forEach(filterKeyword =>{
               if(!filterKeyword.all && !filterKeyword.match){
                 result = false;
               }
             });
-            this.classificationList.filter(c => c.classification == keyword.key)[0].keywords[0].match = result;
+            this.classificationList.filter(c => c.classification == keyword.key)[0].keywords[0].match = result;*/
 
             const filterList = this.keywordList.filter(item => item.keyword == keyword.keyword);
             if(filterList.length === 0){
@@ -393,6 +392,16 @@ export default {
             }
           }
         }
+      }
+    },
+    removeKeywordAll(){
+      let commonKeywordCnt = this.commonKeywordList.length;
+      let keywordCnt = this.keywordList.length;
+      for(let i=0; i<commonKeywordCnt; i++){
+        this.removeCommonKeyword(0);
+      }
+      for(let i=0; i<keywordCnt; i++){
+        this.removeKeyword(0);
       }
     }
   },
