@@ -15,8 +15,10 @@
           <input type="text" name="title" v-model="this.title" maxlength="30" />
           <div class="tab-container">
             <span class="label">Q. 무엇을 홍보 하시겠나요?</span>
-            <span class="tab" :class="this.type === 1 ? 'active' : ''" @click="this.type = 1; this.category = 0;">제품</span>
-            <span class="tab" :class="this.type === 2 ? 'active' : ''" @click="this.type = 2; this.category = 0;">서비스</span>
+            <span class="tab" :class="this.type === 1 ? 'active' : ''"
+              @click="this.type = 1; this.category = 0;">제품</span>
+            <span class="tab" :class="this.type === 2 ? 'active' : ''"
+              @click="this.type = 2; this.category = 0;">서비스</span>
           </div>
           <!--   제품   -->
           <div class="input-container">
@@ -66,7 +68,7 @@
             <span class="chk-btn" @click="goToLink(this.link)">연결 확인</span>
             <p class="sub">* 구매를 확인할 수 있는 링크를 첨부해 보세요!</p>
             <p class="label">{{ this.type === 1 ? '6. 제품' : '5. 서비스' }} 관련 키워드
-              <span class="tip2">{{ this.type === 1 ? '(선택)' : '(선택, 3개까지 가능)' }}</span>
+              <span class="tip2">(선택, 3개까지 가능)</span>
             </p>
             <input type="text" name="link" v-model="this.keyword_input" @keypress.enter="addKeyword" />
             <span class="chk-btn" @click="addKeyword">추가</span>
@@ -424,13 +426,12 @@ export default {
       }
 
 
-      if (this.type == 2 && this.keywordsList.length >= 3) {
+      if (this.keywordsList.length >= 3) {
         return alert('키워드는 3개까지 가능합니다.')
       } else {
         const keyword = {
           type: 3, key: 0, value: this.keyword_input
         }
-
         this.keywordsList.push(keyword);
       }
 
