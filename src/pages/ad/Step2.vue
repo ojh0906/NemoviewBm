@@ -57,7 +57,11 @@
           </p>
           <p class="txt">이렇게 <strong>광고 돼요!</strong></p>
 
-          <p class="keyword-title">현재까지 선택한 키워드<img class="q-mark" src="/image/ad/q-mark.png" /></p>
+          <div class="keyword-title-wrap">
+            <p class="keyword-title">현재까지 선택한 키워드<img class="q-mark" src="/image/ad/q-mark.png" /></p>
+            <!-- 전체삭제 버튼 -->
+            <div class="del-btn" @click="">전체삭제</div>
+          </div>
           <div class="keyword-box">
             <span class="color-tag tag" v-for="(c,i) in this.commonKeywordList">{{ c.name }}<span class="close" style="cursor: pointer;" @click="removeCommonKeyword(i)">X</span></span>
             <span class="color-tag2 tag" v-for="(k,i) in this.keywordList">{{ k.name }}<span class="close" style="cursor: pointer;" @click="removeKeyword(i)">X</span></span>
