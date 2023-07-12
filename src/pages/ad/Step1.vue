@@ -64,7 +64,7 @@
             </div>
             <p class="label">{{ this.type === 1 ? '5. 제품 링크' : '4. 연결 링크' }} <span class="tip">제품 가격의 ‘최종 판매 가격’의 가격과 동일한
                 제품 링크를 입력해 주세요!</span></p>
-            <input type="text" name="link" v-model="this.link" />
+            <input type="text" name="link" v-model="this.link" @change="checkHttp"/>
             <span class="chk-btn" @click="goToLink(this.link)">연결 확인</span>
             <p class="sub">* 구매를 확인할 수 있는 링크를 첨부해 보세요!</p>
             <p class="label">{{ this.type === 1 ? '6. 제품' : '5. 서비스' }} 관련 키워드
@@ -469,7 +469,13 @@ export default {
       if (!event.target.classList.contains('select-box')) {
         this.categoryYn = false;
       }
-    }
+    },
+    checkHttp(){
+      let expUrl = /^http[s]?:\/\/()/i;
+      if(!expUrl.test(this.link)){
+        this.link = "http://" + this.link;
+      }
+    },
   },
   created() {
   },
