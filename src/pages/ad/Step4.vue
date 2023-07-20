@@ -109,6 +109,8 @@ export default {
       click_price: 0,
       day_price: 0,
       memberCnt: 0,
+      commonKeywordList:[],
+      keywordList:[],
     }
   },
   watch: {
@@ -181,7 +183,9 @@ export default {
           if (this.keywords != null) this.keywordsList = JSON.parse(this.keywords);
           this.images = response.data.BODY.images;
           this.images_view = JSON.parse(this.images);
-          this.getCntMemberMatchKeyword();
+          this.commonKeywordList = response.data.BODY.commonKeywordList;
+          this.keywordList = response.data.BODY.keywordList;
+          this.getCntMemberMatchKeywordChange();
         }
       }).catch((error) => {
         console.log(error);
@@ -189,6 +193,20 @@ export default {
     },
     getCntMemberMatchKeyword() {
       http.get("/ad/" + this.ad + "/cnt/match").then((response) => {
+        if (response.data.CODE == 200) {
+          this.memberCnt = response.data.BODY;
+        }
+      }).catch((error) => {
+        console.log(error);
+      });
+    },
+    getCntMemberMatchKeywordChange(){
+      let params = {
+        commonKeywordList:this.commonKeywordList,
+        keywordList:this.keywordList
+      };
+      console.log(params);
+      http.post("/ad/member/cnt/match",params).then((response) => {
         if (response.data.CODE == 200) {
           this.memberCnt = response.data.BODY;
         }

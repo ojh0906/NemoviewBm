@@ -223,6 +223,8 @@ export default {
       categoryYn: false,
       categoryList: [],
       memberCnt: 0,
+      commonKeywordList:[],
+      keywordList:[],
     }
   },
   watch: {
@@ -394,7 +396,9 @@ export default {
           this.images_view = JSON.parse(this.images);
           this.image_support = response.data.BODY.image_support;
           this.images_new = [];
-          this.getCntMemberMatchKeyword();
+          this.commonKeywordList = response.data.BODY.commonKeywordList;
+          this.keywordList = response.data.BODY.keywordList;
+          this.getCntMemberMatchKeywordChange();
         } else {
           console.log('aa');
         }
@@ -404,6 +408,20 @@ export default {
     },
     getCntMemberMatchKeyword() {
       http.get("/ad/" + this.ad + "/cnt/match").then((response) => {
+        if (response.data.CODE == 200) {
+          this.memberCnt = response.data.BODY;
+        }
+      }).catch((error) => {
+        console.log(error);
+      });
+    },
+    getCntMemberMatchKeywordChange(){
+      let params = {
+        commonKeywordList:this.commonKeywordList,
+        keywordList:this.keywordList
+      };
+      console.log(params);
+      http.post("/ad/member/cnt/match",params).then((response) => {
         if (response.data.CODE == 200) {
           this.memberCnt = response.data.BODY;
         }

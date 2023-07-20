@@ -19,8 +19,8 @@
               <div class="keyword-box">
                 <div>
                   <div class="tag-box">
-                    <span class="tag" :class="k.mandatory ? 'color-tag3':'color-tag'" v-for="k in commonKeywordList" @click="k.mandatory = true;">{{ k.name }}</span>
-                    <span class="tag" :class="k.mandatory ? 'color-tag3':'color-tag2'" v-for="k in keywordList" @click="k.mandatory = true;">{{ k.name }}</span>
+                    <span class="tag" :class="k.mandatory ? 'color-tag3':'color-tag'" v-for="k in commonKeywordList" @click="k.mandatory = !k.mandatory; this.getCntMemberMatchKeywordChange();">{{ k.name }}</span>
+                    <span class="tag" :class="k.mandatory ? 'color-tag3':'color-tag2'" v-for="k in keywordList" @click="k.mandatory = !k.mandatory; this.getCntMemberMatchKeywordChange();">{{ k.name }}</span>
                   </div>
                 </div>
               </div>
@@ -46,8 +46,8 @@
               <div class="keyword-box">
                 <div>
                   <div class="tag-box">
-                    <span class="color-tag3 tag" v-for="(k,i) in commonKeywordList.filter(item => item.mandatory)">{{ k.name }}<span class="close" @click="k.mandatory = false;">X</span></span>
-                    <span class="color-tag3 tag" v-for="(k,i) in keywordList.filter(item => item.mandatory)">{{ k.name }}<span class="close" @click="k.mandatory = false;">X</span></span>
+                    <span class="color-tag3 tag" v-for="(k,i) in commonKeywordList.filter(item => item.mandatory)">{{ k.name }}<span class="close" @click="k.mandatory = false; this.getCntMemberMatchKeywordChange();">X</span></span>
+                    <span class="color-tag3 tag" v-for="(k,i) in keywordList.filter(item => item.mandatory)">{{ k.name }}<span class="close" @click="k.mandatory = false; this.getCntMemberMatchKeywordChange();">X</span></span>
                   </div>
                 </div>
               </div>
@@ -164,7 +164,7 @@ export default {
         if (response.data.CODE == 200) {
           this.commonKeywordList = response.data.BODY.commonKeywordList;
           this.keywordList = response.data.BODY.keywordList;
-          this.getCntMemberMatchKeyword();
+          this.getCntMemberMatchKeywordChange();
         }
       }).catch((error) => {
         console.log(error);
@@ -172,6 +172,20 @@ export default {
     },
     getCntMemberMatchKeyword(){
       http.get("/ad/"+this.ad+"/cnt/match").then((response) => {
+        if (response.data.CODE == 200) {
+          this.memberCnt = response.data.BODY;
+        }
+      }).catch((error) => {
+        console.log(error);
+      });
+    },
+    getCntMemberMatchKeywordChange(){
+      let params = {
+        commonKeywordList:this.commonKeywordList,
+        keywordList:this.keywordList
+      };
+      console.log(params);
+      http.post("/ad/member/cnt/match",params).then((response) => {
         if (response.data.CODE == 200) {
           this.memberCnt = response.data.BODY;
         }

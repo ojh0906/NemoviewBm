@@ -109,6 +109,7 @@ export default {
       ],
       commonHeaderList:[],
       memberCnt:0,
+      change:false,
     }
   },
   watch: {
@@ -240,7 +241,7 @@ export default {
           this.commonKeywordList = response.data.BODY.commonKeywordList;
           this.keywordList = response.data.BODY.keywordList;
           this.getCommonHeaderList();
-          this.getCntMemberMatchKeyword();
+          this.getCntMemberMatchKeywordChange();
         }
       }).catch((error) => {
         console.log(error);
@@ -248,6 +249,19 @@ export default {
     },
     getCntMemberMatchKeyword(){
       http.get("/ad/"+this.ad+"/cnt/match").then((response) => {
+        if (response.data.CODE == 200) {
+          this.memberCnt = response.data.BODY;
+        }
+      }).catch((error) => {
+        console.log(error);
+      });
+    },
+    getCntMemberMatchKeywordChange(){
+      let params = {
+        commonKeywordList:this.commonKeywordList,
+        keywordList:this.keywordList
+      };
+      http.post("/ad/member/cnt/match",params).then((response) => {
         if (response.data.CODE == 200) {
           this.memberCnt = response.data.BODY;
         }
@@ -273,6 +287,7 @@ export default {
 
       // 전체 버튼 체크 해제
       // this.commonHeaderList.filter(h => h.category == keyword_del[0].category)[0].keywords[0].match = false;
+      this.getCntMemberMatchKeywordChange();
     },
     removeKeyword(idx){
       const keyword_del = this.keywordList.splice(idx,1);
@@ -292,6 +307,7 @@ export default {
 
       // 전체 버튼 체크 해제
       //this.classificationList.filter(c => c.classification == keyword_del[0].key)[0].keywords[0].match = false;
+      this.getCntMemberMatchKeywordChange();
     },
     checkKeyword(type, keyword){
       if(keyword.all){ // 전체 체크
@@ -393,6 +409,7 @@ export default {
           }
         }
       }
+      this.getCntMemberMatchKeywordChange();
     },
     removeKeywordAll(){
       let commonKeywordCnt = this.commonKeywordList.length;
