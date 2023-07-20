@@ -88,6 +88,8 @@
 }
 
 #header-container .wrapper .onAlm {
+  height: 400px;
+  overflow-y: auto;
   display: block;
   animation: fadein 1.5s;
   -moz-animation: fadein 1.5s; /* Firefox */

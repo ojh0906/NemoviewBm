@@ -22,11 +22,11 @@
           :style="{ background: 'url(' + '/image/common/logo.png' + ') no-repeat' }">
         </div>
         <img class="alarm" @click="onAlarmPopup" src="/image/common/alarm.png" />
-        <!-- 알림 핍압 화면 -->
-        <div class="alarm-box" :class="this.onAlarmBox ? 'onAlm' : 'offAlm'">
-          <div v-for="info in this.getLoginMember.infoList">
-            <span>{{ info.content }}</span><span class="new" v-if="getNew(info.regdate)">NEW</span>
-            <p class="date">{{ getDateFormat(info.regdate,'YYYY.MM.DD') }}</p>
+        <!-- 알림 팝업 화면 -->
+        <div class="alarm-box aPop" :class="this.onAlarmBox ? 'onAlm' : 'offAlm'">
+          <div v-for="info in this.getLoginMember.infoList" class="aPop" @click="this.rejectPopup = true">
+            <span class="aPop">{{ info.content }}</span><span class="new aPop" v-if="getNew(info.regdate)">NEW</span>
+            <p class="date aPop">{{ getDateFormat(info.regdate, 'YYYY.MM.DD') }}</p>
           </div>
         </div>
 
@@ -46,6 +46,24 @@
       </div>
     </div>
   </div>
+
+  <!-- 광고 반려 사유 팝업 -->
+  <section :class="this.rejectPopup ? 'pop-up rPop' : 'pop-up-off'" @click="clickSelect">
+    <article class="point-popup reject-pop" v-if="this.rejectPopup">
+      <span class="close" @click="this.rejectPopup = false">X</span>
+      <p class="title">광고 반려 사유</p>
+
+      <p class="sub-title">아래 내용을 수정해 주세요!</p>
+      <div class="content-box">
+        <div class="">
+          반려사유내용
+        </div>
+      </div>
+      <div class="btn">
+        <p class="edit" @click="goToAdEdit(ad)">수정하기</p>
+      </div>
+    </article>
+  </section>
 </template>
 
 <script>
@@ -61,6 +79,7 @@ export default {
     return {
       onAlarmBox: false,
       onProfileBox: false,
+      rejectPopup: false, // 리뷰 반려 사유
     }
   },
   watch: {
@@ -85,10 +104,15 @@ export default {
       if (event.target.classList.contains('profile') || event.target.classList.contains('alarm-box')) {
         this.onAlarmBox = false;
         this.onProfileBox = true;
-      } else if (event.target.classList.contains('alarm') || event.target.classList.contains('alarm-box')) {
+      } else if (event.target.classList.contains('alarm') || event.target.classList.contains('aPop')) {
         this.onProfileBox = false;
         this.onAlarmBox = true;
       } else {
+        this.onProfileBox = false;
+        this.onAlarmBox = false;
+      }
+      if (event.target.classList.contains('rPop')) {
+        this.rejectPopup = false;
         this.onProfileBox = false;
         this.onAlarmBox = false;
       }
@@ -102,6 +126,10 @@ export default {
       }
       return false;
     },
+    goToAdEdit(ad) {
+      this.rejectPopup = false;
+      this.$router.push({ name: 'Step1', query: { key: ad } });
+    }
   },
   created() {
   }
