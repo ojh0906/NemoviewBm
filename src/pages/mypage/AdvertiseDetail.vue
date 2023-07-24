@@ -245,7 +245,7 @@ export default {
             this.keywordList = response.data.BODY.keywordList;
           }
           this.getAdClickMemberKeywordCnt();
-          this.getCntMemberMatchKeyword();
+          this.getCntMemberMatchKeywordChange();
         }
       }).catch((error) => {
         console.log(error);
@@ -287,6 +287,19 @@ export default {
           }
         } else {
           alert('시스템문제 발생. 관리자에게 문의하세요.');
+        }
+      }).catch((error) => {
+        console.log(error);
+      });
+    },
+    getCntMemberMatchKeywordChange(){
+      let params = {
+        commonKeywordList:this.commonKeywordList,
+        keywordList:this.keywordList
+      };
+      http.post("/ad/member/cnt/match",params).then((response) => {
+        if (response.data.CODE == 200) {
+          this.memberCnt = response.data.BODY;
         }
       }).catch((error) => {
         console.log(error);
