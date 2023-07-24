@@ -24,8 +24,8 @@
         <img class="alarm" @click="onAlarmPopup" src="/image/common/alarm.png" />
         <!-- 알림 팝업 화면 -->
         <div class="alarm-box aPop" :class="this.onAlarmBox ? 'onAlm' : 'offAlm'">
-          <div v-for="info in this.getLoginMember.infoList" class="aPop" @click="chkInfo(info)"> <!--TODO 알림 테이블 컬럼 추가 후 작업 -->
-            <span class="aPop">{{ info.content }}</span><span class="new aPop" v-if="!info.chk">NEW</span>
+          <div v-for="info in this.getLoginMember.infoList" class="aPop" @click="chkInfo(info)">
+            <span class="aPop">{{ info.content }}</span><span class="new aPop" v-if="!info.chk && getNew(info.regdate)">NEW</span>
             <p class="date aPop">{{ getDateFormat(info.regdate, 'YYYY.MM.DD') }}</p>
           </div>
         </div>
