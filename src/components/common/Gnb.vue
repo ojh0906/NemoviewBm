@@ -24,8 +24,8 @@
         <img class="alarm" @click="onAlarmPopup" src="/image/common/alarm.png" />
         <!-- 알림 팝업 화면 -->
         <div class="alarm-box aPop" :class="this.onAlarmBox ? 'onAlm' : 'offAlm'">
-          <div v-for="info in this.getLoginMember.infoList" class="aPop" @click="this.rejectPopup = false"> <!--TODO 알림 테이블 컬럼 추가 후 작업 -->
-            <span class="aPop">{{ info.content }}</span><span class="new aPop" v-if="getNew(info.regdate)">NEW</span>
+          <div v-for="info in this.getLoginMember.infoList" class="aPop" @click="chkInfo(info)"> <!--TODO 알림 테이블 컬럼 추가 후 작업 -->
+            <span class="aPop">{{ info.content }}</span><span class="new aPop" v-if="!info.chk">NEW</span>
             <p class="date aPop">{{ getDateFormat(info.regdate, 'YYYY.MM.DD') }}</p>
           </div>
         </div>
@@ -55,12 +55,12 @@
 
       <p class="sub-title">아래 내용을 수정해 주세요!</p>
       <div class="content-box">
-        <div class="">
-          반려사유내용
+        <div class="" v-html="replaceContent(this.rejectMsg)">
+
         </div>
       </div>
       <div class="btn">
-        <p class="edit" @click="goToAdEdit(ad)">수정하기</p>
+        <p class="edit" @click="goToAdEdit(this.ad)">수정하기</p>
       </div>
     </article>
   </section>
@@ -69,6 +69,7 @@
 <script>
 import { mapGetters } from "vuex"
 import dayjs from "dayjs";
+import { http, http2 } from '@/services';
 
 export default {
   computed: {
@@ -80,6 +81,8 @@ export default {
       onAlarmBox: false,
       onProfileBox: false,
       rejectPopup: false, // 리뷰 반려 사유
+      rejectMsg: '',
+      ad: 0,
     }
   },
   watch: {
@@ -129,7 +132,46 @@ export default {
     goToAdEdit(ad) {
       this.rejectPopup = false;
       this.$router.push({ name: 'Step1', query: { key: ad } });
-    }
+    },
+    chkInfo(info){
+      let param = {
+      }
+      http.put("/member/info/" + info.member_info, param).then((response) => {
+        if (response.data.CODE == 200) {
+          info.chk = true;
+          this.onAlarmBox = false;
+          if(info.type === 1){
+            this.goToAd(info);
+          } else if(info.type === 2){
+            this.goToPoint(info);
+          }
+        } else {
+        }
+      }).catch((error) => {
+        console.log(error);
+      });
+    },
+    goToAd(info){
+      http.get("/ad/" + info.key).then((response) => {
+        if (response.data.CODE == 200) {
+          if(response.data.BODY.state === 4){ // 반려
+            this.rejectPopup = true;
+            this.ad = response.data.BODY.ad;
+            this.rejectMsg = response.data.BODY.state_error;
+          } else {
+            this.$router.push({ name: 'AdvertiseDetail', query: { key: response.data.BODY.ad }  });
+          }
+        } else {
+          console.log('aa');
+        }
+      }).catch((error) => {
+        console.log(error);
+      });
+    },
+    goToPoint(){
+      this.rejectPopup = false;
+      this.$router.push({ name: 'PointCharge' });
+    },
   },
   created() {
   }

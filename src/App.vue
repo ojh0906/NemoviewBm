@@ -18,7 +18,7 @@ export default {
 <template>
   <div id="container" @click="check($event)">
     <Gnb ref="gnb" />
-    <router-view />
+    <router-view :key="$route.fullPath"/>
     <Footer ref="footer" />
   </div>
 </template>
