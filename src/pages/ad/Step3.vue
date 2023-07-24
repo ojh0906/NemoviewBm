@@ -184,7 +184,6 @@ export default {
         commonKeywordList:this.commonKeywordList,
         keywordList:this.keywordList
       };
-      console.log(params);
       http.post("/ad/member/cnt/match",params).then((response) => {
         if (response.data.CODE == 200) {
           this.memberCnt = response.data.BODY;

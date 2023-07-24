@@ -272,7 +272,7 @@ export default {
         formData.append('images_new', this.images_new[i]);
       }
 
-      if (this.ad !== 0) { // 수정시
+      if (next) {
         if (this.title === '' || this.category === 0 || this.brand === '' || this.name === '' || this.link === '') {
           alert('필수값을 입력해주세요.');
           return;
@@ -289,7 +289,9 @@ export default {
             return;
           }
         }
+      }
 
+      if (this.ad !== 0) { // 수정시
         formData.append("images_del", JSON.stringify(this.images_del));
         http.put("/ad/" + this.ad, formData, {
           headers: {
@@ -420,7 +422,6 @@ export default {
         commonKeywordList:this.commonKeywordList,
         keywordList:this.keywordList
       };
-      console.log(params);
       http.post("/ad/member/cnt/match",params).then((response) => {
         if (response.data.CODE == 200) {
           this.memberCnt = response.data.BODY;
